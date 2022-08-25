@@ -1,19 +1,12 @@
 # 欢迎来到我的个人博客
+## 简介  
+* 记录一些自己的学习笔记.
+* 什么都学一点，总有用到的时候.  
+* 本人是个菜鸟，希望能与大佬交流，不断进步.
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## 联系方式  
+**QQ:** 1968306533  
+**微信:** yang1968306533  
+**邮箱:** [young1968306533@163.com](young1968306533@163.com)
 
 
