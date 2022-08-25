@@ -2,3 +2,6 @@ site_name: YYHhao的个人博客
 nav:
   - 主页: index.md
   - 关于我: about.md
+theme:
+  name: material
+ 
