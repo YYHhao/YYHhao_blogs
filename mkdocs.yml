@@ -3,5 +3,5 @@ nav:
   - 主页: index.md
   - 关于我: about.md
 theme:
-  name: material
+  name: 'material'
  
