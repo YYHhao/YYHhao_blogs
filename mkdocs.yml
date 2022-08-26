@@ -1,7 +1,6 @@
 site_name: YYHhao的个人博客
 nav:
   - 主页: index.md
-  - 关于我: about.md
   - python: 
     - 算法学习: mylearning.md
     - 爬虫学习: mypachong.md
@@ -9,4 +8,5 @@ nav:
   - CV: myCV.md
 theme:
   name: 'material'
+
  
