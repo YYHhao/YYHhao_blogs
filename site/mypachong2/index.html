@@ -1,0 +1,802 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
+    
+    
+      
+        <title>进、线、协程的概念 - YYHhao的个人博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="YYHhao的个人博客" class="md-header__button md-logo" aria-label="YYHhao的个人博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            YYHhao的个人博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              进、线、协程的概念
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="YYHhao的个人博客" class="md-nav__button md-logo" aria-label="YYHhao的个人博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    YYHhao的个人博客
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        主页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          算法学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="算法学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          算法学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mylearning1/" class="md-nav__link">
+        欧几里得算法、中国剩余定理
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          爬虫学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="爬虫学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          爬虫学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mypachong1/" class="md-nav__link">
+        多线程、异步爬虫
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          进、线、协程的概念
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        进、线、协程的概念
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    进程(Process)：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread" class="md-nav__link">
+    线程(Thread):
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#corouties" class="md-nav__link">
+    协程(Corouties):
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mydatapv/" class="md-nav__link">
+        数据处理及可视化
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../myCV/" class="md-nav__link">
+        CV
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    进程(Process)：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread" class="md-nav__link">
+    线程(Thread):
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#corouties" class="md-nav__link">
+    协程(Corouties):
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="_1">一、进程、线程、协程简介</h1>
+<h2 id="process"><strong>进程(Process)：</strong></h2>
+<p>进程是指计算机中已运行的程序，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。</p>
+<p>1.进程就是一个程序的执行实例，也就是正在执行的程序。在OS的眼里，进程就是一个担当分配系统资源CPU时间、内存的实体。
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/c7b26968dd8c4707b4b4e21ef9b7f4b5.png" /></p>
+<p>2.进程控制的主要功能是对系统中的所有进程实施有效的管理，它具有创建新进程、撤销已有进程、实现进程状态之间的转换等功能。
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/690cfdcd681c4aa88d101517fc6bf997.png" /></p>
+<p>3.进程在运行中不断地改变其运行状态。一个进程在运行期间，不断地从一种状态转换到另一种状态，它可以多次处于就绪状态和执行状态，也可以多次处于阻塞状态。
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/0e3ce9afb6d942198d09dc1aa6647229.png" /></p>
+<blockquote>
+<p>简而言之，进程就好比你的手机同时用着QQ和微信，这就是两个进程。</p>
+</blockquote>
+<h2 id="thread"><strong>线程(Thread):</strong></h2>
+<p>线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。</p>
+<p>一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。在Unix System V及SunOS中也被称为轻量进程（lightweight processes），但轻量进程更多指内核线程（kernel thread），而把用户线程（user thread）称为线程。
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/64fb29fdb73f4109b30629c045beeb51.png" /></p>
+<blockquote>
+<p>简而言之，线程就是你用手机登着QQ，可以一边和别人视频一边发信息，这就是在一个进程中的两个不同线程。</p>
+</blockquote>
+<h2 id="corouties"><strong>协程(Corouties):</strong></h2>
+<p>协程是一种比线程更加轻量级的一种函数。</p>
+<p>操作系统在线程等待IO的时候，会阻塞当前线程，切换到其它线程，这样在当前线程等待IO的过程中，其它线程可以继续执行。当系统线程较少的时候没有什么问题，但是当线程数量非常多的时候，却产生了问题。<strong>一是系统线程会占用非常多的内存空间；二是过多的线程切换会占用大量的系统时间。</strong>
+协程的出现有效解决上述两个问题，协程运行在线程之上，当一个协程执行完成后，可以选择主动让出，让另一个协程运行在当前线程之上。<strong>协程并没有增加线程数量，只是在线程的基础之上通过分时复用的方式运行多个协程，</strong> 而且协程的切换在用户态完成，切换的代价比线程从用户态到内核态的代价小很多。</p>
+<blockquote>
+<p>简而言之，就好比你去足疗正自己洗脚，技师要走，而你让他帮忙按摩一下肩膀，不让他走,一会洗好了再按脚。
+ <strong>注意：协程只有和异步IO结合起来，才能发挥最大的威力。</strong></p>
+</blockquote>
+<p>1、程序中产生的阻塞状态，以下方代码为例</p>
+<pre><code class="language-python">import time
+
+def func():
+    print('a')
+    time.sleep(2)  #让当前线程处于阻塞状态。CUP不为我工作
+    print('b')
+
+if __name__ == '__main__':
+    func()
+
+#input()程序也是处于阻塞状态
+#requests.get()在网络请求返回数据之前，程序也是处于阻塞状态的
+#一般情况下，当程序处于IO操作的时候，线程都会处于阻塞状态
+#协程：当程序遇见了IO操作的时候，可以选择性的切换到其它任务上
+</code></pre>
+<p>2、协程用到asyncio模块，如下：</p>
+<pre><code class="language-python">import asyncio
+import time
+async def func():
+    print('Hello,world')
+
+if __name__ == '__main__':
+    g = func() #此时的函数是异步协程函数，此时函数执行得到的是一个协程对象
+    # print(g)
+    asyncio.run(g)    #协程程序运行需要asyncio模块支持
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-cpp">&lt;coroutine object func at 0x0000020AAB9EEF80&gt;
+Hello,world
+</code></pre>
+<p>3、一个采用协程的实例</p>
+<pre><code class="language-python">import asyncio
+import time
+async def func1():
+    print('你好,嗡嗡嗡')
+    await asyncio.sleep(3) 
+    print('你好,水水水')
+
+async def func2():
+    print('你好,顶顶顶')
+    await asyncio.sleep(2)
+    print('你好,哈哈哈')
+
+async def func3():
+    print('你好,啊啊啊')
+    await asyncio.sleep(4)
+    print('你好,嘻嘻嘻')
+
+async def main():
+    #第一种写法
+    # f1 = func1()
+    # await f1   #一般await挂起操作放在协程对象前面
+    #第二种写法(推荐)
+    tasks = [
+        asyncio.create_task(func1()),    #py3.8以后先把协程对象包装成task
+        asyncio.create_task(func2()),
+        asyncio.create_task(func3())
+    ]
+    await asyncio.wait(tasks)   #多个任务一般第一是asyncio.wait()
+if __name__ == '__main__':  
+    t1 = time.time()
+    asyncio.run(main())
+    t2 = time.time()
+    print(t2-t1)
+
+#协程耗时应该和最大时间对应
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-cpp">你好,嗡嗡嗡
+你好,顶顶顶
+你好,啊啊啊
+你好,哈哈哈
+你好,水水水
+你好,嘻嘻嘻
+4.016979932785034
+</code></pre>
+<h1 id="_2">二、多进程、多线程</h1>
+<h2 id="_3">多进程：</h2>
+<p>同一时刻并行的处理多个任务，即为多进程。
+比如，你一边喝茶、看书还听着音乐。真正的并行多任务只能在多核的CPU上实现，由于任务数量是远远多于CPU的核数，所以操作系统会自动将多任务短时间轮流切换执行，给我们的感觉就像同时在执行一样。</p>
+<p>代码实例</p>
+<pre><code class="language-cpp">from multiprocessing import Process
+def func():
+    for i in range(100):
+        print('子进程',i)
+
+if __name__ == '__main__':
+    p = Process(target=func)
+    p.start()
+    for i in range(100):
+        print(&quot;主进程&quot;,i)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-cpp">主进程 0
+主进程 1
+主进程 2
+...
+子进程 97
+子进程 98
+子进程 99
+</code></pre>
+<h2 id="_4">多线程：</h2>
+<p>多线程就是把操作系统中的这种并发执行机制原理运用在一个程序中，把一个程序划分为若干个子任务，多个子任务并发执行，每一个任务就是一个线程。因为CPU在执行程序时每个时间刻度上只会存在一个线程，因此多线程实际上提高了进程的使用率从而<strong>提高了CPU的使用率</strong>。<strong>但线程过多时，操作系统在他们直接来回切换，影响性能。</strong></p>
+<p>1、一般的多线程</p>
+<pre><code class="language-python">from threading import Thread
+def func1():
+    for i in range(100):
+        print('func1',i)
+
+def func2():
+    for i in range(100):
+        print('func2',i)
+
+if __name__ == '__main__':
+    t1 = Thread(target=func1)  #创建线程，并给线程安排任务，（子线程）
+    t1.start()  #多线程状态为可以开始工作状态，具体执行时间由CPU决定
+    t2 = Thread(target=func2)
+    t2.start()
+    for i in range(100):
+        print('main',i) 
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-cpp">...
+func1 88
+func1 89
+func1 90
+...
+main func1
+83 func2 69
+91
+func2
+...
+</code></pre>
+<p>2、创建多线程类</p>
+<pre><code class="language-python">class MyThread(Thread):
+    def run(self):     #固定的
+        for i in range(100):
+            print('子线程',i)
+
+if __name__ == '__main__':
+    t = MyThread()
+    # t.run()是方法的调用，不行，是单线程
+    t.start() #开启线程
+    for i in range(100):
+        print(&quot;主线程&quot;,i)
+</code></pre>
+<p>3、给线程传入参数</p>
+<pre><code class="language-cpp">def func(name):
+    for i in range(100):
+        print(name,i)
+
+if __name__ == '__main__':
+    t1 = Thread(target=func,args=('周杰伦',))  
+    t1.start()
+    t2 = Thread(target=func,args=('张杰',))
+    t2.start()
+    for i in range(100):
+        print('main',i) 
+</code></pre>
+<h1 id="_5">三、线程池、进程池</h1>
+<h2 id="_6"><strong>池的概念：</strong></h2>
+<p>池是保证计算机能够正常运行的前提下，能最大限度开采的资源的量，他降低的程序的运行效率，但是保证了计算机硬件的安全，从而让你写的程序可以正常运行。池就是一个量的单位，代表了你所能开采的资源的度，超过这个度，身体就跨了，首先要用，其次要有度。
+<strong>采用线程池和进程池：保证硬件能够正常工作的情况下，最大限度的利用资源。</strong></p>
+<h2 id="_7">线程池：</h2>
+<p>线程池是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。
+<strong>采用ThreadPoolExecutor（3），括号内是创建的线程数，不填的话，会默认开设当前计算机cpu核数的5倍的线程。</strong></p>
+<pre><code class="language-python">#线程池：一次性开辟一些线程。我们用户直接给线程池子提交任务。线程任务的调度交给线程池完成。
+from concurrent.futures import ThreadPoolExecutor,ProcessPoolExecutor
+
+def fn(name):
+    for i in range(1000):
+        print(name,i)
+
+if __name__ == '__main__':
+    #创建线程池
+    with ThreadPoolExecutor(50) as t:
+        for i in range(100):
+            t.submit(fn,name=f&quot;线程{i}&quot;)
+    #等待线程池中任务全部执行完毕，才继续执行（守护）
+    print('123')
+</code></pre>
+<h2 id="_8">进程池：</h2>
+<p>众所周知，Python 的多线程是假的，不过好在开发者老大还是给我们留了一个活路，也就是进程池。这个方法的优点在于进程的并发细节完全不用我们操心，我们只需要把并发的任务仍到进程池里就好了。
+<strong>进程池大体上跟线程池类似，ProcessPoolExecutor(3)，括号内不填的话，会默认创建与“cpu核数”相同数量的进程。</strong> 同样的，进程池中的进程是固定工，不会重复创建和销毁。</p>
+<p>进程池和线程池在使用形式上是一样的，唯一不同的是：在Windows环境下，进程池要放在main方法里面，否则会报错。</p>
+<pre><code class="language-python">from concurrent.futures import ThreadPoolExecutor,ProcessPoolExecutor
+
+def fn(name):
+    for i in range(10):
+        print(name,i)
+
+if __name__ == '__main__':
+    #创建进程池
+    with ProcessPoolExecutor(50) as t:
+        for i in range(100):
+            t.submit(fn,name=f&quot;进程{i}&quot;)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-cpp">进程0 0
+进程0 1
+进程0 2
+进程0 3
+进程0 4
+进程0 5
+进程0 6
+进程0 7
+进程0 8
+进程0 9
+...
+</code></pre>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../mypachong1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 多线程、异步爬虫" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              多线程、异步爬虫
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../mydatapv/" class="md-footer__link md-footer__link--next" aria-label="Next: 数据处理及可视化" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              数据处理及可视化
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

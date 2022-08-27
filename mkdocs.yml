@@ -2,11 +2,23 @@ site_name: YYHhao的个人博客
 nav:
   - 主页: index.md
   - python: 
-    - 算法学习: mylearning.md
-    - 爬虫学习: mypachong.md
+    - 算法学习: 
+      - 欧几里得算法、中国剩余定理: mylearning1.md
+    - 爬虫学习: 
+      - 多线程、异步爬虫: mypachong1.md
+      - 进、线、协程的概念: mypachong2.md
     - 数据处理及可视化: mydatapv.md
   - CV: myCV.md
 theme:
   name: 'material'
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
 
  
