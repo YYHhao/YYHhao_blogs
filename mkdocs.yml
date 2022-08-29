@@ -4,6 +4,7 @@ nav:
   - python: 
     - 算法学习: 
       - 欧几里得算法、中国剩余定理: mylearning1.md
+      - 模拟退火算法: alglearning/SA.md
     - 爬虫学习: 
       - 多线程、异步爬虫: mypachong1.md
       - 进、线、协程的概念: mypachong2.md
