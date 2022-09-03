@@ -8,10 +8,38 @@ nav:
     - 爬虫学习: 
       - 多线程、异步爬虫: mypachong1.md
       - 进、线、协程的概念: mypachong2.md
+    - 机器学习:
+      - 降维算法: 
+        - 前言: ml/jiangwei.md
+      - 聚类算法: ml/clusteralg.md
+      - 分类算法: ml/classifyalg.md
+      - 回归算法: ml/regressionalg.md
     - 数据处理及可视化: mydatapv.md
   - CV: myCV.md
+
 theme:
   name: 'material'
+  logo: 'img/火箭.svg'
+  favicon: 'img/火箭.svg'
+  palette:
+      primary: 'cyan'
+      accent: 'deep orange'
+
+#自动调节白天夜间模式
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
 extra_javascript:
   - javascripts/config.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
