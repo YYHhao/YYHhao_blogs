@@ -128,19 +128,21 @@ std_c = np.std(X,axis=0,ddof=0)  #总体方差ddof=0，sigma:除以n;样本标�
 std_data = (X-mean_c)/std_c
 sigma = 1/n*np.dot(std_data.T,std_data)   #协方差矩阵(相关系数矩阵)
 #计算特征值、特征向量
-eig_val,eig_vec = np.linalg.eig(sigma)
-sort_eigval = sorted(list(enumerate(eig_val)),key=lambda x:x[1],reverse=True)
-ind = [i[0] for i in sort_eigval]
-sort_eigvec = [eig_vec[i] for i in ind]
-# 指定要降到的维数，比如2。将特征向量水平平铺合并
-pca_matrix = np.hstack([sort_eigvec[i].reshape(-1,1) for i in range(2)])
-res = X.dot(pca_matrix)  #将原始数据投影
+eig_vals,eig_vecs = np.linalg.eig(sigma)
+#特征值和特征向量配对
+eig_pairs = [(np.abs(eig_vals[i]), eig_vecs[:,i]) for i in range(len(eig_vals))]
+# 按特征值大小进行排序
+eig_pairs = sorted(eig_pairs, key=lambda k: k[0], reverse=True)
+# 指定要降到的维数，比如2。将特征向量水平平铺合并,以列向量形式拼合。
+pca_matrix = np.hstack([eig_pairs[i][1].reshape(-1, 1) for i in range(2)])
+# 将原始数据进行投影。
+res = X.dot(pca_matrix)  
 print(sorted(eig_val,reverse=True))
 print(res.shape)
 ```
 输出:
 ```
-[2.1117041069332565, 0.8882958930667458, -1.2785144700478422e-16]
+[2.1117041069332574, 0.8882958930667454, 4.532663311939432e-17]
 (100, 2)
 ```
 ## 正交矩阵  

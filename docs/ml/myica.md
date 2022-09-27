@@ -7,6 +7,10 @@ FastICA、投影追踪和 Infomax 只是 ICA 算法中的一小部分。这些�
 **FastICA简介：**
 在诸多ICA算法中，固定点算法 (也称FastlCA)以其收敛速度快、分离效果好被广泛应用于信号处理领域。该算法能很好地从观测信号中估计出相互统计独立的、被未知因素混合的原始信号。  
 
+**与PCA比较：**    
+ICA寻找的是最能使数据的相互独立的方向，而PCA仅要求方向是不相关的。   
+PCA认为主元之间彼此正交，样本呈高斯分布；ICA则不要求样本呈高斯分布。  
+
 [推导举例：https://blog.csdn.net/lizhe_dashuju/article/details/50263339](https://blog.csdn.net/lizhe_dashuju/article/details/50263339)
 
 
