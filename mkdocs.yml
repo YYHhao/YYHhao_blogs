@@ -1,7 +1,9 @@
 site_name: YYHhao的个人博客
 nav:
   - 主页: index.md
-  - python: 
+  - python:
+    - numpy模块: datapv/mynumpy.md
+    - pandas模块: datapv/mypandas.md 
     - 算法学习: 
       - 欧几里得算法、中国剩余定理: alglearning/mylearning1.md
       - 模拟退火算法: alglearning/SA.md
@@ -28,7 +30,7 @@ nav:
     - 评价模型:
       - 层次分析法: 数学建模/评价模型/层次分析.md
     - 预测模型:
-      - 灰色预测: 数学建模/统计模型/灰色预测.md
+      - 灰色预测: 数学建模/预测模型/灰色预测.md
     - 统计模型:
       - 聚类分析: 数学建模/统计模型/聚类分析.md
   - 笔记:

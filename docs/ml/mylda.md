@@ -129,16 +129,13 @@ x1 = x[y==1]
 def LDA(x,x1,x2):
     n1 = np.shape(x1)[0]
     n2 = np.shape(x2)[0]
-    x_mean  = np.mean(x)
-    x1_mean = np.mean(x1)
-    x2_mean = np.mean(x2)
-    # 类内散度矩阵
-    Sb = n1*np.dot((x1_mean-x_mean),(x1_mean-x_mean).T)+n2*np.dot((x2_mean-x_mean),(x2_mean-x_mean).T)
-    #类间散度矩阵
-    Sigma1 = np.dot((x1-x1_mean),(x1-x1_mean).T)
-    Sigma2 = np.dot((x2-x2_mean),(x2-x2_mean).T)
-    Sw = Sigma1 + Sigma2
-    # 计算特征值和特征矩阵
+    x_mean  = np.mean(x,axis=0)
+    x1_mean = np.mean(x1,axis=0)
+    x2_mean = np.mean(x2,axis=0)
+    Sb = n1*np.dot((x1_mean-x_mean).T,(x1_mean-x_mean))+n2*np.dot((x2_mean-x_mean).T,(x2_mean-x_mean))
+    Sigma1 = np.dot((x1-x1_mean).T,(x1-x1_mean))
+    Sigma2 = np.dot((x2-x2_mean).T,(x2-x2_mean))
+    Sw = Sigma1 + Sigma2   #特征数为n，Sb,Sw维度都是n*n
     w = np.linalg.eig(np.dot(np.linalg.inv(Sw),Sb))
     return w
 
@@ -149,7 +146,7 @@ eig_vals,eig_vecs = LDA(x,x0,x1)  #eig_vec每一列是对应的特征向量
 eig_pairs = [(np.abs(eig_vals[i]), eig_vecs[:,i]) for i in range(len(eig_vals))]
 # 按特征值大小进行排序
 eig_pairs = sorted(eig_pairs, key=lambda k: k[0], reverse=True)
-# 将数据降到1维。将特征向量以列向量形式拼合。
+# 将数据降到一维。将特征向量以列向量形式拼合。
 lda_matrix = np.hstack([eig_pairs[i][1].reshape(-1, 1) for i in range(1)])
 # 将原始数据进行投影。
 res = x.dot(lda_matrix)  #将原始数据投影
@@ -157,10 +154,10 @@ print(res)
 ```   
 输出：
 ```
-[[ 1.52307172]
- [ 3.1602194 ]
- [-2.48254514]
- [-3.1602194 ]]
+[[-2.22703273] 
+ [-2.42784414] 
+ [ 2.75276384] 
+ [ 2.42784414]]
 ```  
 
 ## LDA算法流程  
@@ -179,4 +176,5 @@ print(res)
 
 　　
 
-[参考链接：https://www.cnblogs.com/pinard/p/6244265.html](https://www.cnblogs.com/pinard/p/6244265.html)
+[参考链接：https://www.cnblogs.com/pinard/p/6244265.html](https://www.cnblogs.com/pinard/p/6244265.html)    
+[多分类实例：https://www.freesion.com/article/5252242835/](https://www.freesion.com/article/5252242835/)

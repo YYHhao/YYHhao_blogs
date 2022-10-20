@@ -31,6 +31,12 @@ plt.xlabel('x刻度',fontproperties=my_font)
 plt.ylabel('y刻度',fontproperties=my_font)
 plt.show() 
 ```   
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f9108e0e34a943a194c01ebf4d08fe10.png#pic_center)    
+![在这里插入图片描述](https://img-blog.csdnimg.cn/f9108e0e34a943a194c01ebf4d08fe10.png#pic_center)      
+
+三、直接在导入模块时添加如下代码     
+```python
+plt.rcParams['font.sans-serif'] = ['SimHei'] #用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False #用来正常显示负号
+```    
 
 [font_manager模块FontProperties类的使用：https://blog.csdn.net/mighty13/article/details/116243372](https://blog.csdn.net/mighty13/article/details/116243372)
