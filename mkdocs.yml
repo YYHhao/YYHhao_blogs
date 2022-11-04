@@ -2,8 +2,12 @@ site_name: YYHhao的个人博客
 nav:
   - 主页: index.md
   - python:
-    - numpy模块: datapv/mynumpy.md
-    - pandas模块: datapv/mypandas.md 
+    - numpy模块: 
+      - 基本操作: numpy模块/mynumpy.md
+    - pandas模块: 
+      - 基本操作: pandas模块/mypandas.md 
+    - sklearn模块:
+      - 交叉验证生成器: sklearn模块/交叉验证.md
     - 算法学习: 
       - 欧几里得算法、中国剩余定理: alglearning/mylearning1.md
       - 模拟退火算法: alglearning/SA.md
@@ -20,6 +24,8 @@ nav:
       - 聚类算法: ml/clusteralg.md
       - 分类算法: ml/classifyalg.md
       - 回归算法: ml/regressionalg.md
+    - 深度学习:
+      - 神经网络权重初始化0问题: dl/初始化.md
     - 数据处理及可视化: 
       - matplotlib中文编码: datapv/mydatapv.md
   - CV: cvlearning/myCV.md
