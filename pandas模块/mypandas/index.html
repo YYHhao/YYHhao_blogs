@@ -13,7 +13,7 @@
     
     
       
-        <title>欧几里得算法、中国剩余定理 - YYHhao的个人博客</title>
+        <title>基本操作 - YYHhao的个人博客</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#pandas" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              欧几里得算法、中国剩余定理
+              基本操作
             
           </span>
         </div>
@@ -291,12 +291,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
       
       
       
@@ -317,11 +319,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../pandas%E6%A8%A1%E5%9D%97/mypandas/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         基本操作
       </a>
+      
     </li>
   
 
@@ -385,14 +397,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
       
       
       
@@ -413,21 +423,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../alglearning/mylearning1/" class="md-nav__link">
         欧几里得算法、中国剩余定理
       </a>
-      
     </li>
   
 
@@ -439,7 +439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../SA/" class="md-nav__link">
+      <a href="../../alglearning/SA/" class="md-nav__link">
         模拟退火算法
       </a>
     </li>
@@ -1124,294 +1124,163 @@
                 
 
 
-<h1 id="_1">一、欧几里得算法（辗转相除法）</h1>
-<p>首先我们要知道，初等数论中：
-若<strong>（p,q）=1</strong>，存在整数s，t 使得<strong>sp+ tq=1</strong>
-<strong>(x,y)表示x,y的最大公约数</strong>
-<strong>[x,y]表示x,y的最小公倍数</strong></p>
-<p>先举个例子：</p>
-<blockquote>
-<p><strong>gcd(6,16) = gcd(16,6%16) = gcd(16, 6) = gcd(6,16%6) = gcd(6,4) = gcd(4,6%4)  = gcd(4,2) = gcd(2,4%2) = gcd(2,0) = 2</strong></p>
-<p><strong>由此可得，欧几里得算法就是计算最大公约数的一个算法，递推式为：</strong></p>
-</blockquote>
-<pre><code class="language-math">gcd(a , b)= gcd(b , a % b)
-</code></pre>
-<p>直到a,b中有一个数为0，可得到他们的最大公约数。
-<strong>怎么证明上述式子呢？</strong>`
-<strong>令(A , B) = R,证明(A,B) = (B,R)</strong></p>
-<blockquote>
-<p>因 <strong>(A , B) = R</strong>
-则 <strong>A = B * q + R</strong>
-令 <strong>A = a * u, B = b * u</strong>
-则 <strong>R = A - B*q  = a * u - b * u * q = u * (a - b * q) = u * n</strong>
-<strong>即 u 是A,B的最大公因数则 u 是B,R的最大公因数.</strong>
-同理:
-令 <strong>B = b' * v</strong>
-令 <strong>R = r' * v</strong>
-得  <strong>A = a' * v</strong>
-<strong>即 v 是B,R的最大公因数则 v 是A,B的最大公因数.</strong>
-证明成立</p>
-</blockquote>
-<h1 id="_2">二、裴蜀定理</h1>
-<p>内容如下:</p>
-<blockquote>
-<p><span class="arithmatex">\(若 a , b 是任意整数,且 gcd ⁡ ( a , b ) = d ，那么对于任意的整数 x , y , a x + b y 都一定是 d 的倍数，特别地，一定存在整数 x , y，使 a x + b y = d 成立。\)</span></p>
-</blockquote>
-<p>推论:</p>
-<blockquote>
-<p>a,b<strong>互质</strong>的<strong>充分必要条件</strong>是存在<strong>整数</strong>x,y使ax+by=1
-假设我们有一个关于x和y的线性方程 ax + by = d，现在要求判断这个方程是否存在整数解。</p>
-</blockquote>
-<p>裴蜀定理告诉我们，ax + by = d存在整数解当前仅当 gcd ( a , b ) | d 。例如说3x + 6y = 2就不存在整数解，3x + 6y = 3就存在整数解 x =1 ,y = 0 。</p>
-<p>如何证明？显然gcd( a , b) | (ax + by），如果存在整数的解的话必然有 gcd ( a , b ) | d 。</p>
-<p>那么在gcd( a, b) | d的时候一定都存在整数解吗？我们来通过扩展欧几里得算法解释这个问题，实际上，扩展欧几里得的算法不仅回答了这个问题，而且还把解构造了出来。</p>
-<p><strong>n个整数的裴蜀定理:</strong></p>
-<blockquote>
-<p>设a1,a2,a3......an为n个整数，d是它们的最大公约数，那么存在整数x1......xn使得x1<em>a1+x2</em>a2+...xn*an=d。
-特别来说，如果a1...an存在任意两个数是互质的（不必满足两两互质），那么存在整数x1......xn使得x1 *  a1 + x2 * a2+...xn * an=1。证法类似两个数的情况。</p>
-</blockquote>
-<h1 id="_3">三、扩展欧几里得算法</h1>
-<p>定义: <strong>在得到整数a,b的最大公约数后,还希望得到整数x,y:使得ax+by=gcd(a,b)</strong> <br />
-1、<span class="arithmatex">\(对于整数a&gt;b显然b=0时,gcd(a,b) = a;此时x=1,y=0\)</span><br />
-2、<span class="arithmatex">\(设ax_1+by_1=gcd(a,b)\)</span><br />
-3、<span class="arithmatex">\(有bx_2 + (a\%b)y_2=gcd(b,a\%b)\)</span><br />
-4、<span class="arithmatex">\(由于gcd(a,b)=gcd(b,a\%b),那么ax_1+by_1=bx_2+(a\%b)y_2\)</span><br />
-5、<span class="arithmatex">\(即ax_1+by_1=bx_2+(a-[a/b]*b)y_2=ay_2+bx_2-[a/b]*by_2\)</span><br />
-6、<span class="arithmatex">\(也就是ax_1+by_1==ay_2+b(x_2-[a/b]*y_2)\)</span><br />
-7、<span class="arithmatex">\(根据恒等式定理得:x_1=y_2;y_1=x_2-[a/b]*y_2\)</span><br />
-8、<span class="arithmatex">\(这样我们就得到了求解x_1,y_1的方法:x_1,y_1的值基于x_2,y_2\)</span><br />
-9、上面的思想是以递归定义的,gcd不断地递归求解一定会有b=0的时候,所以递归可以结束.</p>
-<h1 id="_4">四、扩展欧几里得算法求逆元</h1>
-<p><strong>乘法逆元的定义</strong>：
-若存在正整数a,b,p, 满足ab = 1(mod p), 则称a 是b 的乘法逆元, 或称b 是a 的乘法逆元。b ≡ a-1 (mod p)，a ≡ b-1 (mod p)</p>
-<p>比如说, 在模7 意义下,3 的乘法逆元是5, 也可以说模7 意义下5的乘法逆元是3。模13意义下5的逆元是8……</p>
-<p><strong>存在性</strong>
-看起来和同余方程很相似（其实下面真的可以用exgcd求的！），在同余方程中,  ab ≡ 1(mod p)
-若a 与p 互质, 则一定存在一个正整数解b, 满足b &lt; p，若a 与p 不互质, 则一定不存在正整数解b.  所以逆元要求a与p互质
-<strong>定义函数</strong></p>
-<pre><code class="language-python">def exgcd(a,b):
-    global x,y
-    if b == 0:
-        x,y = 1,0
-        return a
-    d = exgcd(b,a%b)
-    x,y = y,x
-    y -= (a//b)*x
-    return d
-</code></pre>
-<p><strong>用gmpy2库</strong><br />
-gmpy2.is_prime(n) # 判断n是不是素数</p>
-<p>gmpy2.gcd(a,b) # 欧几里得算法  </p>
-<p>gmpy2.gcdext(a,b) # 扩展欧几里得算法<br />
-<strong>说明:gmpy2.gcdext(a,b)返回一个元组(g,s,t) , g =gcd(a,b) , g=as+bt</strong></p>
-<pre><code class="language-python">import gmpy2
-print(*map(int,gmpy2.gcdext(15,10)))
-</code></pre>
-<p>输出:</p>
-<pre><code class="language-cpp">5 1 -1  #即gcd(15,10) = 5 = 1*15+(-1)*10
-</code></pre>
-<h1 id="_5">五、中国剩余定理</h1>
-<p>例<strong>1、求满足下同余方程组的x</strong></p>
-<div class="arithmatex">\[
-\begin{cases}  
-x \equiv 1(mod\quad3)\\
-x \equiv 3(mod\quad5)\\
-x \equiv 5(mod\quad7)\\
-\end{cases}
-\]</div>
-<p><span class="arithmatex">\(\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\Updownarrow\)</span><strong><em>等价</em></strong></p>
-<div class="arithmatex">\[\begin{cases}
-x \equiv -2(mod\quad3)\\
-x \equiv -2(mod\quad5)\\
-x \equiv -2(mod\quad7)\\
-\end{cases}
-\]</div>
-<p><strong>则可以知道 3,5,7|(x+2) <span class="arithmatex">\(\Rightarrow\)</span> 105|(x+2) <span class="arithmatex">\(\Rightarrow\)</span> x=103、103+105<span class="arithmatex">\(\cdots\)</span></strong> <strong>即x最小值为103。</strong></p>
-<p>例<strong>2、</strong></p>
-<div class="arithmatex">\[\begin{cases}
-k \equiv a(mod\quad3)\\
-k \equiv b(mod\quad5) \tag{2.1} \\
-k \equiv c(mod\quad7)\\
-\end{cases} 
-\]</div>
-<p><strong>可以先寻找满足以下条件的方程组</strong> <em>(可看作基础解系)</em></p>
-<div class="arithmatex">\[\begin{cases}
-x \equiv 1(mod\quad3)\\
-x \equiv 0(mod\quad5)\\
-x \equiv 0(mod\quad7)
-\end{cases}
-\]</div>
-<div class="arithmatex">\[\begin{cases}
-y \equiv 0(mod\quad3)\\
-y \equiv 1(mod\quad5)\\
-y \equiv 0(mod\quad7)
-\end{cases}
-\]</div>
-<div class="arithmatex">\[\begin{cases}
-z \equiv 0(mod\quad3)\\
-z \equiv 0(mod\quad5)\\
-z \equiv 1(mod\quad7)
-\end{cases}
-\]</div>
-<p><strong>则式2.1记为 <span class="arithmatex">\(k=ax+by+cz  \quad (mod \quad 105)\)</span></strong><br />
-由基础解系知道：35|x，21|y，15|z<br />
-x = 35t-1=3s,<strong>即存在整数s,t使得35t-3s=1</strong><br />
-可以得出一组解：</p>
-<div class="arithmatex">\[\begin{cases}
-x=70\\
-y=21\\
-z=15\\
-\end{cases}
-\]</div>
-<p><strong>即：<span class="arithmatex">\(k=70a+21b+15c(mod  \quad105)\)</span>,余数就是k的值</strong></p>
-<p><strong>根据上述再求例1</strong><br />
-<span class="arithmatex">\(x = 70*1+21*3+15*5 (mod\quad105)=208\quad mod \quad105=103。\)</span></p>
-<p><em>用现代数学的语言说明，中国剩余定理给出了以下的一元线性同余方程组：</em></p>
-<div class="arithmatex">\[(S):\begin{cases}
-x \equiv a_1 \quad  (mod \quad m_1)\\
-x \equiv a_2 \quad  (mod \quad m_2)\\
-\quad\vdots    \\
-x \equiv a_n \quad  (mod \quad m_n)\\
-\end{cases}
-\]</div>
-<p>整数<span class="arithmatex">\(m_1\)</span>、<span class="arithmatex">\(m_2\)</span><span class="arithmatex">\(\cdots\)</span><span class="arithmatex">\(m_n\)</span>两两互质，则对任意的整数<span class="arithmatex">\(a_1\)</span>、<span class="arithmatex">\(a_2\)</span><span class="arithmatex">\(\cdots\)</span><span class="arithmatex">\(a_n\)</span>方程组（S）有解；</p>
-<p><span class="arithmatex">\(x=a_1y_1+a_2y_2+\cdots+a_ny_n(mod \quad m_1m_2\cdots m_n)\)</span><br />
-<strong>其中<span class="arithmatex">\(y_1=(m_2\cdots m_n)t-1=m_1s\)</span>，因为<span class="arithmatex">\((m1,m_2\cdots m_n)=1\)</span>,满足条件的整数s,t一定存在。</strong></p>
-<h1 id="_6">六、中国剩余定理拓展</h1>
-<p><strong>中国剩余定理要求模数两两互质，而一般情况下我们要解决的都是<span class="arithmatex">\(m_i\)</span>不互质问题，这就推广到中国剩余定理的拓展！</strong></p>
-<p>从只含有两个的方程的同余方程组开始</p>
-<div class="arithmatex">\[\begin{cases}
-x \equiv a_1(mod \quad m_1)\\
-x \equiv a_2(mod \quad m_2) 
-\end{cases}
-\]</div>
-<p>等价于</p>
-<div class="arithmatex">\[\begin{cases}
-x = a_1+k_1m_1\\
-x =a_2+k_2m_2 \tag{1}
-\end{cases}
-\]</div>
-<p>消去x后得</p>
-<div class="arithmatex">\[a_1+k_1m_1=a_2+k_2m_2 \tag{2} \]</div>
-<p>因为模数不是两两互质，这个方程是否存在整数解就需要考虑一下。根据裴蜀定理，我们可以知道如果<span class="arithmatex">\(gcd(m_1,m_2)|(a_1,a_2)\)</span>那么这个方程一定有整数解，否则不存在整数解。
-<strong>当它存在整数解的时，假设我们已经根据扩展欧几里得算法求得一组特殊解<span class="arithmatex">\((k_1',k_2')\)</span>,将任意一个解回代到(1)中，就会得到满足同余方程组的解，记<span class="arithmatex">\(x_0\)</span>。</strong>
-由此推出所有解：
-我们设<span class="arithmatex">\(g = gcd(m_1,m_2)\)</span>,又由于<span class="arithmatex">\(a_2-a_1\)</span>是<span class="arithmatex">\(g\)</span>的倍数,那么可以把方程（1）改写为 $$ k_1\frac{m_1}{g}-k_2\frac{m_2}{g}=\frac{a_2-a_1}{g}\tag3 $$<br />
-这样的话，<span class="arithmatex">\(\frac{m_1}{g}和\frac{m_2}{g}就互质了\)</span>，那么这个方程所有整数解就是</p>
-<div class="arithmatex">\[\begin{cases}
-k_1= \frac{m_2}{g}t+k_1'\\
-k_2= \frac{m_1}{g}t+k_2'
-\end{cases}
-\]</div>
-<p>这里的t是任意整数。
-往回代入可以得到</p>
-<div class="arithmatex">\[x=a_1+k_1m_1 \\
- =x_0+ \frac{m_1m_2}{g}t \\
- =x_0+lcm(m_1,m_2)t
- \]</div>
-<p>这个解等价于同余方程</p>
-<p>$$ z\equiv x_0(mod \quad lcm(m_1,m_2)) $$<br />
-<strong>由此得出，更完整的中国剩余定理</strong>
- 对于一个同余方程组</p>
-<div class="arithmatex">\[\begin{cases}
- x\equiv a_1(mod \quad m_1)\\
- x\equiv a_2(mod \quad m_2)\\
- \quad\vdots    \\
- x\equiv a_n(mod \quad m_n)
- \end{cases}
- \]</div>
-<p>它等价于
-   $$ x\equiv x_0(mod\quad lcm(m_1,m_2,\cdots,m_n)) $$<br />
- 这里<span class="arithmatex">\(x_0\)</span>是这个方程的任意解，可以通过刚才的合并计算得到。</p>
-<p><strong>十三届蓝桥杯习题：</strong>
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/af4b38c5501c43d2b5492e1ad91c1e46.png" /></p>
-<p><strong>方法1（暴力）:</strong> 用后面的数找规律,得等差数列,再遍历满足前面条件<a href="https://blog.csdn.net/m0_51507437/article/details/124061595">参考</a></p>
-<p><strong>方法2:中国剩余定理</strong></p>
-<p>math.lcm求最小公倍数，math.gcd求最大公约数
-print(math.lcm(8,41,16))<br />
-最大公约数记为(a,b),最小公倍数记为[a,b]</p>
-<pre><code class="language-python">import math
-from functools import reduce
-from sympy import rem
-import gmpy2
+<h1 id="pandas">pandas简介</h1>
+<p>Pandas (Python Data Analysis Library) 是基于NumPy 的一种工具，该工具是为了解决数据分析任务而创建的。     </p>
+<p>numpy更加适用于科学计算领域；而pandas最初据说是设计用于金融领域，因此pandas可能更加适用于各类实际应用场景的处理。另一方面，<strong>numpy适用于处理“干净”的数据，及规范、无缺失的数据</strong>，而<strong>pandas更加擅长数据清洗(data munging)</strong>，这为后一步数据处理扫清障碍。    </p>
+<p>Excel可以处理少量的数据，当数据量较大时许多操作无法进行，这就需要利用pandas模块进行数据处理。   </p>
+<h1 id="pandaspython">pandas中的python数据结构</h1>
+<ul>
+<li>Series:一堆数组。与python标准数据结构list列表类似。   </li>
+<li>DataFrame:二维的表格型数据结构。可以理解为Series容器。   </li>
+<li>Panel:三维数组，可以理解为DataFrame容器。  </li>
+</ul>
+<h1 id="pandas_1">常见的pandas读取数据类型</h1>
+<ul>
+<li>pandas.read_csv()  </li>
+<li>pandas.read_excel()  </li>
+<li>pandas.read_sql()   </li>
+<li>pandas.read_html()  </li>
+<li>pandas.read_json()  </li>
+</ul>
+<h1 id="series">Series的创建与索引</h1>
+<p>1、      </p>
+<pre><code class="language-python">import pandas as pd
 
-a = [1,2,1,4,5,4,1,2,9,0,5,10,11,14,9,0,11,18,9,11,11,15,17,9,23,20,25,16,29,27,25,11,17,4,29,22,37,23,9,1,11,11,33,29,15,5,41,46]
-l = []
-for i in range(len(a)):
-    l.append(i+2)
+#通过数组创建Series
+s1 = pd.Series([1,2,3,'Tom',True])
+print(s1)
 
-def zhi(x):
-    for i in range(2,int(x**0.5+1)):
-        if x%i==0:
-            return False
-    else:
-        return True
-mod_num = []
-rem_num = []
-for i in range(len(a)):
-    if zhi(l[i]):
-        mod_num.append(l[i])
-        rem_num.append(a[i])
-    else:
-        continue
-print(mod_num)
-print(rem_num)
-M = reduce(lambda x,y:x*y,mod_num)
-Mm = []
-y = 0
-for i in range(len(mod_num)):
-    t = M//mod_num[i]
-    _,a,_ = gmpy2.gcdext(t,mod_num[i])
-    Mm.append(int(a%mod_num[i]))
-    y += (t*Mm[i]*rem_num[i])
-print(y%M)
+#创建指定索引列的Series
+s2 = pd.Series(['tom','jack','dane'],index=['001','002','003'])
+print(s2)
+
+#使用字典创建Series
+s3 = pd.Series({'tom':'001','jack':'002'})
+print(s3)
+
+#获取s1的索引列
+print(s1.index)
+
+#获取s1的值
+print(s1.values)
+
+# 获取多个索引的值
+print(s1[[0,1]])
+</code></pre>
+<p>2、</p>
+<pre><code class="language-python">s = pd.Series([1,2,3,2,4],index=['a','b','c','d','e'])
+print(s)
+print('\n')
+print(s.max())  #最大
+print(s.min())  #最小
+print(s.median()) #中位数
+print(s.sum())  #求和
+
+s.drop('d')#删除索引为d的值
+s['a'] = 0 #修改索引为a的值
+print(s)
+
+s1 = pd.Series([5,4,3,2,1],index=list(map(lambda x:x.upper(),['a','b','c','d','e'])))
+print('\n')
+print(s1)
+s2 = s.append(s1)  #将s1合并到s后
+print(s2)
+</code></pre>
+<pre><code>a    1      
+b    2      
+c    3      
+d    2      
+e    4      
+dtype: int64
+
+4  
+1  
+2.0
+12
+
+a    0
+b    2
+c    3
+d    2
+e    4
+dtype: int64
+
+A    5
+B    4
+C    3
+D    2
+E    1
+dtype: int64
+
+a    0
+b    2
+c    3
+d    2
+e    4
+A    5
+B    4
+C    3
+D    2
+E    1
+dtype: int64
+</code></pre>
+<h1 id="dataframe">dataframe的基本操作</h1>
+<h2 id="dataframe_1">创建dataframe</h2>
+<p>1、 一般使用pandas直接读取文件，就是dataframe类型    </p>
+<pre><code class="language-python">pd.read_csv()
+pd.read_excel()
+pd.read_sql()
+</code></pre>
+<p>2、通过字典来创建    </p>
+<pre><code class="language-python">import pandas as pd
+data = {'id':[1,2,3],'name':['tom','jack','luck']}
+df = pd.DataFrame(data)
+print(df)
+</code></pre>
+<p>结果:</p>
+<pre><code>   id  name
+0   1   tom
+1   2  jack
+2   3  luc
+</code></pre>
+<h2 id="dataframe_2">dataframe基本操作</h2>
+<pre><code class="language-python">#获取数据类型
+print(df.dtypes)
+
+#获取columns
+print(df.columns)
+
+#获取索引列
+print(df.index)
 </code></pre>
 <p>输出：</p>
-<pre><code class="language-cpp">[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
-[1, 2, 4, 4, 0, 10, 0, 18, 15, 16, 27, 22, 1, 11, 5]
-2022040920220409
-</code></pre>
-<p><strong>方法3:中国剩余定理拓展</strong></p>
-<pre><code class="language-python">a = [1,2,1,4,5,4,1,2,9,0,5,10,11,14,9,0,11,18,9,11,11,15,17,9,23,20,25,16,29,27,25,11,17,4,29,22,37,23,9,1,11,11,33,29,15,5,41,46]
-l = []
-for i in range(len(a)):
-    l.append((i+2,a[i]))
+<pre><code>id       int64
+name    object
+dtype: object
 
-def exgcd(a, b):
-    global k1, k2
-    if b == 0:
-        k1, k2 = 1, 0
-        return a
-    d = exgcd(b, a % b)
-    k1, k2 = k2, k1
-    k2 -= (a // b) * k1
-    return d
+Index(['id', 'name'], dtype='object')
 
-m1 = l[0][0]
-b1 = l[0][1]
-flag = 0
-for i in range(1,len(l)):
-    m2 = l[i][0] 
-    b2 = l[i][1]
-    k1,k2 = 0,0
-    d = exgcd(m1,m2)
-    if (b2-b1)%d:
-        flag = 1
-        break
-    k1 *= (b2-b1)//d
-# k1' = k1 + k * (m2 // d) , k取任意整数
-    t = m2//d
-    k1 = k1%t #取最小的k1
-# x = b + km
-    b1 = k1*m1+b1
-    m1 = m1//d*m2
-if flag:
-    print(-1)
-else:
-    print(b1%m1)  #x的最小整数解
+RangeIndex(start=0, stop=3, step=1)
 </code></pre>
-<p>输出：</p>
-<pre><code class="language-cpp">2022040920220409
+<pre><code class="language-python">#获取某一列
+print(df['id'])
+print(type(df['id']))  #series
+
+#获取多列数据,按索引
+print(df[['name','id']])
+print(type(df[['name','id']]))  #DataFrame
+
+#获取前n条数据
+print(df.head(1))
+
+#获取后n条数据
+print(df.tail(2))
+
+#获取某一行数据
+df.loc[1]
+
+#获取多行数据
+df.loc[1:2]
 </code></pre>
 
 
@@ -1431,7 +1300,7 @@ else:
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../../sklearn%E6%A8%A1%E5%9D%97/%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 交叉验证生成器" rel="prev">
+        <a href="../../numpy%E6%A8%A1%E5%9D%97/mynumpy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 基本操作" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1440,20 +1309,20 @@ else:
               <span class="md-footer__direction">
                 Previous
               </span>
-              交叉验证生成器
+              基本操作
             </div>
           </div>
         </a>
       
       
         
-        <a href="../SA/" class="md-footer__link md-footer__link--next" aria-label="Next: 模拟退火算法" rel="next">
+        <a href="../../sklearn%E6%A8%A1%E5%9D%97/%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/" class="md-footer__link md-footer__link--next" aria-label="Next: 交叉验证生成器" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              模拟退火算法
+              交叉验证生成器
             </div>
           </div>
           <div class="md-footer__button md-icon">
