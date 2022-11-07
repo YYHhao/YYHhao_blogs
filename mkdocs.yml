@@ -8,6 +8,7 @@ nav:
       - 基本操作: pandas模块/mypandas.md 
     - sklearn模块:
       - 交叉验证生成器: sklearn模块/交叉验证.md
+      - 文本数据处理: sklearn模块/文本数据处理.md
     - 算法学习: 
       - 欧几里得算法、中国剩余定理: alglearning/mylearning1.md
       - 模拟退火算法: alglearning/SA.md
