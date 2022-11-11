@@ -13,7 +13,7 @@
     
     
       
-        <title>回归算法 - YYHhao的个人博客</title>
+        <title>读取图片 - YYHhao的个人博客</title>
       
     
     
@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -91,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              回归算法
+              读取图片
             
           </span>
         </div>
@@ -211,14 +216,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
       
@@ -544,14 +547,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
       
       
       
@@ -574,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lossfun/" class="md-nav__link">
+      <a href="../../ml/lossfun/" class="md-nav__link">
         损失函数
       </a>
     </li>
@@ -614,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jiangwei/" class="md-nav__link">
+      <a href="../../ml/jiangwei/" class="md-nav__link">
         前言
       </a>
     </li>
@@ -628,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mypca/" class="md-nav__link">
+      <a href="../../ml/mypca/" class="md-nav__link">
         PCA
       </a>
     </li>
@@ -642,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../myica/" class="md-nav__link">
+      <a href="../../ml/myica/" class="md-nav__link">
         ICA
       </a>
     </li>
@@ -656,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mylda/" class="md-nav__link">
+      <a href="../../ml/mylda/" class="md-nav__link">
         LDA
       </a>
     </li>
@@ -677,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clusteralg/" class="md-nav__link">
+      <a href="../../ml/clusteralg/" class="md-nav__link">
         聚类算法
       </a>
     </li>
@@ -691,7 +692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../classifyalg/" class="md-nav__link">
+      <a href="../../ml/classifyalg/" class="md-nav__link">
         分类算法
       </a>
     </li>
@@ -703,19 +704,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../ml/regressionalg/" class="md-nav__link">
         回归算法
       </a>
-      
     </li>
   
 
@@ -881,12 +874,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -907,11 +902,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../cvlearning/%E8%AF%BB%E5%8F%96%E5%9B%BE%E7%89%87/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         读取图片
       </a>
+      
     </li>
   
 
@@ -1238,6 +1243,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1251,9 +1258,73 @@
                 
 
 
-  <h1>回归算法</h1>
+<h1 id="_1">读入图像</h1>
+<pre><code class="language-python">import cv2
 
+path = r'D:/python/c_vision/lena.jpg'
+img = cv2.imread(path,0)  #第二个参数flags=1是彩色图像；flags=0是灰度图像
+window_name = 'image'   #名称随便起
+cv2.imshow(window_name,img)   
+cv2.waitKey(0)   #键盘绑定函数，在指定时间内有键盘输入，返回按键的ascii码，0：代表无限等待键盘输入
+cv2.destroyAllWindows()  #轻易删除任意我们创建的窗口
+</code></pre>
+<p><img alt="" src="../lena_grey.png" />    </p>
+<p>当 cv2.imread(path,1),彩色图像 <br />
+![lena.jpg]   </p>
+<h1 id="_2">保存图像</h1>
+<pre><code class="language-python">cv2.imwrite('D:/python/c_vision/lena_grey.png',img) #路径信息和图片
+</code></pre>
+<h1 id="_3">可调节窗口大小</h1>
+<p>可以手动将窗口拉长、拉宽   </p>
+<pre><code class="language-python">import cv2
 
+path = r'D:/python/c_vision/lena.jpg'
+img = cv2.imread(path,1)  
+cv2.namedWindow('image',cv2.WINDOW_NORMAL)
+cv2.imshow('image',img)
+cv2.waitKey(0)   
+cv2.destroyAllWindows()
+</code></pre>
+<h1 id="cv2waitkey">cv2.waitKey()实例</h1>
+<p>加载并显示一张图片，按下's'键保存并退出，或按'ESC'键退出不保存。    </p>
+<pre><code class="language-python">import cv2
+path = r'D:/python/c_vision/lena.jpg'
+img = cv2.imread(path,1)  
+cv2.imshow('image',img)
+k = cv2.waitKey(0)   
+if k==27:           #  ESC的ascii码是27
+    cv2.destroyAllWindows()
+elif k==ord('s'):
+    cv2.imwrite('D:/python/c_vision/lena.jpg',img)
+    cv2.destroyAllWindows()
+</code></pre>
+<h1 id="matplotlib">Matplotlib显示图片</h1>
+<p>当用opencv加载一个灰度图像时，用matplotlib和cv2显示图像相同。不同的是，Matplotlib显示彩色图像是RGB模式，而cv2是BGR模式。  </p>
+<p>1、用opencv加载一个彩色图像，而使用matplotlib显示           </p>
+<pre><code class="language-python">import cv2
+import matplotlib.pyplot as plt
+
+path = r'D:/python/c_vision/lena.jpg'
+img = cv2.imread(path,1)  
+# 设置cmap=‘gray'，表示绘制灰度图，若需要绘制彩色图，可设置其它值,如PRGn或PRGn_r
+plt.imshow(img,cmap='PRGn',interpolation='bicubic') #双三次插值算法
+plt.xticks([]),plt.yticks([])   #不显示横纵坐标轴
+plt.show()
+</code></pre>
+<p><img alt="" src="../Figure_1.png" /></p>
+<p>2、如果还要使用matplotlib显示图像，可以改变一下通道顺序。   </p>
+<pre><code class="language-python">import cv2
+import matplotlib.pyplot as plt
+
+path = r'D:/python/c_vision/lena.jpg'
+img1 = cv2.imread(path,1)  
+b,g,r = cv2.split(img1)
+img2 = cv2.merge([r,g,b]) 
+plt.imshow(img2,cmap='PRGn',interpolation='bicubic')
+plt.xticks([]),plt.yticks([])
+plt.show()
+</code></pre>
+<p><img alt="" src="../lena.jpg" /></p>
 
 
 
@@ -1272,7 +1343,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../classifyalg/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 分类算法" rel="prev">
+        <a href="../../html_xml/%E7%AE%80%E4%BB%8B%E4%B8%8E%E8%A7%A3%E6%9E%90/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 简介与解析" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1281,20 +1352,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              分类算法
+              简介与解析
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../dl/%E5%88%9D%E5%A7%8B%E5%8C%96/" class="md-footer__link md-footer__link--next" aria-label="Next: 神经网络权重初始化0问题" rel="next">
+        <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%89%8D%E8%A8%80/" class="md-footer__link md-footer__link--next" aria-label="Next: 前言" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              神经网络权重初始化0问题
+              前言
             </div>
           </div>
           <div class="md-footer__button md-icon">

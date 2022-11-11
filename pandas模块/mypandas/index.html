@@ -280,6 +280,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numpy%E6%A8%A1%E5%9D%97/%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90/" class="md-nav__link">
+        随机生成
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numpy%E6%A8%A1%E5%9D%97/nonzero%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        nonzero函数
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -801,6 +829,53 @@
 
             
           
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          HTML和XML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTML和XML" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          HTML和XML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html_xml/%E7%AE%80%E4%BB%8B%E4%B8%8E%E8%A7%A3%E6%9E%90/" class="md-nav__link">
+        简介与解析
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -814,10 +889,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          CV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CV" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          CV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../cvlearning/myCV/" class="md-nav__link">
-        CV
+      <a href="../../cvlearning/%E8%AF%BB%E5%8F%96%E5%9B%BE%E7%89%87/" class="md-nav__link">
+        读取图片
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1100,6 +1208,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bj/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%A7%A3%E7%A0%81/" class="md-nav__link">
+        编码(encode)与解码(decode)
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1150,7 +1272,7 @@
 </ul>
 <h1 id="pandas_1">常见的pandas读取数据类型</h1>
 <ul>
-<li>pandas.read_csv()  </li>
+<li>pandas.read_csv()     <a href="https://blog.csdn.net/lhwjgs123456789/article/details/113797065">参数详解</a>    </li>
 <li>pandas.read_excel()  </li>
 <li>pandas.read_sql()   </li>
 <li>pandas.read_html()  </li>
@@ -1240,7 +1362,8 @@ dtype: int64
 </code></pre>
 <h1 id="dataframe">dataframe的基本操作</h1>
 <h2 id="dataframe_1">创建dataframe</h2>
-<p>1、 一般使用pandas直接读取文件，就是dataframe类型    </p>
+<p>1、 一般使用pandas直接读取文件，就是dataframe类型    <br />
+<a href="https://blog.csdn.net/weixin_47542175/article/details/113237354">读取文件路径写法</a>     </p>
 <pre><code class="language-python">pd.read_csv()
 pd.read_excel()
 pd.read_sql()
@@ -1256,6 +1379,15 @@ print(df)
 0   1   tom
 1   2  jack
 2   3  luc
+</code></pre>
+<p>3、直接提供数据数组和columns（列名）    </p>
+<pre><code class="language-python">import pandas as pd
+s2 = pd.DataFrame([['tom','jack','dane'],['tom1','jack1','dane1']],columns=['001','002','003'])
+print(s2)
+</code></pre>
+<pre><code>    001    002    003
+0   tom   jack   dane
+1  tom1  jack1  dane1
 </code></pre>
 <h2 id="dataframe_2">dataframe基本操作</h2>
 <pre><code class="language-python">#获取数据类型
@@ -1314,7 +1446,7 @@ df.loc[1:2]
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../../numpy%E6%A8%A1%E5%9D%97/mynumpy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 基本操作" rel="prev">
+        <a href="../../numpy%E6%A8%A1%E5%9D%97/nonzero%E5%87%BD%E6%95%B0/" class="md-footer__link md-footer__link--prev" aria-label="Previous: nonzero函数" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1323,7 +1455,7 @@ df.loc[1:2]
               <span class="md-footer__direction">
                 Previous
               </span>
-              基本操作
+              nonzero函数
             </div>
           </div>
         </a>
