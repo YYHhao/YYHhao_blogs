@@ -12,7 +12,7 @@ Excel可以处理少量的数据，当数据量较大时许多操作无法进行
 
 # 常见的pandas读取数据类型   
 
-* pandas.read_csv()  
+* pandas.read_csv()     [参数详解](https://blog.csdn.net/lhwjgs123456789/article/details/113797065)    
 * pandas.read_excel()  
 * pandas.read_sql()   
 * pandas.read_html()  
@@ -108,7 +108,9 @@ dtype: int64
 # dataframe的基本操作    
 
 ## 创建dataframe   
-1、 一般使用pandas直接读取文件，就是dataframe类型    
+1、 一般使用pandas直接读取文件，就是dataframe类型      
+[读取文件路径写法](https://blog.csdn.net/weixin_47542175/article/details/113237354)     
+ 
 ```python
 pd.read_csv()
 pd.read_excel()
@@ -128,6 +130,22 @@ print(df)
 1   2  jack
 2   3  luc
 ```
+
+3、直接提供数据数组和columns（列名）    
+
+```python
+import pandas as pd
+s2 = pd.DataFrame([['tom','jack','dane'],['tom1','jack1','dane1']],columns=['001','002','003'])
+print(s2)
+```
+```
+    001    002    003
+0   tom   jack   dane
+1  tom1  jack1  dane1
+```
+
+
+
 ## dataframe基本操作   
 ```python
 #获取数据类型

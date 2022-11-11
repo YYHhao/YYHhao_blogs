@@ -4,6 +4,8 @@ nav:
   - python:
     - numpy模块: 
       - 基本操作: numpy模块/mynumpy.md
+      - 随机生成: numpy模块/随机生成.md
+      - nonzero函数: numpy模块/nonzero函数.md
     - pandas模块: 
       - 基本操作: pandas模块/mypandas.md 
     - sklearn模块:
@@ -29,7 +31,10 @@ nav:
       - 神经网络权重初始化0问题: dl/初始化.md
     - 数据处理及可视化: 
       - matplotlib中文编码: datapv/mydatapv.md
-  - CV: cvlearning/myCV.md
+    - HTML和XML: 
+      - 简介与解析: html_xml/简介与解析.md
+  - CV: 
+    - 读取图片: cvlearning/读取图片.md
   - 数学建模: 
     - 前言: 数学建模/前言.md
     - 优化模型:
@@ -42,6 +47,7 @@ nav:
       - 聚类分析: 数学建模/统计模型/聚类分析.md
   - 笔记:
     - git学习: bj/mygit.md
+    - 编码(encode)与解码(decode): bj/编码与解码.md
       
 theme:
   name: 'material'

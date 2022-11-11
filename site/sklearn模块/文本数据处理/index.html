@@ -13,7 +13,7 @@
     
     
       
-        <title>神经网络权重初始化0问题 - YYHhao的个人博客</title>
+        <title>文本数据处理 - YYHhao的个人博客</title>
       
     
     
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              神经网络权重初始化0问题
+              文本数据处理
             
           </span>
         </div>
@@ -338,12 +338,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
       
       
       
@@ -366,7 +368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sklearn%E6%A8%A1%E5%9D%97/%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/" class="md-nav__link">
+      <a href="../%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/" class="md-nav__link">
         交叉验证生成器
       </a>
     </li>
@@ -378,11 +380,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../sklearn%E6%A8%A1%E5%9D%97/%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         文本数据处理
       </a>
+      
     </li>
   
 
@@ -699,14 +711,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
       
       
       
@@ -727,21 +737,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../dl/%E5%88%9D%E5%A7%8B%E5%8C%96/" class="md-nav__link">
         神经网络权重初始化0问题
       </a>
-      
     </li>
   
 
@@ -1138,28 +1138,262 @@
                 
 
 
-<p><strong>逻辑回归与神经网络的关系：</strong> <br />
-逻辑回归可以看作是只有个神经元的单层神经网络，神经网络就是一组神经元连接在一起的网络，隐藏层可以有多个神经元，每个神经元本身就对应着一个逻辑回归过程。</p>
-<p><strong>神经网络的权重不能全为0的原因：</strong>  <br />
-神经网络的权重w 的不同代表输入的向量有不同的特征，即权重越大的特征越重要，比如在人脸识别中，人脸的属性有眼睛，鼻子，嘴巴，眉毛，其中眼睛更能够影响人脸的识别，所以我们给与眼睛更大的权重。</p>
-<p>如果将权重初始化全为0，那么隐藏层的各个神经元的结果都是一样的，从而正向传播的结果是一样的，反向传播求得的梯度也是一样的，也就是说不管经过多少次迭代，更新的w(i)是相同的，这样就判断不了哪个特征比较重要了。</p>
-<p>因此，初始w不同，可以学到不同的特征，如果都是0或某个值，由于计算方式相同，可能达不到学习不同特征的目的。</p>
-<p><strong>逻辑回归的权重可以初始化为0的原因：</strong>  <br />
-Logistic回归没有隐藏层。 如果将权重初始化为零，则Logistic回归中的第一个示例x将输出零，但Logistic回归的导数取决于不是零的输入x（因为没有隐藏层）。 因此，在第二次迭代（迭代发生在w和b值的更新中，即梯度下降）中，如果x不是常量向量，则权值遵循x的分布并且彼此不同。</p>
-<h1 id="_1">实现</h1>
-<p>W:权重矩阵，维度为（layers_dims[1], layers_dims[0]）  <br />
-1、零初始化    </p>
-<pre><code class="language-python">parameters = {}  
-L = len(layers_dims) #网络层数    
-for l in range(1,L):
-    parameters[&quot;W&quot; + str(l)] = np.zeros((layers_dims[l],layers_dims[l-1]))  
+<h1 id="_1">读取文件内容以及所属类别</h1>
+<p>这里使用sklearn.datasets中的fetch_20newsgroups数据集（20个新闻组集合），该数据集常常应用在<strong>文本分类和文本聚类等</strong>文本应用的试验中。   </p>
+<p><strong>数据使用方法</strong>：   </p>
+<ul>
+<li>fetch_20newsgroups().data:特征数据数组，用来查看文本具体内容    </li>
+<li>fetch_20newsgroups().filenames:查看文件位置信息    </li>
+<li>fetch_20newsgroups().target_names:查看数据集名称，共20个   </li>
+<li>fetch_20newsgroups().target:查看所属Categories(种类)的<strong>索引</strong>,对应位置的target_names就是种类名称    </li>
+<li>fetch_20newsgroups().DESCR:查看描述信息    </li>
+</ul>
+<p>从20个类别数据集中选出4个进行训练：</p>
+<pre><code class="language-python">from sklearn.datasets import fetch_20newsgroups
+
+categories = ['alt.atheism', 'comp.graphics',  'sci.med', 'soc.religion.christian']
+#subset:加载哪一部分数据集train/test;categoties:选取哪一类数据集；shuffle:将数据随机排序
+twenty_train = fetch_20newsgroups(subset='train',categories=categories,shuffle=True,random_state=42)
+# print(len(twenty_train.data))
+# print(len(twenty_train.filenames))
+#打印第一个文件的前几行，并查看该文档所属种类名称
+print('\n'.join(twenty_train.data[0].split('\n')[:3]))
+print(twenty_train.target_names[twenty_train.target[0]])
 </code></pre>
-<p>2、随机初始化    </p>
-<pre><code class="language-python">parameters[&quot;W&quot; + str(l)] = np.random.randn(layers_dims[l],layers_dims[l-1])*10  
+<pre><code>From: sd345@city.ac.uk (Michael Collier)
+Subject: Converting images to HP LaserJet III?
+Nntp-Posting-Host: hampton
+
+comp.graphics
 </code></pre>
-<p>3、抑梯度异常初始化    </p>
-<pre><code class="language-python">parameters[&quot;W&quot; + str(l)] = np.random.randn(layers_dims[l],layers_dims[l-1])*np.sqrt(2/layers_dims[l-1]) 
+<h1 id="countvectorizer">特征提取CountVectorizer</h1>
+<p>CountVectorizer可以将文本内容转化为数值形式的特征向量    </p>
+<h2 id="_2">词袋</h2>
+<p>1、给全部文档中出现的每一个单词（不重复的）分配一个特定的整数id，例如以单词名称为键，将按单词首字母顺序进行排列的索引值作为值，<strong>组成一个单词到整数索引的字典。</strong> <br />
+2、对每个文档(索引为i),计算每个单词w的<strong>出现次数</strong>，并将其存储在X[i,j]中作为特征#j的值，其中j是字典中单词w的索引。   </p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+
+X_test = ['you are good','but you do not fit']
+vectorizer = CountVectorizer()
+counts = vectorizer.fit_transform(X_test)
+print(counts)
+print(vectorizer.get_feature_names_out()) #文本中包含的全部单词，按首字母顺序进行排列
+print(vectorizer.vocabulary_)  #为文档中每个单词定义一个整数id，建立从单词到整数索引的字典
+print(counts.toarray()) #词频矩阵，就是上边说的X[i,j]
+print(counts.shape)  #相当于词频矩阵大小
 </code></pre>
+<pre><code>  (0, 6)        1
+  (0, 0)        1
+  (0, 4)        1
+  (1, 6)        1
+  (1, 1)        1
+  (1, 2)        1
+  (1, 5)        1
+  (1, 3)        1
+
+['are' 'but' 'do' 'fit' 'good' 'not' 'you']
+
+{'you': 6, 'are': 0, 'good': 4, 'but': 1, 'do': 2, 'not': 5, 'fit': 3}
+
+[[1 0 0 0 1 0 1]
+ [0 1 1 1 0 1 1]]
+
+(2,7)
+</code></pre>
+<p><strong>最后词频矩阵的说明：</strong>     </p>
+<table>
+<thead>
+<tr>
+<th>词汇顺序</th>
+<th>are</th>
+<th>but</th>
+<th>do</th>
+<th>fit</th>
+<th>good</th>
+<th>not</th>
+<th>you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一个句子中出现频数</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>第二个句子中出现频数</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_3">从出现次数到出现频率</h1>
+<p>如果只统计出现次数，那么长的文本相对于短的文本总有更高的出现次数。为避免不同文本间潜在的差异，将每个文档单词出现次数除以该文档中所有的单词总数。这些新特征称之为词频<strong>tf</strong>(Term Frequencies)。      </p>
+<p>另一个<strong>在词频的基础上改良</strong>是，降低在该训练文集中的很多文档中均出现的单词的权重，从而突出那些仅在该训练文集中在一小部分文档中出现的单词的信息量。这种方法称为<strong>tf-idf</strong>(Term Frequency times Inverse Document Frequency，词频-逆文档频率)。   </p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
+
+X_test = ['you are good','but you do not fit']
+vectorizer = CountVectorizer()
+counts = vectorizer.fit_transform(X_test)
+tfidf_transformer = TfidfTransformer()
+X_test_tfidf = tfidf_transformer.fit_transform(counts)
+print(X_test_tfidf)  #返回tf-idf逆文档频率
+# print(X_test_tfidf.toarray())  返回矩阵形式
+</code></pre>
+<pre><code>  (0, 6)        0.4494364165239821
+  (0, 4)        0.6316672017376245
+  (0, 0)        0.6316672017376245
+  (1, 6)        0.33517574332792605
+  (1, 5)        0.47107781233161794
+  (1, 3)        0.47107781233161794
+  (1, 2)        0.47107781233161794
+  (1, 1)        0.47107781233161794
+</code></pre>
+<h1 id="_4">训练文本分类器</h1>
+<p>训练一个分类器来预测一个帖子所属的类别,最好使用<a href="https://blog.csdn.net/lixbao/article/details/123947126">MultinomialNB多项式朴素贝叶斯</a>      </p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.naive_bayes import MultinomialNB
+
+categories = ['alt.atheism', 'comp.graphics',  'sci.med', 'soc.religion.christian']
+twenty_train = fetch_20newsgroups(subset='train',categories=categories,shuffle=True,random_state=42)
+count_vect = CountVectorizer()
+X_train_counts = count_vect.fit_transform(twenty_train.data)
+tfidf_transformer = TfidfTransformer()
+X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
+
+clf = MultinomialNB().fit(X_train_tfidf,twenty_train.target)
+docs_new = ['God is love', 'OpenGL on the GPU is fast']
+#抽取特征，调用transform而不是fit_transform，因为这些特征已经在训练集拟合了
+X_new_counts = count_vect.transform(docs_new)   
+print(X_new_counts)
+X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+predicted = clf.predict(X_new_tfidf)   #返回预测类别的索引
+for doc,category in zip(docs_new,predicted):
+    print(f'{doc}=&gt;{twenty_train.target_names[category]}')
+</code></pre>
+<pre><code>  (0, 15521)    1
+  (0, 18474)    1
+  (0, 20537)    1
+  (1, 14048)    1
+  (1, 15628)    1
+  (1, 18474)    1
+  (1, 23733)    1
+  (1, 23790)    1
+  (1, 32142)    1
+God is love=&gt;soc.religion.christian
+OpenGL on the GPU is fast=&gt;comp.graphics
+</code></pre>
+<h1 id="pipeline">构建Pipeline(管道)</h1>
+<p>sklearn提供了一个Pipeline类，使<strong>向量化(vectorizer)=&gt;转换器(transformer)=&gt;分类器(classifier)</strong>过程更加简单。使用Pipeline类，操作起来像一个复合分类器，<strong>输入可以直接是新文档</strong>，而不需要再进行特征提取。    </p>
+<pre><code class="language-python">from sklearn.datasets import fetch_20newsgroups
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import Pipeline
+
+categories = ['alt.atheism', 'comp.graphics',  'sci.med', 'soc.religion.christian']
+twenty_train = fetch_20newsgroups(subset='train',categories=categories,shuffle=True,random_state=42)
+docs_new = ['God is love', 'OpenGL on the GPU is fast']
+# 下述名称'vect','tfidf','clf'都是任意的。    
+text_clf = Pipeline([('vect',CountVectorizer()),('tfidf',TfidfTransformer()),('clf',MultinomialNB())])
+text_clf.fit(twenty_train.data,twenty_train.target)
+predicted = text_clf.predict(docs_new)  #[3,1]
+for doc,category in zip(docs_new,predicted):
+    print(f'{doc}=&gt;{twenty_train.target_names[category]}')
+</code></pre>
+<pre><code>God is love=&gt;soc.religion.christian
+OpenGL on the GPU is fast=&gt;comp.graphics
+</code></pre>
+<h1 id="_5">在测试集上性能评估</h1>
+<h2 id="1">1、朴素贝叶斯分类器，在测试集上进行性能评估</h2>
+<pre><code class="language-python">from sklearn.datasets import fetch_20newsgroups
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import Pipeline
+import numpy as np
+
+categories = ['alt.atheism', 'comp.graphics',  'sci.med', 'soc.religion.christian']
+twenty_train = fetch_20newsgroups(subset='train',categories=categories,shuffle=True,random_state=42)
+twenty_test = fetch_20newsgroups(subset='test',categories=categories,shuffle=True,random_state=42)
+docs_test = twenty_test.data
+text_clf = Pipeline([('vect',CountVectorizer()),('tfidf',TfidfTransformer()),('clf',MultinomialNB())])
+text_clf.fit(twenty_train.data,twenty_train.target)
+predicted = text_clf.predict(docs_test) 
+print(np.mean(predicted==twenty_test.target))
+</code></pre>
+<pre><code>0.8348868175765646
+</code></pre>
+<h2 id="2svm">2、线性分类器模型<strong>支持向量机(SVM)</strong></h2>
+<p>训练速度比朴素贝叶斯慢一点，公认的最好的文本分类器算法之一。只需要在Pipeline类中插接入不同的分类器对象，就可以实现不同的分类器模型。  <br />
+SGDClassifier中loss参数默认为'hinge',即合页损失函数，表示线性SVM模型。             <br />
+<a href="https://zhuanlan.zhihu.com/p/60983320">SDGClassifier根据参数实现不同分类器模型</a>      </p>
+<pre><code class="language-python"># 只需要改变Pipeline类中的分类器，其它和上述贝叶斯分类代码相同 
+from sklearn.linear_model import SGDClassifier
+# ...
+text_clf = Pipeline([('vect',CountVectorizer()),
+            ('tfidf',TfidfTransformer()),
+            ('clf',SGDClassifier(loss='hinge',penalty='l2',alpha=1e-3,random_state=42,max_iter=5,tol=None))])
+# ...
+print(np.mean(predicted==twenty_test.target))
+</code></pre>
+<pre><code>0.9101198402130493
+</code></pre>
+<h1 id="gridsearchcv">使用网格搜素GridSearchCV调参</h1>
+<p>CountVectorizer中有ngram_range参数，即词组切分的长度范围。<a href="https://blog.csdn.net/weixin_39224015/article/details/107334581">参数详解</a> <br />
+TfidfTransformer中有use_idf参数，默认True，即是否在词频（tf）的基础上进行改良。   <br />
+分类器MultinomialNB包含了平滑参数alpha，以及SGDClassifier有惩罚参数alpha和目标函数中的可设置的损失以及惩罚因子。   </p>
+<pre><code class="language-python">from sklearn.datasets import fetch_20newsgroups
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.linear_model import SGDClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import GridSearchCV
+import numpy as np
+
+categories = ['alt.atheism', 'comp.graphics',  'sci.med', 'soc.religion.christian']
+twenty_train = fetch_20newsgroups(subset='train',categories=categories,shuffle=True,random_state=42)
+docs_test = ['God is love']
+text_clf = Pipeline([('vect',CountVectorizer()),
+            ('tfidf',TfidfTransformer()),
+            ('clf',SGDClassifier(loss='hinge',penalty='l2',alpha=1e-3,random_state=42,max_iter=5,tol=None))])
+
+#字典里的键由“名称__参数”形式构成，注意是两个下划线
+parameters = {'vect__ngram_range':[(1,1),(1,2)],
+            'tfidf__use_idf':(True,False),
+            'clf__alpha':(1e-2,1e-3)}
+#如果我们有多个cpu，设置n_jobs参数进行并行处理。n_jobs=-1,使用所有的cpu核心
+gs_clf = GridSearchCV(text_clf,parameters,n_jobs=-1)
+# 为节省时间选择训练集中一部分进行网格搜索
+gs_clf = gs_clf.fit(twenty_train.data[:400],twenty_train.target[:400])
+#对句子‘God is love’进行分类
+print(twenty_train.target_names[gs_clf.predict(['God is love'])[0]])
+</code></pre>
+<pre><code>soc.religion.christian
+</code></pre>
+<p>该对象的 best_score_ 和 best_params_ 属性存放了<strong>最佳的平均分以及其所对应的参数配置</strong>:      </p>
+<pre><code class="language-python">print(gs_clf.best_score_)
+for param_name in sorted(parameters.keys()):
+    print(f'{param_name}:{gs_clf.best_params_[param_name]}')
+</code></pre>
+<pre><code>0.9175000000000001
+clf__alpha:0.001
+tfidf__use_idf:True
+vect__ngram_range:(1, 1)
+</code></pre>
+<p><a href="https://www.sklearncn.cn/59/#_3">https://www.sklearncn.cn/59/#_3</a>   <br />
+<a href="https://blog.csdn.net/sinat_36023271/article/details/127133432">文本信息</a></p>
 
 
 
@@ -1178,7 +1412,7 @@ for l in range(1,L):
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../../ml/regressionalg/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 回归算法" rel="prev">
+        <a href="../%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 交叉验证生成器" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1187,20 +1421,20 @@ for l in range(1,L):
               <span class="md-footer__direction">
                 Previous
               </span>
-              回归算法
+              交叉验证生成器
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../datapv/mydatapv/" class="md-footer__link md-footer__link--next" aria-label="Next: matplotlib中文编码" rel="next">
+        <a href="../../alglearning/mylearning1/" class="md-footer__link md-footer__link--next" aria-label="Next: 欧几里得算法、中国剩余定理" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              matplotlib中文编码
+              欧几里得算法、中国剩余定理
             </div>
           </div>
           <div class="md-footer__button md-icon">
