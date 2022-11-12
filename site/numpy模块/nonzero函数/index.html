@@ -13,7 +13,7 @@
     
     
       
-        <title>回归算法 - YYHhao的个人博客</title>
+        <title>nonzero函数 - YYHhao的个人博客</title>
       
     
     
@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#numpynonzero" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -91,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              回归算法
+              nonzero函数
             
           </span>
         </div>
@@ -239,12 +244,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
       
       
       
@@ -267,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../numpy%E6%A8%A1%E5%9D%97/mynumpy/" class="md-nav__link">
+      <a href="../mynumpy/" class="md-nav__link">
         基本操作
       </a>
     </li>
@@ -281,7 +288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../numpy%E6%A8%A1%E5%9D%97/%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90/" class="md-nav__link">
+      <a href="../%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90/" class="md-nav__link">
         随机生成
       </a>
     </li>
@@ -293,11 +300,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../numpy%E6%A8%A1%E5%9D%97/nonzero%E5%87%BD%E6%95%B0/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         nonzero函数
       </a>
+      
     </li>
   
 
@@ -544,14 +561,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
       
       
       
@@ -574,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lossfun/" class="md-nav__link">
+      <a href="../../ml/lossfun/" class="md-nav__link">
         损失函数
       </a>
     </li>
@@ -614,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jiangwei/" class="md-nav__link">
+      <a href="../../ml/jiangwei/" class="md-nav__link">
         前言
       </a>
     </li>
@@ -628,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mypca/" class="md-nav__link">
+      <a href="../../ml/mypca/" class="md-nav__link">
         PCA
       </a>
     </li>
@@ -642,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../myica/" class="md-nav__link">
+      <a href="../../ml/myica/" class="md-nav__link">
         ICA
       </a>
     </li>
@@ -656,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mylda/" class="md-nav__link">
+      <a href="../../ml/mylda/" class="md-nav__link">
         LDA
       </a>
     </li>
@@ -677,7 +692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clusteralg/" class="md-nav__link">
+      <a href="../../ml/clusteralg/" class="md-nav__link">
         聚类算法
       </a>
     </li>
@@ -691,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../classifyalg/" class="md-nav__link">
+      <a href="../../ml/classifyalg/" class="md-nav__link">
         分类算法
       </a>
     </li>
@@ -703,19 +718,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../ml/regressionalg/" class="md-nav__link">
         回归算法
       </a>
-      
     </li>
   
 
@@ -1238,6 +1245,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1251,9 +1260,42 @@
                 
 
 
-  <h1>回归算法</h1>
+<h1 id="numpynonzero">numpy.nonzero()</h1>
+<p>nonzero()返回矩阵或数组元素中不是False和0的索引，返回的第一个array描述行，第二个array描述列     </p>
+<pre><code class="language-python">import numpy as np 
 
+matrix = np.mat([[1,0,2],[0,3,0],[0,0,0],[1,5,1]])
+print(matrix)
+#将矩阵转化为numpy中的数组
+print(matrix.A)   
+#提取第一列
+print(matrix[:,0])   
+#返回第一列非零元素索引
+print(np.nonzero(matrix[:,0]==1))
 
+# 提取出第一个数值为1的全部行
+print(matrix[np.nonzero(matrix[:,0]==1)[0]])
+</code></pre>
+<pre><code>[[1 0 2] 
+ [0 3 0] 
+ [0 0 0] 
+ [1 5 1]]
+
+[[1 0 2] 
+ [0 3 0] 
+ [0 0 0] 
+ [1 5 1]]
+
+[[1]     
+ [0]
+ [0]
+ [1]]
+
+(array([0, 3], dtype=int64), array([0, 0], dtype=int64))
+
+[[1 0 2]
+ [1 5 1]]
+</code></pre>
 
 
 
@@ -1272,7 +1314,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../classifyalg/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 分类算法" rel="prev">
+        <a href="../%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 随机生成" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1281,20 +1323,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              分类算法
+              随机生成
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../dl/%E5%88%9D%E5%A7%8B%E5%8C%96/" class="md-footer__link md-footer__link--next" aria-label="Next: 神经网络权重初始化0问题" rel="next">
+        <a href="../../pandas%E6%A8%A1%E5%9D%97/mypandas/" class="md-footer__link md-footer__link--next" aria-label="Next: 基本操作" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              神经网络权重初始化0问题
+              基本操作
             </div>
           </div>
           <div class="md-footer__button md-icon">
