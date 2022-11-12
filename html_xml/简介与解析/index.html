@@ -355,6 +355,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pandas%E6%A8%A1%E5%9D%97/map_apply/" class="md-nav__link">
+        map()和apply()
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1331,7 +1345,7 @@ f = open(r'D:\python\deep_learning\picture_data\archive\annotations\road0.xml')
 tree = ET.parse(f)  #对xml文件进行解析，返回一个ElementTree对象
 root = tree.getroot()  #获取ElementTree的根节点
 print(root.tag)      #查看根节点标签
-print(root.attrib)   #查看标签属性,即标签下的文本内容
+print(root.attrib)   #查看标签属性,比如&lt;country name=&quot;Liechtenstein&quot;&gt;中的name属性
 #得到第一个匹配size标签的Element对象，如果有多个size可以用findall得到Element对象的list集合
 size_img = tree.find('size') 
 #打印具体的width,height,depth值  

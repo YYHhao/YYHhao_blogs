@@ -13,7 +13,7 @@
     
     
       
-        <title>损失函数 - YYHhao的个人博客</title>
+        <title>map()和apply() - YYHhao的个人博客</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#map" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              损失函数
+              map()和apply()
             
           </span>
         </div>
@@ -319,12 +319,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
       
       
       
@@ -347,7 +349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pandas%E6%A8%A1%E5%9D%97/mypandas/" class="md-nav__link">
+      <a href="../mypandas/" class="md-nav__link">
         基本操作
       </a>
     </li>
@@ -359,11 +361,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../pandas%E6%A8%A1%E5%9D%97/map_apply/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         map()和apply()
       </a>
+      
     </li>
   
 
@@ -563,14 +575,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
       
       
       
@@ -591,21 +601,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../ml/lossfun/" class="md-nav__link">
         损失函数
       </a>
-      
     </li>
   
 
@@ -643,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jiangwei/" class="md-nav__link">
+      <a href="../../ml/jiangwei/" class="md-nav__link">
         前言
       </a>
     </li>
@@ -657,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mypca/" class="md-nav__link">
+      <a href="../../ml/mypca/" class="md-nav__link">
         PCA
       </a>
     </li>
@@ -671,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../myica/" class="md-nav__link">
+      <a href="../../ml/myica/" class="md-nav__link">
         ICA
       </a>
     </li>
@@ -685,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mylda/" class="md-nav__link">
+      <a href="../../ml/mylda/" class="md-nav__link">
         LDA
       </a>
     </li>
@@ -706,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clusteralg/" class="md-nav__link">
+      <a href="../../ml/clusteralg/" class="md-nav__link">
         聚类算法
       </a>
     </li>
@@ -720,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../classifyalg/" class="md-nav__link">
+      <a href="../../ml/classifyalg/" class="md-nav__link">
         分类算法
       </a>
     </li>
@@ -734,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../regressionalg/" class="md-nav__link">
+      <a href="../../ml/regressionalg/" class="md-nav__link">
         回归算法
       </a>
     </li>
@@ -1274,85 +1274,119 @@
                 
 
 
-<h1 id="_1">损失函数的定义</h1>
-<p>损失函数，又叫目标函数，是编译一个神经网络模型必须的两个参数之一，另一个是优化器。其本质就是计算标签值(真实值)和预测值之间的差异的函数。  </p>
-<h1 id="_2">损失函数的用途</h1>
-<p>机器学习中有多种损失函数可供选择，我们希望预测值无限接近真实值，所以需要将差值降到最低（在这个过程中就需要引入损失函数）。而在此过程中损失函数的选择是十分关键的，在具体的项目中，有些损失函数计算的差值梯度下降的快，而有些下降的慢，所以选择合适的损失函数也是十分关键的。  </p>
-<h1 id="pytorch">常见的损失函数(基于pytorch)</h1>
-<p>首先定义两个二维数组，然后用不同损失函数计算其损失值。       </p>
-<pre><code class="language-python">from random import sample
-from torch.autograd import Variable
-import torch 
-import torch.nn as nn
+<h1 id="map">map()</h1>
+<p>map(arg,na_action=None)   <br />
+第一个参数arg，可以是一个字典，也可以是一个函数，甚至是pd.Series，当它是一个函数时，传入的参数就是Series的值;第二个参数na_action的默认值为None,它接收两个值：None或者ignore，<strong>默认值为None</strong>。当它为ignore时，遇到空值不再传入映射函数中，而是直接返回NaN。      </p>
+<p><strong>参数是函数时:</strong>   </p>
+<pre><code class="language-python">import pandas as pd
 
-sample = Variable(torch.ones(2,2))
-a = torch.Tensor(2,2)
-a[0,0] = 0
-a[0,1] = 1
-a[1,0] = 2
-a[1,1] = 3
-target = Variable(a)
-print(sample)
-print(target)
+#map()用于Series或DataFrame对象的一列
+df = pd.DataFrame({'Math':[50,60,70,80],'English':[99,34,83,23],'CS':[32,60,75,90]})
+print(df)
+
+a = df.Math.map(lambda x:x+5)
+print(a)
 </code></pre>
-<p>输出：</p>
-<pre><code>tensor([[1., 1.],
-        [1., 1.]])
-tensor([[0., 1.],
-        [2., 3.]])
+<pre><code> Math  English  CS
+0    50       99  32
+1    60       34  60
+2    70       83  75
+3    80       23  90
+
+0    55
+1    65
+2    75
+3    85
+Name: Math, dtype: int64
 </code></pre>
-<h2 id="1l1loss">1、L1Loss</h2>
-<p>L1Loss就是取预测值和真实值的绝对误差的平均数。<br />
-公式：</p>
-<div class="arithmatex">\[loss(x,y)=\frac{1}{N}\sum_{i=1}^N|x-y|\]</div>
-<pre><code class="language-python">criterion = nn.L1Loss()   #尺度，准则
-loss = criterion(sample,target)
-print(loss)  #1
+<p><strong>参数是字典:</strong>    </p>
+<pre><code class="language-python">d = {60:'及格',90:'优秀'}
+df1 = df['CS'].map(d)
+print(df1)
 </code></pre>
-<h2 id="2smoothl1loss">2、SmoothL1Loss</h2>
-<p>SmoothL1Loss也称为Huber Loss，误差在(-1,1)上是平方损失，其它情况是L1损失。<br />
-公式：</p>
-<div class="arithmatex">\[loss(x,y)=\frac{1}{N}\begin{cases} 
-\frac{1}{2}(x_i-y_i)^2, &amp; if|x_i-y_i|&lt;1 \\
-|x_i-y_i|-\frac{1}{2}, &amp; otherwise\\
-\end{cases}
-\]</div>
-<pre><code class="language-python">criterion = nn.SmoothL1Loss()   
-loss = criterion(sample,target)
-print(loss)  #0.625
+<pre><code>0    NaN
+1     及格
+2    NaN
+3     优秀
+Name: CS, dtype: object
 </code></pre>
-<h2 id="3mseloss">3、MSELoss(均方误差)</h2>
-<p>计算预测值和真实值之间的平方和的平均数。<br />
-公式：</p>
-<div class="arithmatex">\[loss(x,y)=\frac{1}{N}\sum_{i=1}^{N}|x-y|^2\]</div>
-<pre><code class="language-python">criterion = nn.MSELoss()   
-loss = criterion(sample,target)
-print(loss)  #1.5
+<h1 id="applymap">applymap()</h1>
+<p>applymap()是针对DataFrame来说，是将一个函数作用到dataframe的每个元素上    </p>
+<pre><code class="language-python">#applymap()是针对DataFrame来说，是将一个函数作用到dataframe的每个元素上
+df2 = df.applymap(lambda x:str(x)+'A')
+print(df2)
 </code></pre>
-<h2 id="4bceloss">4、BCELoss</h2>
-<p>二分类用的交叉熵，计算公式较为复杂。<br />
-公式：</p>
-<div class="arithmatex">\[loss(o,t)=-\frac{1}{N}\sum_{i=1}^{N}[t_i*log(o_i)+(1-t_i)*log(1-o_i)]\]</div>
-<pre><code class="language-python">criterion = nn.BCELoss()   
-loss = criterion(sample,target)
-print(loss)  #-13.8155
+<pre><code>  Math English   CS
+0  50A     99A  32A
+1  60A     34A  60A
+2  70A     83A  75A
+3  80A     23A  90A
 </code></pre>
-<h2 id="5crossentropyloss">5、CrossEntropyLoss</h2>
-<p>交叉熵损失函数，在图像分类神经网络模型中常用该公式。<br />
-公式：</p>
-<div class="arithmatex">\[loss(x,label)=-log\frac{e^{x_{label}}}{\sum_{j=1}^{N}e^{x_{j}}} =-x_{label}+log\sum_{j=1}^{N}e^{x_{j}}\]</div>
-<h2 id="6nllloss">6、NLLLoss</h2>
-<p>负对数似然损失函数(Negative Log Likelihood),在前面接一个<strong>LogSoftMax</strong>层就等价于交叉熵损失了。注意这里的x,label和上个交叉熵损失里的不同，这里是经过log运算后的数值。该损失函数一般也用到图像识别模型上。<br />
-公式：</p>
-<div class="arithmatex">\[loss(x,label)=-x_{label}\]</div>
-<p>NLLLoss和CrossEntropyLoss的功能很相似，通常都用到多分类模型中，实际应用中NLLLoss损失函数的使用更多。 </p>
-<h2 id="7nllloss2d">7、NLLLoss2d</h2>
-<p>与上述损失函数类似，多了几个维度，一般用到图片上。比如用全卷积网络分类时，最后图片的每个点都会预测一个类别标签。  <br />
-input,(N,C,H,W)<br />
-target,(N,H,W)  </p>
-<p><a href="https://blog.csdn.net/lz_peter/article/details/84574716">softmax参考</a>  <br />
-<a href="https://blog.csdn.net/watermelon1123/article/details/91044856">交叉熵参考</a><br />
-<a href="https://blog.csdn.net/yeldon/article/details/109020841">https://blog.csdn.net/yeldon/article/details/109020841</a></p>
+<h1 id="apply">apply()</h1>
+<p>apply()函数也是针对DataFrame来说，但是这次是将一个函数作用在DataFrame中的一整列或一整行上。 <br />
+DataFrame.apply(self, func, axis=0, raw=False, result_type=None, args=(), **kwargs) <a href="https://www.jb51.net/article/262242.htm">参数说明</a>        </p>
+<pre><code class="language-python">import numpy as np
+# 参数axis=1是将函数作用在一整行，axis=0（为默认值）作用在一整列。
+df3 = df.copy()   #修改后不改变最初的df
+#增加一列，得到三科总值
+df3['total'] = df3[['Math','English','CS']].apply(lambda x:x.sum(),axis=1)
+print(df3)
+#增加一行，计算每一列的平均值
+df4 = df3.copy()
+df4.loc['平均'] = df4.apply(lambda x:x.mean(),axis=0)
+print(df4)
+#numpy的运算方法和函数
+print(df.apply(np.sqrt))
+print(df.apply(np.sum,axis=1))   #因为是np.sum,axis=1是对所有列进行求和
+</code></pre>
+<pre><code>   Math  English  CS  total
+0    50       99  32    181
+1    60       34  60    154
+2    70       83  75    228
+3    80       23  90    193
+
+    Math  English     CS  total
+0   50.0    99.00  32.00  181.0
+1   60.0    34.00  60.00  154.0
+2   70.0    83.00  75.00  228.0
+3   80.0    23.00  90.00  193.0
+平均  65.0    59.75  64.25  189.0
+
+       Math   English        CS
+0  7.071068  9.949874  5.656854
+1  7.745967  5.830952  7.745967
+2  8.366600  9.110434  8.660254
+3  8.944272  4.795832  9.486833
+
+0    181
+1    154
+2    228
+3    193
+dtype: int64
+</code></pre>
+<h1 id="_1">两者区分</h1>
+<p>1、map传递的函数不能有多个参数，但apply可以   <br />
+2、apply只能传递函数，但map除了可以接收函数外还可以接收Series和字典     </p>
+<h1 id="idxmax">idxmax()</h1>
+<p>返回轴上最大值第一次出现的索引。     </p>
+<pre><code class="language-python">max_index = df.idxmax(axis=0)  #按列返回各科最大值对应的行索引,默认axis=0
+print(max_index)
+
+max_column = df.idxmax(axis=1)  #返回行最大值对应的列索引,即每个人分数最高的科目
+print(max_column)
+</code></pre>
+<pre><code>Math       3
+English    0
+CS         3
+dtype: int64
+
+0    English
+1       Math
+2    English
+3         CS
+dtype: object
+</code></pre>
+<p><a href="https://zhuanlan.zhihu.com/p/417546385">map()函数</a>    </p>
 
 
 
@@ -1371,7 +1405,7 @@ target,(N,H,W)  </p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../../pachong/mypachong2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 进、线、协程的概念" rel="prev">
+        <a href="../mypandas/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 基本操作" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1380,20 +1414,20 @@ target,(N,H,W)  </p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              进、线、协程的概念
+              基本操作
             </div>
           </div>
         </a>
       
       
         
-        <a href="../jiangwei/" class="md-footer__link md-footer__link--next" aria-label="Next: 前言" rel="next">
+        <a href="../../sklearn%E6%A8%A1%E5%9D%97/%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/" class="md-footer__link md-footer__link--next" aria-label="Next: 交叉验证生成器" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              前言
+              交叉验证生成器
             </div>
           </div>
           <div class="md-footer__button md-icon">
