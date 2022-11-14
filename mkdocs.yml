@@ -9,6 +9,7 @@ nav:
     - pandas模块: 
       - 基本操作: pandas模块/mypandas.md 
       - map()和apply(): pandas模块/map_apply.md
+      - DataFrame合并: pandas模块/合并方法.md
     - sklearn模块:
       - 交叉验证生成器: sklearn模块/交叉验证.md
       - 文本数据处理: sklearn模块/文本数据处理.md
