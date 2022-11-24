@@ -47,6 +47,7 @@
 
 **git branch -m master**:从任何其他分支切换到主分支。  
 
+**git checkout -- file_name**:放弃工作区中某个文件的修改，即回退版本(将暂存区的文件恢复到工作目录)。    
 
 **练习网站:**[https://learngitbranching.js.org/?locale=zh_CN](https://learngitbranching.js.org/?locale=zh_CN)    
 **参考网站:**[https://geek-docs.com/git/git-cmds/git-push-details.html](https://www.runoob.com/git/git-basic-operations.html)    
@@ -61,3 +62,5 @@ mkdocs gh-deploy --force
 ```
    
 [mkdocs参考：https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions](https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions)
+[vscode本地文件传送GitHub](https://blog.csdn.net/Libetaion/article/details/126556860)          
+[GitHub文档](https://docs.github.com/en)

@@ -22,13 +22,16 @@ nav:
     - 机器学习:
       - 损失函数: ml/lossfun.md
       - 降维算法: 
-        - 前言: ml/jiangwei.md
-        - PCA: ml/mypca.md
-        - ICA: ml/myica.md
-        - LDA: ml/mylda.md
-      - 聚类算法: ml/clusteralg.md
-      - 分类算法: ml/classifyalg.md
-      - 回归算法: ml/regressionalg.md
+        - 前言: ml/降维算法/jiangwei.md
+        - PCA: ml/降维算法/mypca.md
+        - ICA: ml/降维算法/myica.md
+        - LDA: ml/降维算法/mylda.md
+      - 聚类算法: 
+        - 前言: ml/聚类算法/clusteralg.md
+        - 层次聚类: ml/聚类算法/层次聚类.md
+        - DBSCAN: ml/聚类算法/Dbscan.md
+      - 分类算法: ml/分类算法/classifyalg.md
+      - 回归算法: ml/回归算法/regressionalg.md
     - 深度学习:
       - 神经网络权重初始化0问题: dl/初始化.md
     - 数据处理及可视化: 
@@ -50,6 +53,7 @@ nav:
   - 笔记:
     - git学习: bj/mygit.md
     - 编码(encode)与解码(decode): bj/编码与解码.md
+    - pip的使用: bj/pip使用.md
       
 theme:
   name: 'material'
