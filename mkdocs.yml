@@ -30,6 +30,7 @@ nav:
         - 前言: ml/聚类算法/clusteralg.md
         - 层次聚类: ml/聚类算法/层次聚类.md
         - DBSCAN: ml/聚类算法/Dbscan.md
+        - OPTICS: ml/聚类算法/OPTICS.md
       - 分类算法: ml/分类算法/classifyalg.md
       - 回归算法: ml/回归算法/regressionalg.md
     - 深度学习:

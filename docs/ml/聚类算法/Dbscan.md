@@ -34,7 +34,7 @@ DBSCAN是一种基于密度的聚类算法，英文全称是 Density-Based Spati
 * DBSCAN算法可过滤噪声点，这同时也是其缺点，这造成了其不适用于某些领域，如对网络安全领域中恶意攻击的判断
 
 # sklearn中的DBSCAN
-1、利用make_moons函数生成数据集    
+1、利用make_moons函数生成数据集 [函数详情](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html)      
 ```python
 import pandas as pd
 from sklearn import datasets
