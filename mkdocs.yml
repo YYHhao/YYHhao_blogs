@@ -21,6 +21,8 @@ nav:
       - 进、线、协程的概念: pachong/mypachong2.md
     - 机器学习:
       - 损失函数: ml/lossfun.md
+      - EM算法: ml/EM算法.md
+      - 高斯混合模型: ml/高斯混合模型.md
       - 降维算法: 
         - 前言: ml/降维算法/jiangwei.md
         - PCA: ml/降维算法/mypca.md

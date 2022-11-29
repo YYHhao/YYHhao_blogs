@@ -1,11 +1,11 @@
 # DBSCAN简介
 DBSCAN是一种基于密度的聚类算法，英文全称是 Density-Based Spatial Clustering of Applications with Noise，意即：一种基于密度，对噪声鲁棒的空间聚类算法。直观效果上看，DBSCAN算法可以找到样本点的全部密集区域，并把这些密集区域当做一个一个的聚类簇。    
-![](Figure_3.png)   
+![](image/Figure_3.png)   
 
 # 概念
 密集：DBSCAN基于一组“邻域”参数(R,MinPoints)来刻画样本分布的紧密程度。**邻域半径R**和**最少点数目MinPoints**。这两个算法参数实际可以刻画什么叫密集：当邻域半径R内的点的个数大于最少点数目MinPoints时，就是密集。       
 3种点的类别：核心点，边界点和噪声点。**邻域半径R内样本点的数量大于等于MinPoints的点叫做核心点**。不属于核心点但在某个核心点的邻域内的点叫做边界点。既不是核心点也不是边界点的是噪声点。    
-![](figure3.jpg)
+![](image/figure3.jpg)
 
 4种点的关系：密度直达，密度可达，密度相连，非密度相连。
 
@@ -17,7 +17,7 @@ DBSCAN是一种基于密度的聚类算法，英文全称是 Density-Based Spati
 
 * **非密度相连:**如果两个点不属于密度相连关系，则两个点非密度相连。非密度相连的两个点属于不同的聚类簇，或者其中存在噪声点。
 
-![](figure.jpg)
+![](image/figure.jpg)
 
 # 算法步骤   
 1、寻找核心点形成临时聚类簇。如果某个样本点R半径范围内点数目>=MinPoints，则将其纳入核心点列表L。     
@@ -45,7 +45,7 @@ df = pd.DataFrame(X,columns = ['feature1','feature2'])
 df.plot.scatter('feature1','feature2', s = 100,alpha = 0.6, title = 'dataset by make_moon')
 plt.show()
 ```
-![](DB4.png)
+![](image/DB4.png)
 
 2、利用dbscan方法进行聚类
 ```python
@@ -65,11 +65,11 @@ plt.xlabel('feature1')
 plt.ylabel('feature2')
 plt.show()
 ```
-![](DB5.png)     
+![](image/DB5.png)     
 
 # 实例
-![](DB1.png)
-![](DB2.png)
-![](DB3.png)
+![](image/DB1.png)
+![](image/DB2.png)
+![](image/DB3.png)
 
 [https://zhuanlan.zhihu.com/p/336501183](https://zhuanlan.zhihu.com/p/336501183)
