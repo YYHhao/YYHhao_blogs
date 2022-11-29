@@ -619,6 +619,34 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../../EM%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        EM算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        高斯混合模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -626,18 +654,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" type="checkbox" id="__nav_2_6_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_4" type="checkbox" id="__nav_2_6_4" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_2_6_2">
+        <label class="md-nav__link" for="__nav_2_6_4">
           降维算法
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="降维算法" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_6_2">
+        <label class="md-nav__title" for="__nav_2_6_4">
           <span class="md-nav__icon md-icon"></span>
           降维算法
         </label>
@@ -798,18 +826,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_3" type="checkbox" id="__nav_2_6_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_5" type="checkbox" id="__nav_2_6_5" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_2_6_3">
+        <label class="md-nav__link" for="__nav_2_6_5">
           聚类算法
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="聚类算法" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_6_3">
+        <label class="md-nav__title" for="__nav_2_6_5">
           <span class="md-nav__icon md-icon"></span>
           聚类算法
         </label>
@@ -1513,7 +1541,7 @@
 <p><strong>线性判别分析(Linear Discriminant Analysis)</strong>是一种有监督的（supervised）线性降维算法。与PCA保持数据信息不同，LDA的核心思想：往线性判别<strong>超平面的法向量</strong>上投影，即将数据投影到低维空间之后，使得同一类数据尽可能的紧凑，不同类的数据尽可能分散。  </p>
 <h2 id="_1">主要思想</h2>
 <p>假设我们有两类数据，分别为红色和蓝色。如下图所示，这些数据特征是二维的，我们希望将这些数据投影到一维的一条直线，让每一种类别数据的投影点尽可能的接近，而红色和蓝色数据中心之间的距离尽可能的大。  </p>
-<p><img alt="" src="lda1.png" /> 
+<p><img alt="" src="../lda1.png" /> 
 直观上可以看出，上图提供了两种投影方式，其中右图要比左图的投影效果好，因为右图的红色数据和蓝色数据各个较为集中，且类别之间的距离明显。左图则在边界处数据混杂。以上就是LDA的主要思想了，当然在实际应用中，我们的数据是多个类别的，我们的原始数据一般也是超过二维的，投影后的也一般不是直线，而是一个低维的超平面。</p>
 <h2 id="_2">原理推导</h2>
 <p>假设已知数据集<span class="arithmatex">\(D=(x_1,y_1),(x_2,y_2),\dots,(x_m,y_m)\)</span>，其中样本<span class="arithmatex">\(x_i\)</span>为任意n维向量，类别<span class="arithmatex">\(y_i∈C_1,C_2,\dots,C_k\)</span>，定义<span class="arithmatex">\(N_j(j∈1,2,\dots,k)\)</span>是第j类样本的个数，<span class="arithmatex">\(X_j(j∈1,2,\dots,k)\)</span>是第j类样本的集合，<span class="arithmatex">\(u_j(j∈1,2,\dots,k)\)</span>是第j类样本的均值向量，<span class="arithmatex">\(\Sigma_j(j∈1,2,\dots,k)\)</span>是第j类样本的协方差矩阵。</p>
