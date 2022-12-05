@@ -1,0 +1,1725 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../img/火箭.svg">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
+    
+    
+      
+        <title>EM算法 - YYHhao的个人博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#em" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="YYHhao的个人博客" class="md-header__button md-logo" aria-label="YYHhao的个人博客" data-md-component="logo">
+      
+  <img src="../../img/火箭.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            YYHhao的个人博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              EM算法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="YYHhao的个人博客" class="md-nav__button md-logo" aria-label="YYHhao的个人博客" data-md-component="logo">
+      
+  <img src="../../img/火箭.svg" alt="logo">
+
+    </a>
+    YYHhao的个人博客
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        主页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          numpy模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="numpy模块" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          numpy模块
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numpy%E6%A8%A1%E5%9D%97/mynumpy/" class="md-nav__link">
+        基本操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numpy%E6%A8%A1%E5%9D%97/%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90/" class="md-nav__link">
+        随机生成
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../numpy%E6%A8%A1%E5%9D%97/nonzero%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        nonzero函数
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          pandas模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="pandas模块" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          pandas模块
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pandas%E6%A8%A1%E5%9D%97/mypandas/" class="md-nav__link">
+        基本操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pandas%E6%A8%A1%E5%9D%97/map_apply/" class="md-nav__link">
+        map()和apply()
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pandas%E6%A8%A1%E5%9D%97/%E5%90%88%E5%B9%B6%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        DataFrame合并
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          sklearn模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="sklearn模块" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          sklearn模块
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sklearn%E6%A8%A1%E5%9D%97/%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/" class="md-nav__link">
+        交叉验证生成器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sklearn%E6%A8%A1%E5%9D%97/%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" class="md-nav__link">
+        文本数据处理
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          算法学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="算法学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          算法学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alglearning/mylearning1/" class="md-nav__link">
+        欧几里得算法、中国剩余定理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alglearning/SA/" class="md-nav__link">
+        模拟退火算法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          爬虫学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="爬虫学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          爬虫学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pachong/mypachong1/" class="md-nav__link">
+        多线程、异步爬虫
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pachong/mypachong2/" class="md-nav__link">
+        进、线、协程的概念
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          机器学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="机器学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          机器学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lossfun/" class="md-nav__link">
+        损失函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        EM算法
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        高斯混合模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_4" type="checkbox" id="__nav_2_6_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_4">
+          降维算法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="降维算法" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          降维算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%99%8D%E7%BB%B4%E7%AE%97%E6%B3%95/jiangwei/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%99%8D%E7%BB%B4%E7%AE%97%E6%B3%95/mypca/" class="md-nav__link">
+        PCA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%99%8D%E7%BB%B4%E7%AE%97%E6%B3%95/myica/" class="md-nav__link">
+        ICA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%99%8D%E7%BB%B4%E7%AE%97%E6%B3%95/mylda/" class="md-nav__link">
+        LDA
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_5" type="checkbox" id="__nav_2_6_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_5">
+          聚类算法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="聚类算法" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          聚类算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/clusteralg/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB/" class="md-nav__link">
+        层次聚类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/Dbscan/" class="md-nav__link">
+        DBSCAN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/OPTICS/" class="md-nav__link">
+        OPTICS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%88%86%E7%B1%BB%E7%AE%97%E6%B3%95/classifyalg/" class="md-nav__link">
+        分类算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95/regressionalg/" class="md-nav__link">
+        回归算法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          深度学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="深度学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          深度学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl/%E5%88%9D%E5%A7%8B%E5%8C%96/" class="md-nav__link">
+        神经网络权重初始化0问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          数据处理及可视化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数据处理及可视化" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          数据处理及可视化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datapv/mydatapv/" class="md-nav__link">
+        matplotlib中文编码
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          HTML和XML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTML和XML" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          HTML和XML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html_xml/%E7%AE%80%E4%BB%8B%E4%B8%8E%E8%A7%A3%E6%9E%90/" class="md-nav__link">
+        简介与解析
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          CV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CV" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          CV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cvlearning/%E8%AF%BB%E5%8F%96%E5%9B%BE%E7%89%87/" class="md-nav__link">
+        读取图片
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          数学建模
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数学建模" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          数学建模
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%89%8D%E8%A8%80/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          优化模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="优化模型" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          优化模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E4%BC%98%E5%8C%96%E6%A8%A1%E5%9E%8B/%E5%A4%9A%E7%9B%AE%E6%A0%87%E8%A7%84%E5%88%92/" class="md-nav__link">
+        多目标规划
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          评价模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="评价模型" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          评价模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90/" class="md-nav__link">
+        层次分析法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          预测模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="预测模型" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          预测模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B/%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B/" class="md-nav__link">
+        灰色预测
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          统计模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="统计模型" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          统计模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/" class="md-nav__link">
+        聚类分析
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bj/mygit/" class="md-nav__link">
+        git学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bj/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%A7%A3%E7%A0%81/" class="md-nav__link">
+        编码(encode)与解码(decode)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bj/pip%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        pip的使用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="em">EM算法</h1>
+<p>EM（Expectation-Maximum）算法也称期望最大化算法，曾入选“数据挖掘十大算法”中，可见EM算法在机器学习、数据挖掘中的影响力。EM算法是最常见的隐变量估计方法，在机器学习中有极为广泛的用途，例如常被用来学习高斯混合模型（Gaussian mixture model，简称GMM）的参数；隐式马尔科夫算法（HMM）、LDA主题模型的变分推断等等。      </p>
+<p>一个最直观了解EM算法思路的是K-Means算法，见之前写的K-Means聚类算法原理。在K-Means聚类时，每个聚类簇的质心是隐含数据。我们会假设K个初始化质心，即EM算法的E步；然后计算得到每个样本最近的质心，并把样本聚类到最近的这个质心，即EM算法的M步。重复这个E步和M步，直到质心不再变化为止，这样就完成了K-Means聚类。    </p>
+<h1 id="em_1">EM算法简介</h1>
+<p>我们经常需要从样本观察数据中，找出样本的模型参数，即模型的<strong>参数估计</strong>。最常用的方法就是<strong>极大似然估计法(MLE)</strong>。但是在一些情况下，我们得到的观察数据有未观察到的隐含数据，此时我们未知的有隐含数据和模型参数，因而无法直接用极大化对数似然函数得到模型分布的参数。<strong>这时就用到了EM算法,对含有隐变量的概率模型参数进行极大似然估计或极大后验估计</strong>。</p>
+<p>EM算法是一种迭代优化策略，它的计算方法中<strong>每一次迭代都分两步</strong>，其中一个为<strong>期望步</strong>（E步），另一个为<strong>极大步</strong>（M步）。</p>
+<p>EM算法解决这个的思路是使用启发式的迭代方法，既然我们无法直接求出模型分布参数，那么我们可以先猜想隐含数据（EM算法的E步），接着基于观察数据和猜测的隐含数据一起来极大化对数似然，求解我们的模型参数（EM算法的M步)。由于我们之前的隐藏数据是猜测的，所以此时得到的模型参数一般还不是我们想要的结果。不过没关系，我们基于当前得到的模型参数，继续猜测隐含数据（EM算法的E步），然后继续极大化对数似然，求解我们的模型参数（EM算法的M步)。以此类推，不断的迭代下去，直到模型分布参数基本无变化，算法收敛，找到合适的模型参数。</p>
+<h1 id="_1">极大似然估计</h1>
+<ul>
+<li>参数估计(parametric estimation):已知概率密度函数的形式，但部分或全部参数未知，用样本来估计这些参数,利用极大似然估计和贝叶斯估计。     </li>
+<li>非参数估计(nonparametric estimation):概率密度函数的形式也未知，用样本将概率密度函数数值化地估计出来。  </li>
+</ul>
+<p>极大似然估计是建立在极大似然原理上的一种参数估计方法，其目的就是<strong>利用已知的样本结果，反推最有可能导致这种结果的参数值。</strong>简单说，就是通过若干次试验，观察其结果，利用试验结果得到某个参数值能够使样本出现的概率最大。注意要估计的参数是一个确定的量。</p>
+<p><strong>极大似然估计一般步骤:</strong>    </p>
+<ul>
+<li>1、写出似然函数:估计参数<span class="arithmatex">\(\theta\)</span>的似然函数，即各样本在<span class="arithmatex">\(\theta\)</span>条件下出现的联合概率密度函数   </li>
+</ul>
+<div class="arithmatex">\[L(\theta)=P(x_1,x_2,\dots,x_n|\theta)=\prod_{i=1}^nP(x_i|\theta)\]</div>
+<ul>
+<li>2、为方便计算，对似然函数取对数，将累乘计算转化成累加运算。     </li>
+<li>3、对取对数后的似然函数求导，另导数为0，得到似然方程。    </li>
+<li>4、求解似然方程，求得使似然函数最大的参数θ值</li>
+</ul>
+<div class="arithmatex">\[\hat \theta=\underset{\theta}{argmax}\quad ln(L(\theta))\]</div>
+<p><strong>极大似然估计的特点:</strong>  <br />
+1、比其他估计方法更简单。     <br />
+2、收敛性：当样本数目较多时，收敛性质会更好。   <br />
+3、如果假设的类条件概率模型正确，则通常能获得较好的结果。但如果假设模型出现偏差，将导致非常差的估计结果。</p>
+<p><a href="https://blog.csdn.net/zengxiantao1994/article/details/72787849?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">极大似然估计详解</a></p>
+<h1 id="jensen">Jensen不等式</h1>
+<p>1、定义     </p>
+<p>设f是定义域为实数的函数，如果对所有的实数x，f(x)的二阶导数都大于0，那么f是凸函数。Jensen不等式定义如下：  <br />
+如果f是凸函数,X是随机变量，那么:<span class="arithmatex">\(E[f(X)]\geq f(E[X])\)</span>。当且仅当X是常量时，该式取等号。其中E[X]表示X的数学期望。 <br />
+<strong>注：</strong>Jensen不等式应用于凹函数时，不等号方向反向。当且仅当x是常量时，该不等式取等号。    </p>
+<p>2、举例  <br />
+<img alt="" src="../picture/em1.jfif" /></p>
+<p>图2中，实线f表示凸函数，X是随机变量，有0.5的概率是a，有0.5的概率是b。X的期望值就是a和b的中值，从图中可以看到<span class="arithmatex">\(E[f(X)]\geq f(E[X])\)</span>成立。</p>
+<h1 id="em_2">EM算法的推导</h1>
+<p>对于n个样本观察数据<span class="arithmatex">\(x=(x_1,x_2,\dots,x_n)\)</span>，找出样本的模型参数θ, 极大化模型分布的对数似然函数如下：     </p>
+<div class="arithmatex">\[\hat \theta=argmax\sum_{i=1}^nlogp(x_i;\theta)\]</div>
+<p>如果我们得到的观察数据有未观察到的隐含数据<span class="arithmatex">\(z=(z_1,z_2,\dots,z_n)\)</span>，即上文中每个样本属于哪个分布是未知的，此时我们极大化模型分布的对数似然函数如下：   </p>
+<div class="arithmatex">\[\hat \theta=argmax\sum_{i=1}^nlogp(x_i;\theta)=argmax\sum_{i=1}^nlog\sum_{z_i}p(x_i,z_i;\theta)\]</div>
+<p>上面这个式子是根据<span class="arithmatex">\(x_i\)</span>的边缘概率计算得来，没有办法直接求出θ。因此需要一些特殊的技巧，使用Jensen不等式对这个式子进行缩放如下：    </p>
+<div class="arithmatex">\[
+\begin{split}
+\sum_{i=1}^nlog\sum_{z_i}p(x_i,z_i;\theta)=\sum_{i=1}^nlog\sum_{z_i}Q_i(z_i)\frac{p(x_i,z_i;\theta)}{Q_i(z_i)}\quad(1) \\
+\geq\sum_{i=1}^n\sum_{z_i}Q_i(z_i)log\frac{p(x_i,z_i;\theta)}{Q_i(z_i)} \quad(2)
+\end{split}
+\]</div>
+<p>(1)式是引入了一个未知的新的分布<span class="arithmatex">\(Q_i(z_i)\)</span>，分子分母同时乘以它得到的。</p>
+<p>(2)式是由(1)式根据Jensen不等式得到的。由于<span class="arithmatex">\(\sum_{z_i}Q_i(z_i)\frac{p(x_i,z_i;\theta)}{Q_i(z_i)}\)</span>为<span class="arithmatex">\(\frac{p(x_i,z_i;\theta)}{Q_i(z_i)}\)</span>的期望，且log(x)为凹函数，根据Jensen不等式可由(1)式得到(2)式。</p>
+<p>上述过程可以看作是对<span class="arithmatex">\(logl(\theta)\)</span>求了下界（<span class="arithmatex">\(l(\theta)=\sum_{i=1}^nlogp(x_i;\theta)\)</span>）。对于<span class="arithmatex">\(Q_i(z_i)\)</span>我们如何选择呢？假设θ已经给定，那么<span class="arithmatex">\(logl(\theta)\)</span>的值取决于<span class="arithmatex">\(Q_i(z_i)\)</span>和<span class="arithmatex">\(p(x_i,z_i)\)</span>。我们可以通过调整这两个概率使(2)式下界不断上升，来逼近<span class="arithmatex">\(logl(\theta)\)</span>的真实值。那么如何算是调整好呢？当不等式变成等式时，说明我们调整后的概率能够等价于<span class="arithmatex">\(logl(\theta)\)</span>了。按照这个思路，我们要找到等式成立的条件。</p>
+<p>如果要满足Jensen不等式的等号，则有：</p>
+<div class="arithmatex">\[\frac{p(x_i,z_i;\theta)}{Q_i(z_i)}=c,c为常数\]</div>
+<p>由于<span class="arithmatex">\(Q_i(z_i)\)</span>是一个分布，所以满足：<span class="arithmatex">\(\sum_zQ_i(z_i)=1\)</span>，则<span class="arithmatex">\(\sum_zp(x_i,z_i;\theta)=c\)</span>(联合上式变换得到)。   <br />
+由上面两个式子，我们可以得到：   </p>
+<div class="arithmatex">\[Q_i(z_i)=\frac{p(x_i,z_i;\theta)}{\sum_zp(x_i,z_i;\theta)}=\frac{p(x_i,z_i;\theta)}{p(x_i;\theta)}=p(z_i|x_i;\theta)\]</div>
+<p>至此，我们推出了在固定其他参数θ后，<span class="arithmatex">\(Q_i(z_i)\)</span>的计算公式就是后验概率，解决了<span class="arithmatex">\(Q_i(z_i)\)</span>如何选择的问题。这一步就是E步，该步建立了<span class="arithmatex">\(l(\theta)\)</span>的下界。   </p>
+<p>如果<span class="arithmatex">\(Q_i(z_i)=p(z_i|x_i;\theta)\)</span>，则(2)式是我们包含隐藏数据的对数似然函数的一个下界。如果我们能最大化(2)式这个下界，则也是在极大化我们的对数似然函数。即我们需要最大化下式：   </p>
+<div class="arithmatex">\[argmax\sum_{i=1}^n\sum_{z_i}Q_i(z_i)log\frac{p(x_i,z_i;\theta)}{Q_i(z_i)}\]</div>
+<p>上式也就是我们的EM算法的M步。</p>
+<h1 id="em_3">EM算法流程(总结)</h1>
+<p><strong>输入:</strong>观察到的数据<span class="arithmatex">\(x=(x_1,x_2,\dots,x_n)\)</span>，联合分布<span class="arithmatex">\(p(x,z;\theta)\)</span> ，条件分布<span class="arithmatex">\(p(z|x,\theta)\)</span>，最大迭代次数J。 <br />
+<strong>算法步骤:</strong>  <br />
+（1）随机初始化模型参数θ的初值<span class="arithmatex">\(\theta_0\)</span>。  <br />
+（2）j=1,2,...,J 开始EM算法迭代：   </p>
+<ul>
+<li>E步:计算联合分布的条件概率期望：</li>
+</ul>
+<div class="arithmatex">\[Q_i(z_i)=p(z_i|x_i,\theta_j)\]</div>
+<div class="arithmatex">\[l(\theta,\theta_j)=\sum_{i=1}^n\sum_{z_i}Q_i(z_i)log\frac{p(x_i,z_i;\theta)}{Q_i(z_i)}\]</div>
+<ul>
+<li>M步:极大化<span class="arithmatex">\(l(\theta,\theta_j)\)</span>得到<span class="arithmatex">\(\theta_{j+1}\)</span>:</li>
+</ul>
+<div class="arithmatex">\[\theta_{j+1}=argmax \quad l(\theta,\theta_j)\]</div>
+<ul>
+<li>如果<span class="arithmatex">\(\theta_{j+1}\)</span>已经收敛，则算法结束。否则继续进行E步和M步进行迭代。</li>
+</ul>
+<p><strong>输出:</strong>模型参数θ。</p>
+<h1 id="em_4">EM算法实例</h1>
+<p>硬币实验概述:  <br />
+1、首先要明确硬币实验本身的问题是:两块硬币A、B与我们熟知的硬币不同，它们形状不是均匀分布的，所以抛出正面的概率并不是简单的50%，现在我们想知道这两块硬币分别抛出正面的概率   <br />
+2、探究的方法:做实验将A硬币抛n次，记录正面的次数<span class="arithmatex">\(n_h\)</span>,当n足够大时，硬币A抛出正面的概率为实验出现的频率，即<span class="arithmatex">\(P_A=n_h/n\)</span>。B硬币同理。  <br />
+3、区分两种情况:a情况可以观测到实验数据中每次选择的是A还是B，b情况实验数据对A和B的选择是未知的。</p>
+<h2 id="a">a情况</h2>
+<p>假设有两枚硬币 A 和 B，并已知实验数据属于A还是B，他们的随机抛掷的结果如下图所示：  <br />
+<img alt="" src="../picture/em2.png" />   <br />
+我们很容易估计出两枚硬币抛出正面的概率：    </p>
+<div class="arithmatex">\[\begin{split}
+\theta_A=24/30=0.8 \\     
+\theta_B=9/20=0.45
+\end{split}\]</div>
+<h2 id="b">b情况</h2>
+<p>我们加入隐变量，抹去每轮投掷的硬币标记，即每次抛的硬币是A还是B未知。如下表:    </p>
+<table>
+<thead>
+<tr>
+<th>Coin</th>
+<th>Statistics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coin*</td>
+<td>5H,5T</td>
+</tr>
+<tr>
+<td>Coin*</td>
+<td>9H,1T</td>
+</tr>
+<tr>
+<td>Coin*</td>
+<td>8H,2T</td>
+</tr>
+<tr>
+<td>Coin*</td>
+<td>4H,6T</td>
+</tr>
+<tr>
+<td>Coin*</td>
+<td>7H,3T</td>
+</tr>
+</tbody>
+</table>
+<p>碰到这种情况，我们该如何估计<span class="arithmatex">\(\theta_A\)</span>和<span class="arithmatex">\(\theta_B\)</span>的值？  <br />
+我们多了一个隐变量 <span class="arithmatex">\(Z=(z_1,z_2,z_3,z_4,z_5)\)</span>，代表每一轮所使用的硬币，我们需要知道每一轮抛掷所使用的硬币这样才能估计<span class="arithmatex">\(\theta_A\)</span>和<span class="arithmatex">\(\theta_B\)</span>的值，但是估计隐变量 Z 我们又需要知道<span class="arithmatex">\(\theta_A\)</span>和<span class="arithmatex">\(\theta_B\)</span>的值，才能用极大似然估计法去估计出 Z。这就陷入了一个鸡生蛋和蛋生鸡的问题。</p>
+<p>其解决方法就是先随机初始化<span class="arithmatex">\(\theta_A\)</span>和<span class="arithmatex">\(\theta_B\)</span>，然后用去估计 Z， 然后基于 Z 按照最大似然概率去估计新的<span class="arithmatex">\(\theta_A\)</span>和<span class="arithmatex">\(\theta_B\)</span>，循环至收敛。</p>
+<p><strong>b情况计算:</strong>  <br />
+随机初始化<span class="arithmatex">\(\theta_A=0.6\)</span>和<span class="arithmatex">\(\theta_B=0.5\)</span>     </p>
+<p>对于第一轮来说，如果是硬币 A，得出的 5 正 5 反的概率为：<span class="arithmatex">\(0.6^5*0.4^5\)</span>;如果是硬币 B，得出的 5 正 5 反的概率为：<span class="arithmatex">\(0.5^5*0.5^5\)</span>。我们可以算出使用是硬币 A 和硬币 B 的概率分别为：  </p>
+<div class="arithmatex">\[\begin{split}
+P_A=\frac{0.6^5*0.4^5}{(0.6^5*0.4^5)+(0.5^5*0.5^5)}=0.45  \\     
+P_B=\frac{0.5^5*0.5^5}{(0.6^5*0.4^5)+(0.5^5*0.5^5)}=0.55   
+\end{split}\]</div>
+<p>可以得到1到5次实验数据属于A或B的概率如下表：     </p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Coin A</th>
+<th>Coin B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.45</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.80</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.73</td>
+<td>0.27</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.35</td>
+<td>0.65</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.65</td>
+<td>0.35</td>
+</tr>
+</tbody>
+</table>
+<p>从期望的角度来看，对于第一轮抛掷，使用硬币 A 的概率是 0.45，使用硬币 B 的概率是 0.55。同理其他轮。这一步我们实际上是估计出了 Z 的概率分布，这部就是 E-Step。</p>
+<p>结合硬币 A 的概率和上一张投掷结果，我们利用期望可以求出硬币 A 和硬币 B 的贡献。以第二轮硬币 A 为例子，计算方式为：</p>
+<div class="arithmatex">\[\begin{split}
+H:0.80*9=7.2  \\     
+T:0.80*1=0.8   
+\end{split}\]</div>
+<p>于是得到类似于不含隐变量的，已知A，B标记的实验数据表，如下：    </p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Coin A</th>
+<th>Coin B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2.2H,2.2T</td>
+<td>2.8H,2.8T</td>
+</tr>
+<tr>
+<td>2</td>
+<td>7.2H,0.8T</td>
+<td>1.8H,0.2T</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5.9H,1.5T</td>
+<td>2.1H,0.5T</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1.4H,2.1T</td>
+<td>2.6H,3.9T</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4.5H,1.9T</td>
+<td>2.5H,1.1T</td>
+</tr>
+<tr>
+<td>total</td>
+<td>21.3H,8.6T</td>
+<td>11.7H,8.4T</td>
+</tr>
+</tbody>
+</table>
+<p>然后用极大似然估计来估计新的<span class="arithmatex">\(\theta_A\)</span>和<span class="arithmatex">\(\theta_B\)</span>。</p>
+<div class="arithmatex">\[\begin{split}
+\theta_A=\frac{21.3}{21.3+8.6}=0.71  \\     
+\theta_B=\frac{11.7}{11.7+8.4}=0.58   
+\end{split}\]</div>
+<p>这步就对应了 M-Step，重新估计出了参数值。</p>
+<p><strong>如此反复迭代，我们就可以算出最终的参数值。</strong></p>
+<p>上述全部过程对应下图： <br />
+<img alt="" src="../picture/em3.jpg" /></p>
+<h1 id="em_5">EM算法收敛性</h1>
+<p>EM算法可以保证收敛到一个稳定点，即EM算法是一定收敛的。   <br />
+EM算法可以保证收敛到一个稳定点，但是却不能保证收敛到全局的极大值点，因此它是局部最优的算法，当然，如果我们的优化目标<span class="arithmatex">\(l(\theta,\theta_l)\)</span>是凸的，则EM算法可以保证收敛到全局最大值，这点和梯度下降法这样的迭代算法相同。</p>
+<p>证明过程如下： <br />
+<a href="https://www.cnblogs.com/pinard/p/6912636.html">EM算法-刘建平</a></p>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../lossfun/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 损失函数" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              损失函数
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/" class="md-footer__link md-footer__link--next" aria-label="Next: 高斯混合模型" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              高斯混合模型
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -10,6 +10,7 @@ nav:
       - 基本操作: pandas模块/mypandas.md 
       - map()和apply(): pandas模块/map_apply.md
       - DataFrame合并: pandas模块/合并方法.md
+      - Grouping和Sorting : pandas模块/mygroupby.md
     - sklearn模块:
       - 交叉验证生成器: sklearn模块/交叉验证.md
       - 文本数据处理: sklearn模块/文本数据处理.md
@@ -57,6 +58,7 @@ nav:
     - git学习: bj/mygit.md
     - 编码(encode)与解码(decode): bj/编码与解码.md
     - pip的使用: bj/pip使用.md
+    - Anaconda虚拟环境: bj/虚拟环境.md
       
 theme:
   name: 'material'

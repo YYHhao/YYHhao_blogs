@@ -24,13 +24,15 @@ pip是一个**python包管理工具**，提供了对python包的**下载、安�
 8、输入 **pip install -U** package_name 升级指定的包   
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/581d447e8c304b81950d7068b3bbf032.png)
 9、输入**python -m pip install --upgrade pip** 升级pip   
-
-
-
+ 
 10、输入 **pip show** package__name，显示指定包信息    
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f8ff524ab79c4ea4a64faf71d7a9cdb8.png)
 11、输入 pip check package_name,验证已安装的库是否有兼容依赖问题    
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1410117dc5624845a12b3829d1f38b31.png)
+
+12、当下载模块较大时，会超时，可以用**pip install 模块 --default-timeout=100**      
+
+
 
 # 三、出现的问题
 1、pip安装库时出现的错误，如下：   

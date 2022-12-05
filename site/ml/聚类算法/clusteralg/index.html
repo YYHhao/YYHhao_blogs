@@ -620,22 +620,50 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../EM%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        EM算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        高斯混合模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" type="checkbox" id="__nav_2_6_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_4" type="checkbox" id="__nav_2_6_4" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_2_6_2">
+        <label class="md-nav__link" for="__nav_2_6_4">
           降维算法
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="降维算法" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_6_2">
+        <label class="md-nav__title" for="__nav_2_6_4">
           <span class="md-nav__icon md-icon"></span>
           降维算法
         </label>
@@ -715,18 +743,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_3" type="checkbox" id="__nav_2_6_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_5" type="checkbox" id="__nav_2_6_5" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_2_6_3">
+        <label class="md-nav__link" for="__nav_2_6_5">
           聚类算法
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="聚类算法" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_6_3">
+        <label class="md-nav__title" for="__nav_2_6_5">
           <span class="md-nav__icon md-icon"></span>
           聚类算法
         </label>
@@ -1381,7 +1409,7 @@
 
 <h1 id="_1">聚类的概念</h1>
 <p>因为事先不知道类别，聚类算法是一种无监督学习算法。聚类是针对给定的样本，依据它们特征的相似度或距离，将其归并到若干个“类”或“簇”的数据分析问题。一个类是给定样本集合的一个子集。直观上讲，就是使<strong>同一个簇内的数据对象的相似性尽可能大，同时不在同一个簇中的数据对象的差异性也尽可能地大</strong>。   <br />
-<img alt="" src="image.png" />   </p>
+<img alt="" src="../image/image.png" />   </p>
 <h1 id="_2">聚类的目的</h1>
 <p>通过得到的类或簇发现数据的特点或对数据进行处理，在数据挖掘、模式识别等领域有着广泛的应用。   </p>
 <h1 id="_3">应用场景</h1>
@@ -1395,10 +1423,10 @@
 </ul>
 <h1 id="_4">常见的聚类算法</h1>
 <ul>
-<li>基于划分的聚类方法：k-means、k-means++、bi-kmeans...    </li>
+<li>基于划分的聚类方法：k-means、k-means++、bi-kmeans、高斯混合聚类...    </li>
 <li>基于密度的聚类方法：DBSCAN、OPTICS...   </li>
 <li>基于层次的聚类方法：层次聚类、Birch...    </li>
-<li>其它方法：谱聚类、高斯混合聚类、核聚类、量子聚类、MeanShift、AP(AffinityPropagation)聚类...   </li>
+<li>其它方法：谱聚类、核聚类、量子聚类、MeanShift、AP(AffinityPropagation)聚类...   </li>
 </ul>
 <p>基于划分的聚类方法需要事先指定簇类的数目或者聚类中心，通过反复迭代，直至最后达到"簇内的点足够近，簇间的点足够远"的目标。(算法效率较高，抗噪性能一般)                 <br />
 基于密度的聚类,是通过计算数据样本分布的疏密情况，将高密度区域的点划分为同一个类簇。通常情况下，密度聚类从样本密度的角度出来，来考查样本之间的可连接性，并基于可连接样本不断扩展聚类簇，以获得最终的聚类结果。(算法效率一般，抗噪较好)     <br />
