@@ -63,6 +63,7 @@ nav:
     - 编码(encode)与解码(decode): bj/编码与解码.md
     - pip的使用: bj/pip使用.md
     - Anaconda虚拟环境: bj/虚拟环境.md
+    - vim编辑器: bj/myvim.md
       
 theme:
   name: 'material'

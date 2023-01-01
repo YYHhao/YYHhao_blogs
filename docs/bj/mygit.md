@@ -60,7 +60,14 @@ git commit -m 'message'
 git push -u origin main
 mkdocs gh-deploy --force
 ```
-   
+git push时出现的.ssh问题:[解决方法](https://blog.csdn.net/nightwishh/article/details/99647545)    
+```
+D:\python\Myblog\YYHhao_blogs>git push -u origin main
+ssh: connect to host github.com port 22: Connection timed out
+fatal: Could not read from remote repository.
+```
+
+
 [mkdocs参考：https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions](https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions)
 [vscode本地文件传送GitHub](https://blog.csdn.net/Libetaion/article/details/126556860)          
 [GitHub文档](https://docs.github.com/en)

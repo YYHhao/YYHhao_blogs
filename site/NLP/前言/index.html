@@ -13,7 +13,7 @@
     
     
       
-        <title>基本操作 - YYHhao的个人博客</title>
+        <title>前言 - YYHhao的个人博客</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#nlp" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              基本操作
+              前言
             
           </span>
         </div>
@@ -216,14 +216,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
       
@@ -244,14 +242,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
       
       
       
@@ -272,21 +268,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../numpy%E6%A8%A1%E5%9D%97/mynumpy/" class="md-nav__link">
         基本操作
       </a>
-      
     </li>
   
 
@@ -298,7 +284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90/" class="md-nav__link">
+      <a href="../../numpy%E6%A8%A1%E5%9D%97/%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90/" class="md-nav__link">
         随机生成
       </a>
     </li>
@@ -312,7 +298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../nonzero%E5%87%BD%E6%95%B0/" class="md-nav__link">
+      <a href="../../numpy%E6%A8%A1%E5%9D%97/nonzero%E5%87%BD%E6%95%B0/" class="md-nav__link">
         nonzero函数
       </a>
     </li>
@@ -1345,12 +1331,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -1371,11 +1359,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../NLP/%E5%89%8D%E8%A8%80/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         前言
       </a>
+      
     </li>
   
 
@@ -1523,142 +1521,104 @@
                 
 
 
-<h1 id="_1">简介</h1>
-<p><strong>numpy</strong>通常与<strong>scipy</strong>和<strong>matplotlib</strong>库一起使用,它的核心是ndarray对象，支持大量的维数数组与矩阵运算，此外也针对数组运算提供大量的数学函数库。    </p>
-<p>SciPy包含的模块有最优化、线性代数、积分、插值、特殊函数、快速傅里叶变换、信号处理和图像处理、常微分方程求解和其他科学与工程中常用的计算。    </p>
-<p>Matplotlib是Python编程语言及其数值数学扩展包 NumPy 的可视化操作界面。它为利用通用的图形用户界面工具包，如Tkinter, wxPython, Qt或GTK+向应用程序嵌入式绘图提供了应用程序接口（API）。</p>
-<p><a href="https://www.numpy.org.cn/user/setting-up.html">numpy中文文档</a>   </p>
-<h1 id="_2">基本操作</h1>
-<h2 id="_3">求和</h2>
-<p><strong>np.sum(a, axis, dtype, out, keepdims, initial, where)</strong>    </p>
-<pre><code class="language-python">import numpy as np
-i = np.array([[1,5],[3,3]])
-j = np.array([[2,1],[4,4]])
-print(i-j)  #对应元素相减
-a = np.sum(i)
-b = sum(i)
-c = np.sum(i,axis=0,keepdims=True) #保留原维度，默认是False
-d = np.sum(i,axis=1,keepdims=True)
-print(a,end='\n\n')
-print(b,end='\n\n')
-print(c,end='\n\n')
-print(d)
+<h1 id="nlp">自然语言处理(NLP)</h1>
+<p>自然语言处理（Natural Language Processing，NLP）是计算机科学领域与人工智能领域中的一个重要方向。它研究人与计算机之间用自然语言进行有效通信的理论和方法。融语言学、计算机科学、数学等于一体的科学。旨在从文本数据中提取信息。目的是让计算机处理或“理解”自然语言，以执行<strong>自动翻译</strong>、<strong>文本分类</strong>和<strong>情感分析</strong>等。自然语言处理是人工智能中最为困难的问题之一。</p>
+<p><a href="https://blog.csdn.net/oanqoanq/article/details/78672442">一文读懂自然语言处理NLP</a></p>
+<h1 id="_1">基本概念</h1>
+<p><strong>1、语料库（Corpus）</strong></p>
+<p>语料库中存放的是在语言的实际使用中真实出现过的语言材料；语料库是以电子计算机为载体承载语言知识的基础资源；真实语料需要经过加工（分析和处理），才能成为有用的资源。</p>
+<p><strong>2、中文分词（Chinese Word egmentation）</strong></p>
+<p>（1）中文分词指的是将一个汉字序列切分成一个一个单独的词。分词就是将连续的字序列按照一定的规范重新组合成词序列的过程。</p>
+<p>（2）现有的分词方法可分为三大类：基于字符串匹配的分词方法、基于理解的分词方法和基于统计的分词方法。</p>
+<p>（3）比较流行的中文分词工具：jieba、StanfordNLP、HanLP、SnowNLP、THULAC、NLPIR</p>
+<p><strong>3、词性标注（Part-of-speech tagging）</strong></p>
+<p>（1）词性标注是指为给定句子中的每个词赋予正确的词法标记，给定一个切好词的句子，词性标注的目的是为每一个词赋予一个类别，这个类别称为词性标记（part-of-speech tag），比如，名词（noun）、动词（verb）、形容词（adjective）等。</p>
+<p>（2）词性标注是一个非常典型的序列标注问题。最初采用的方法是隐马尔科夫生成式模型， 然后是判别式的最大熵模型、支持向量机模型，目前学术界通常采用的结构是感知器模型和条件随机场模型。近年来，随着深度学习技术的发展，研究者们也提出了很多有效的基于深层神经网络的词性标注方法。</p>
+<p><strong>4、句法分析（Parsing）</strong></p>
+<p>（1）基于规则的句法结构分析</p>
+<p>（2）基于统计的语法结构分析</p>
+<p><strong>5、词干提取（Stemming）</strong></p>
+<p>词干提取是将词语去除变化或衍生形式，转换为词干或原型形式的过程。词干提取的目标是将相关词语还原为同样的词干。</p>
+<p><strong>6、词形还原（Lemmatization）</strong></p>
+<p>词形还原是将一组词语还原为词源或词典的词目形式的过程。</p>
+<p><strong>7、停用词过滤</strong></p>
+<p>停用词过滤是指在文本中频繁出现且对文本信息的内容或分类类别贡献不大甚至无贡献的词语，如常见的介词、冠词、助词、情态动词、代词以及连词等。</p>
+<p><strong>8、词向量化（Word Vector）</strong></p>
+<p>词向量化是用一组实数构成的向量代表自然语言的叫法。这种技术非常实用，因为电脑无法处理自然语言。词向量化可以捕捉到自然语言和实数间的本质关系。通过词向量化，一个词语或者一段短语可以用一个定维的向量表示。（word2vec）</p>
+<pre><code class="language-python">from gensim.models import word2vec
 </code></pre>
-<p>输出：  </p>
-<pre><code>[[-1  4]
- [-1 -1]]
-12
-
-[4 8]
-
-[4 8]
-
-[6 6]
+<h1 id="_2">特征处理</h1>
+<p><strong>1、特征提取（Feature Extraction）</strong></p>
+<p>特征提取是指将机器学习算法不能识别的原始数据转化为算法可以识别的特征的过程。</p>
+<p>举例（文本分类特征提取步骤）：</p>
+<p>（1）对训练数据集的每篇文章，我们进行词语的统计，以形成一个词典向量。词典向量里包含了训练数据里的所有词语（假设停用词已去除），且每个词语代表词典向量中的一个元素。</p>
+<p>（2）在经过第一步的处理后，每篇文章都可以用词典向量来表示。这样一来，每篇文章都可以被看作是元素相同且长度相同的向量，不同的文章具有不同的向量值。这也就是表示文本的词袋模型（bag of words）。</p>
+<p>（3）针对于特定的文章，如何给表示它的向量的每一个元素赋值呢？最简单直接的办法就是0-1法了。简单来说，对于每一篇文章，我们扫描它的词语集合，如果某一个词语出现在了词典中，那么该词语在词典向量中对应的元素置为1，否则为0。</p>
+<p><strong>2、特征选择（ Feature Selection）</strong></p>
+<p>当数据预处理完成后，我们需要选择有意义的特征输入机器学习的算法和模型进行训练。特征选择是指去掉无关特征，保留相关特征的过程，也可以认为是从所有的特征中选择一个最好的特征子集。特征选择本质上可以认为是降维的过程。</p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import TfidfVectorizer
 </code></pre>
-<p><a href="https://blog.csdn.net/weixin_41377182/article/details/125399751">np.sum()参数</a></p>
-<h2 id="_4">数组的堆叠和平铺</h2>
-<p><strong>np.hstack()和np.c_[],水平平铺</strong>   </p>
-<pre><code class="language-python">import numpy as np
-#np.hstack()和np.c_[],水平平铺
-a = np.array([[1,2],[3,4]])
-b = np.array([[5,6],[7,8]])
-print('水平平铺')
-print('np.hstack((a, b))=\n',np.hstack((a,b)))
-print('np.c_[a, b]=\n',np.c_[a,b])
-
-#只有当a,b为一维数组时,两种函数结果不同
-a1 = a.flatten()
-b1 = b.flatten()
-print('a1=\n',a1)
-print('b1=\n',b1)
-print('np.hstack((a1,b1))=\n',np.hstack((a1,b1)))
-print('np.c_[a,b]=\n',np.c_[a1,b1])
-</code></pre>
-<p>输出：</p>
-<pre><code>水平平铺
-np.hstack((a, b))=
- [[1 2 5 6]
- [3 4 7 8]]
-np.c_[a, b]=
- [[1 2 5 6]
- [3 4 7 8]]
-a1=
- [1 2 3 4]
-b1=
- [5 6 7 8]
-np.hstack((a1,b1))=
- [1 2 3 4 5 6 7 8]
-np.c_[a,b]=
- [[1 5]
- [2 6]
- [3 7]
- [4 8]]
-</code></pre>
-<p><strong>np.vstack()和np.r_[],竖直堆叠</strong>   </p>
-<pre><code class="language-python">import numpy as np
-#np.vstack()和np.r_[],竖直堆叠
-a = np.array([[1,2],[3,4]])
-b = np.array([[5,6],[7,8]])
-print('竖直堆叠')
-print('np.vstack((a, b))=\n',np.vstack((a,b)))
-print('np.r_[a, b]=\n',np.r_[a,b])
-
-#只有当a,b为一维数组时,两种函数结果不同
-a1 = a.flatten()
-b1 = b.flatten()
-print('a1=\n',a1)
-print('b1=\n',b1)
-print('np.vstack((a1,b1))=\n',np.vstack((a1,b1)))
-print('np.r_[a,b]=\n',np.r_[a1,b1])
-</code></pre>
-<p>输出：</p>
-<pre><code>竖直堆叠
-np.vstack((a, b))=
- [[1 2]
- [3 4]
- [5 6]
- [7 8]]
-np.r_[a, b]=
- [[1 2]
- [3 4]
- [5 6]
- [7 8]]
-a1=
- [1 2 3 4]
-b1=
- [5 6 7 8]
-np.vstack((a1,b1))=
- [[1 2 3 4]
- [5 6 7 8]]
-np.r_[a,b]=
- [1 2 3 4 5 6 7 8]
-</code></pre>
-<p><strong>np.concatenate()是对array进行拼接的函数，也能实现上述过程</strong>   </p>
-<pre><code class="language-python">import numpy as np
-np.random.seed(1)
-x1 = np.random.normal(0,1,(2,3)) #随机生成均值为0，标准差为1，size为(2,3)的随机数组
-x2 = np.random.normal(1,2,(2,3))
-print('x1=\n',x1)
-print('x2=\n',x2)
-print(np.concatenate([x1,x2],axis=1)) #按水平方向
-print(np.concatenate([x1,x2],axis=0)) #按竖直反向
-</code></pre>
-<p>输出：</p>
-<pre><code>x1=
- [[ 1.62434536 -0.61175641 -0.52817175]
- [-1.07296862  0.86540763 -2.3015387 ]]
-x2=
- [[ 4.48962353 -0.5224138   1.63807819]
- [ 0.50125925  3.92421587 -3.12028142]]
-
-[[ 1.62434536 -0.61175641 -0.52817175  4.48962353 -0.5224138   1.63807819]
- [-1.07296862  0.86540763 -2.3015387   0.50125925  3.92421587 -3.12028142]]
-
-[[ 1.62434536 -0.61175641 -0.52817175]
- [-1.07296862  0.86540763 -2.3015387 ]
- [ 4.48962353 -0.5224138   1.63807819]
- [ 0.50125925  3.92421587 -3.12028142]]
-</code></pre>
+<h1 id="_3">模型选择</h1>
+<p><strong>1、 马尔可夫模型、隐马尔可夫模型、层次化隐马尔可夫模型、马尔可夫网络</strong></p>
+<p>（1）应用：词类标注、语音识别、局部句法剖析、语块分析、命名实体识别、信息抽取等。应用于自然科学、工程技术、生物科技、公用事业、信道编码等多个领域。   </p>
+<p>（2）马尔可夫链：在随机过程中，每个语言符号的出现概率不相互独立，每个随机试验的当前状态依赖于此前状态，这种链就是马尔可夫链。   </p>
+<p>（3）多元马尔科夫链：考虑前一个语言符号对后一个语言符号出现概率的影响，这样得出的语言成分的链叫做一重马尔可夫链，也是二元语法。二重马尔可夫链，也是三元语法，三重马尔可夫链，也是四元语法  </p>
+<p><strong>2、条件随机场（CRF）</strong></p>
+<p>（1）条件随机场用于序列标注，中文分词、中文人名识别和歧义消解等自然语言处理中，表现出很好的效果。原理是：对给定的观察序列和标注序列，建立条件概率模型。条件随机场可用于不同预测问题，其学习方法通常是极大似然估计。</p>
+<p>（2）条件随机场模型也需要解决三个基本问题：特征的选择、参数训练和解码。</p>
+<p><strong>3、贝叶斯网络</strong></p>
+<p>贝叶斯网络又称为信度网络或信念网络（belief networks）,是一种基于概率推理的数学模型，其理论基础是贝叶斯公式。</p>
+<p><strong>4、最大熵模型</strong>
+<a href="https://blog.csdn.net/hgnuxc_1993/article/details/114897839">最大熵模型详解</a></p>
+<h1 id="nlp_1">NLP常用工具</h1>
+<p><strong>1、Scikit-learn</strong></p>
+<p>Scikit-learn是广受欢迎的入门级机器学习库，包含大量的机器学习算法和特征提取实现，使用非常简便。Scikit-learn实现的是浅层学习算法，神经网络仅实现了多层感知机。</p>
+<p><strong>2、TensorFlow</strong></p>
+<p>TensorFlow是谷歌基于DistBelief进行研发的第二代人工智能学习系统,可被用于语音识别或图像识别等多项机器学习和深度学习领域。</p>
+<p><strong>3、Keras</strong></p>
+<p>Keras是一个高级别的Python神经网络框架，能在TensorFlow或者 Theano 上运行。Keras的作者、谷歌AI研究员Francois Chollet宣布了一条激动人心的消息，Keras将会成为第一个被添加到TensorFlow核心中的高级别框架，这将会让Keras变成Tensorflow的默认API。</p>
+<p><strong>4、Gensim</strong></p>
+<p>Gensim是一款开源的第三方Python工具包，用于从原始的非结构化的文本中，无监督地学习到文本隐层的主题向量表达。它支持包括TF-IDF，LSA，LDA，和word2vec在内的多种主题模型算法，支持流式训练，并提供了诸如相似度计算，信息检索等一些常用任务的API接口。</p>
+<p><strong>5、NLTK</strong></p>
+<p>在NLP领域中，NLTK是最常使用的一个Python库。</p>
+<p><strong>6、Jieba</strong></p>
+<p>Jieba，结巴分词是最受欢迎的中文分词工具。</p>
+<h1 id="nlp_2">NLP语言模型</h1>
+<p>（1）词的独热表示（one-hot representation）</p>
+<p>（2）Bag of Words</p>
+<p>（3）Bi-gram 和 N-gram</p>
+<p>（4）词的分布式表示（distributed representation）</p>
+<p>（5）共现矩阵（Cocurrence martrix）</p>
+<p>（6）神经网络语言模型（Neural Networ Language model，NNLM）</p>
+<p>（7）word2vec:其中包含两种算法，连续词袋模型（Continuous Bag of Words，CBOW）和 Skip-Gram模型</p>
+<p><a href="https://blog.csdn.net/vincent_duan/article/details/117967110">word2vec介绍</a></p>
+<h1 id="nlp_3">NLP的十大应用场景</h1>
+<p><strong>1.机器翻译</strong></p>
+<p>每个人都知道什么是翻译-我们将信息从一种语言翻译成另一种语言。当机器完成相同的操作时，我们要处理的是如何“机器”翻译。机器翻译背后的想法很简单-开发计算机算法以允许自动翻译而无需任何人工干预。最著名的应用程序可能是Google Translate。</p>
+<p>Google翻译基于SMT-统计机器翻译。这不是单字逐字替换的工作。Google翻译会搜集尽可能多的文本，然后对数据进行处理来找到合适的翻译。这和我们人类很相似，当我们还是孩子的时候，我们从给词语赋予意思含义，到对这些词语的进行组合抽象和推断。</p>
+<p>但并非所有闪光的都是金子，考虑到人类语言固有的模糊性和灵活性，机器翻译颇具挑战性。人类在认知过程中会对语言进行解释或理解，并在许多层面上进行翻译，而机器处理的只是数据、语言形式和结构，现在还不能做到深度理解语言含义。</p>
+<p><strong>2.语音识别</strong></p>
+<p>语音识别技术已经存在了50多年了。半个世纪以来，科学家一直在解决这个问题，直到最近几十年，语音识别才取得了巨大的进步。现在，我们拥有各种各样的语音识别软件程序，这些程序可以使我们解码人的语音。它的应用包括移动电话，家庭自动化，免提计算，虚拟辅助，视频游戏等。</p>
+<p>总而言之，这项技术已被用来替代其他输入方式，例如以任何的键入，单击或选择文本。如今，语音识别已成为众多产品中的一个热门话题，例如语音助手（Cortana，Google Assistant，Siri等）。每个人都知道这些应用不是那么完美。对于更复杂的任务，NLP和神经网络无法很好地应对其任务。但是谁知道呢，也许这个问题会随着时间很快就会解决？</p>
+<p><strong>3.情感分析</strong></p>
+<p>情感分析是一种有趣的NLP和数据挖掘任务，用于衡量人们的观点倾向。例如，我们可以对电影评论或由该电影引起的情绪状态进行分析。</p>
+<p>情感分析有助于检查顾客对商品或服务是否满意。传统的民意调查早已淡出人们的视线。即使是那些想要支持品牌或政治候选人的人也不总是愿意花时间填写问卷。然而，人们愿意在社交网络上分享他们的观点。搜索负面文本和识别主要的投诉可以显著地帮助改变概念、改进产品和广告，并减少不满的程度。反过来，明确的正面评论会提高收视率和需求。</p>
+<p><strong>4.问答系统</strong></p>
+<p>问答系统(QA)是一种涉及到构建能够用自然语言自动回答人类提出的问题的系统。下面是一些真正的问答应用程序:Siri、OK谷歌、聊天框和虚拟助理。虽然之前也提到过这些应用程序，但是理解语音只是其中的一半，另一个自然是给出响应与回答。</p>
+<p><strong>5.自动摘要</strong></p>
+<p>回到我们每天面对的文本数据量，信息过载是一个巨大的挑战，但是现在NLP技术让我们拥有了自动过滤和汇总的能力。这是为较长的文本文档创建简短，准确且流利的摘要的过程。使用自动摘要的最重要优点是可以减少阅读时间。以下是可以尝试的一些API：Aylien文本分析，MeaningCloud摘要，ML分析器，文本摘要。</p>
+<p><strong>6.聊天机器人</strong></p>
+<p>第一个聊天机器人出现在1960年代，经过几十年的发展，NLP已经成为创建聊天机器人的基础，尽管这样的系统并不是那么完美，但它们可以轻松地处理标准任务。聊天机器人当前可在多种渠道上运行，包括Internet，应用程序和消息传递平台。</p>
+<p><strong>7.市场预测</strong></p>
+<p>营销人员还使用NLP来搜索有可能或明确打算购物的人。Internet上的行为，维护社交网络上的页面以及对搜索引擎的查询提供了许多有用的非结构化客户数据。Google可以充分利用这些数据来向互联网用户销售合适的广告。每当访问者点击广告时，广告客户就要向Google付费。点击的成本从几美分到超过50美元不等。</p>
+<p>市场情报的核心是使用多种信息源来全面了解公司的现有市场，客户，问题，竞争以及新产品和服务的增长潜力。用于分析的原始数据来源包括销售日志，调查和社交媒体等。</p>
+<p><strong>8.文本分类</strong></p>
+<p>文本分类用机器对文本集(或其他实体或物件)按照一定的分类体系或标准进行自动分类标记。通过使用NLP技术，文本分类器可以自动分析文本，然后根据其内容分配一组预定义标签或类别。</p>
+<p><strong>9.字符识别</strong></p>
+<p>字符识别系统还具有许多应用程序，例如收据字符识别，发票字符识别，支票字符识别，合法开票凭证字符识别等。是现在最常用的NLP应用之一</p>
+<p><strong>10.拼写检查</strong></p>
+<p>拼写检查器是一种软件工具，可识别并纠正文本中的所有拼写错误。大多数文本编辑器允许用户检查其文本是否包含拼写错误。最直接的例子之一是Grammarly。这是一个在线语法检查器，可扫描您的文本以查找所有类型的错误，从错别字到句子结构问题等等。</p>
+<p><a href="https://blog.csdn.net/asialee_bird/article/details/85702874">https://blog.csdn.net/asialee_bird/article/details/85702874</a></p>
 
 
 
@@ -1677,7 +1637,7 @@ x2=
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: 主页" rel="prev">
+        <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 聚类分析" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1686,20 +1646,20 @@ x2=
               <span class="md-footer__direction">
                 Previous
               </span>
-              主页
+              聚类分析
             </div>
           </div>
         </a>
       
       
         
-        <a href="../%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90/" class="md-footer__link md-footer__link--next" aria-label="Next: 随机生成" rel="next">
+        <a href="../../bj/mygit/" class="md-footer__link md-footer__link--next" aria-label="Next: git学习" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              随机生成
+              git学习
             </div>
           </div>
           <div class="md-footer__button md-icon">
