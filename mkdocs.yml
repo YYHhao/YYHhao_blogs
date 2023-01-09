@@ -6,20 +6,26 @@ nav:
       - 基本操作: numpy模块/mynumpy.md
       - 随机生成: numpy模块/随机生成.md
       - nonzero函数: numpy模块/nonzero函数.md
+      - argmax函数: numpy模块/argmax函数.md
+
     - pandas模块: 
       - 基本操作: pandas模块/mypandas.md 
       - map()和apply(): pandas模块/map_apply.md
       - DataFrame合并: pandas模块/合并方法.md
       - Grouping、Sorting和rename : pandas模块/mygroupby.md
+
     - sklearn模块:
       - 交叉验证生成器: sklearn模块/交叉验证.md
       - 文本数据处理: sklearn模块/文本数据处理.md
+
     - 算法学习: 
       - 欧几里得算法、中国剩余定理: alglearning/mylearning1.md
       - 模拟退火算法: alglearning/SA.md
+
     - 爬虫学习: 
       - 多线程、异步爬虫: pachong/mypachong1.md
       - 进、线、协程的概念: pachong/mypachong2.md
+
     - 机器学习:
       - 损失函数: ml/lossfun.md
       - EM算法: ml/EM算法.md
@@ -37,15 +43,34 @@ nav:
         - 高斯混合聚类: ml/聚类算法/高斯混合聚类.md
       - 分类算法: ml/分类算法/classifyalg.md
       - 回归算法: ml/回归算法/regressionalg.md
+
     - 深度学习:
       - 神经网络权重初始化0问题: dl/初始化.md
+      - super(X,self).__init__(): dl/super.md
+      - LeNet-5卷积神经网络: dl/lenet5.md
+      - Image Classification:
+        - AlexNet: dl/图像分类/alexnet.md
+        - VGG: dl/图像分类/vgg.md
+      - Image Detection:
+        - R-CNN: dl/图像检测/rcnn.md
+        - R-FCN: dl/图像检测/rfcn.md
+      - Image Segmentation:
+        - 显著性检测: dl/图像分割/显著性检测.md
+        - 物体分割: dl/图像分割/物体分割.md
+        - 语义分割: dl/图像分割/语义分割.md
+      - RNN(循环神经网络): dl/RNN.md
+      - GAN(生成式对抗网络): dl/GAN.md
+
     - 数据处理及可视化: 
       - matplotlib中文编码: datapv/mydatapv.md
+
     - HTML和XML: 
       - 简介与解析: html_xml/简介与解析.md
+
   - CV: 
     - 读取图片: cvlearning/读取图片.md
     - opencv中文路径问题: cvlearning/中文报错问题.md
+
   - 数学建模: 
     - 前言: 数学建模/前言.md
     - 优化模型:
@@ -56,8 +81,10 @@ nav:
       - 灰色预测: 数学建模/预测模型/灰色预测.md
     - 统计模型:
       - 聚类分析: 数学建模/统计模型/聚类分析.md
+
   - NLP:
     - 前言: NLP/前言.md
+    
   - 笔记:
     - git学习: bj/mygit.md
     - 编码(encode)与解码(decode): bj/编码与解码.md
