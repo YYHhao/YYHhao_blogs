@@ -1,0 +1,2253 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../img/火箭.svg">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
+    
+    
+      
+        <title>SVM - YYHhao的个人博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#svm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="YYHhao的个人博客" class="md-header__button md-logo" aria-label="YYHhao的个人博客" data-md-component="logo">
+      
+  <img src="../../../img/火箭.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            YYHhao的个人博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SVM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="YYHhao的个人博客" class="md-nav__button md-logo" aria-label="YYHhao的个人博客" data-md-component="logo">
+      
+  <img src="../../../img/火箭.svg" alt="logo">
+
+    </a>
+    YYHhao的个人博客
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        主页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          numpy模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="numpy模块" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          numpy模块
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../numpy%E6%A8%A1%E5%9D%97/mynumpy/" class="md-nav__link">
+        基本操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../numpy%E6%A8%A1%E5%9D%97/%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90/" class="md-nav__link">
+        随机生成
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../numpy%E6%A8%A1%E5%9D%97/nonzero%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        nonzero函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../numpy%E6%A8%A1%E5%9D%97/argmax%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        argmax函数
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          pandas模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="pandas模块" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          pandas模块
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas%E6%A8%A1%E5%9D%97/mypandas/" class="md-nav__link">
+        基本操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas%E6%A8%A1%E5%9D%97/map_apply/" class="md-nav__link">
+        map()和apply()
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas%E6%A8%A1%E5%9D%97/%E5%90%88%E5%B9%B6%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        DataFrame合并
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas%E6%A8%A1%E5%9D%97/mygroupby/" class="md-nav__link">
+        Grouping、Sorting和rename
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          sklearn模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="sklearn模块" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          sklearn模块
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sklearn%E6%A8%A1%E5%9D%97/%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/" class="md-nav__link">
+        交叉验证生成器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sklearn%E6%A8%A1%E5%9D%97/%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" class="md-nav__link">
+        文本数据处理
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          算法学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="算法学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          算法学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../alglearning/mylearning1/" class="md-nav__link">
+        欧几里得算法、中国剩余定理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../alglearning/SA/" class="md-nav__link">
+        模拟退火算法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          爬虫学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="爬虫学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          爬虫学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pachong/mypachong1/" class="md-nav__link">
+        多线程、异步爬虫
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pachong/mypachong2/" class="md-nav__link">
+        进、线、协程的概念
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          机器学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="机器学习" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          机器学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lossfun/" class="md-nav__link">
+        损失函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EM%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        EM算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        高斯混合模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          降维算法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="降维算法" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          降维算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%99%8D%E7%BB%B4%E7%AE%97%E6%B3%95/jiangwei/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%99%8D%E7%BB%B4%E7%AE%97%E6%B3%95/mypca/" class="md-nav__link">
+        PCA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%99%8D%E7%BB%B4%E7%AE%97%E6%B3%95/myica/" class="md-nav__link">
+        ICA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%99%8D%E7%BB%B4%E7%AE%97%E6%B3%95/mylda/" class="md-nav__link">
+        LDA
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          聚类算法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="聚类算法" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          聚类算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/clusteralg/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB/" class="md-nav__link">
+        层次聚类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/Dbscan/" class="md-nav__link">
+        DBSCAN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/OPTICS/" class="md-nav__link">
+        OPTICS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E8%81%9A%E7%B1%BB/" class="md-nav__link">
+        高斯混合聚类
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          分类算法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="分类算法" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          分类算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classifyalg/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KNN/" class="md-nav__link">
+        KNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        SVM
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CART/" class="md-nav__link">
+        CART
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CBDT/" class="md-nav__link">
+        CBDT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RFC/" class="md-nav__link">
+        随机森林
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95/regressionalg/" class="md-nav__link">
+        回归算法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          深度学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="深度学习" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          深度学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/%E5%88%9D%E5%A7%8B%E5%8C%96/" class="md-nav__link">
+        神经网络权重初始化0问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/super/" class="md-nav__link">
+        super(X,self).__init__()
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/lenet5/" class="md-nav__link">
+        LeNet-5卷积神经网络
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Image Classification
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Image Classification" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Image Classification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/alexnet/" class="md-nav__link">
+        AlexNet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/图像分类/vgg.md" class="md-nav__link">
+        VGG
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Image Detection
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Image Detection" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Image Detection
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/%E5%9B%BE%E5%83%8F%E6%A3%80%E6%B5%8B/rcnn/" class="md-nav__link">
+        R-CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/%E5%9B%BE%E5%83%8F%E6%A3%80%E6%B5%8B/rfcn/" class="md-nav__link">
+        R-FCN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Image Segmentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Image Segmentation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Image Segmentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/%E6%98%BE%E8%91%97%E6%80%A7%E6%A3%80%E6%B5%8B/" class="md-nav__link">
+        显著性检测
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/%E7%89%A9%E4%BD%93%E5%88%86%E5%89%B2/" class="md-nav__link">
+        物体分割
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" class="md-nav__link">
+        语义分割
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/RNN.md" class="md-nav__link">
+        RNN(循环神经网络)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dl/GAN.md" class="md-nav__link">
+        GAN(生成式对抗网络)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_9" type="checkbox" id="__nav_4_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_9">
+          数据处理及可视化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数据处理及可视化" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_9">
+          <span class="md-nav__icon md-icon"></span>
+          数据处理及可视化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datapv/mydatapv/" class="md-nav__link">
+        matplotlib中文编码
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_10" type="checkbox" id="__nav_4_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_10">
+          HTML和XML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTML和XML" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_10">
+          <span class="md-nav__icon md-icon"></span>
+          HTML和XML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../html_xml/%E7%AE%80%E4%BB%8B%E4%B8%8E%E8%A7%A3%E6%9E%90/" class="md-nav__link">
+        简介与解析
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          CV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CV" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          CV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cvlearning/%E8%AF%BB%E5%8F%96%E5%9B%BE%E7%89%87/" class="md-nav__link">
+        读取图片
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cvlearning/%E4%B8%AD%E6%96%87%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        opencv中文路径问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          数学建模
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数学建模" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          数学建模
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%89%8D%E8%A8%80/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2">
+          优化模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="优化模型" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          优化模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E4%BC%98%E5%8C%96%E6%A8%A1%E5%9E%8B/%E5%A4%9A%E7%9B%AE%E6%A0%87%E8%A7%84%E5%88%92/" class="md-nav__link">
+        多目标规划
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" type="checkbox" id="__nav_6_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          评价模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="评价模型" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          评价模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90/" class="md-nav__link">
+        层次分析法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" type="checkbox" id="__nav_6_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_4">
+          预测模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="预测模型" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          预测模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B/%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B/" class="md-nav__link">
+        灰色预测
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_5">
+          统计模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="统计模型" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          统计模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/" class="md-nav__link">
+        聚类分析
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          NLP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NLP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          NLP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/%E5%89%8D%E8%A8%80/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bj/mygit/" class="md-nav__link">
+        git学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bj/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%A7%A3%E7%A0%81/" class="md-nav__link">
+        编码(encode)与解码(decode)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bj/pip%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        pip的使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bj/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        Anaconda虚拟环境
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bj/myvim/" class="md-nav__link">
+        vim编辑器
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="svm">支持向量机(SVM)</h1>
+<p>SVM是机器学习中一类有监督的分类算法，可以认为是一个二类分类器。将假设样本空间上有两类点，它的基本思想就是<strong>寻找一个超平面对样本点进行划分，使得该超平面的泛化能力是最好的，也就是使两类样本中样本点与该超平面的距离最大</strong>。其具体来讲有三种情况：  </p>
+<ul>
+<li>当训练样本<strong>线性可分</strong>时，通过硬间隔最大化，学习一个线性分类器，即线性可分支持向量机。</li>
+<li>当训练样本<strong>近似线性可分</strong>时，引入松弛变量，通过软间隔最大化，学习一个线性分类器，即线性支持向量机。</li>
+<li>但训练样本数据<strong>线性不可分</strong>时，通过使用核技巧及软间隔最大化，学习非线性支持向量机。</li>
+</ul>
+<h1 id="svm_1">SVM为什么要间隔最大化？(与感知机的区别)</h1>
+<p>当训练样本数据<strong>线性可分</strong>时，存在无数个分类超平面可以将两类数据正确分开。感知机利用误分类最小策略，求得分离超平面，但此时的解有无穷多个。线性可分支持向量机利用间隔最大化求得<strong>最优分离超平面</strong>，这时，<strong>解是唯一的</strong>。除此之外，此时的分隔超平面所产生的<strong>分类结果是最鲁棒的</strong>，对未知数据的<strong>泛化能力最强</strong>。</p>
+<p><img alt="" src="../image/svm4.png" />
+<strong>应选择“正中间”, 容忍性好, 鲁棒性高, 泛化能力最强的分类平面。</strong>    </p>
+<h1 id="svm_2">硬间隔SVM</h1>
+<p><strong>最优分类超平面：</strong>一个超平面，如果能够将训练样本没有错误地分开，且<strong>两类训练样本中离超平面最近的样本与超平面的距离是最大</strong>的，这个超平面为最优分类超平面，简称最优超平面，也称作最大间隔超平面。    </p>
+<p>SVM 想要的就是找到各类样本点到超平面的距离最远，也就是找到最大间隔超平面。任意超平面可以用下面这个线性方程来描述：<br />
+$$
+g(x)=w^Tx+b=0
+$$  </p>
+<p>二维空间点<span class="arithmatex">\((x,y)\)</span>到直线<span class="arithmatex">\(Ax+By+C=0\)</span>的距离公式为： <br />
+$$
+\frac{|Ax+By+C|}{\sqrt{A^2+B^2}}
+$$</p>
+<p>扩展到 n 维空间后，点<span class="arithmatex">\(x=(x_1,x_2,\dots,x_n)\)</span> 到直线<span class="arithmatex">\(w^Tx+b=0\)</span>的距离为： <br />
+$$
+\frac{|w^Tx+b|}{||w||}
+$$
+其中<span class="arithmatex">\(||w||=\sqrt{w_1^2+\dots+w_n^2}\)</span></p>
+<p>所有样本可以被超平面正确地分开，即对所有样本:   </p>
+<div class="arithmatex">\[\begin{cases}
+w^Tx_i+b&gt;0,&amp;y_i=+1 \\
+w^Tx_i+b&lt;0,&amp;y_i=-1 \\
+\end{cases}
+\]</div>
+<p>尺度可以调整，可以把离分类面最近的样本的决策函数值归一化为1，如下：   </p>
+<div class="arithmatex">\[\begin{cases}
+w^Tx_i+b\geqslant 1,&amp;y_i=+1 \\
+w^Tx_i+b\leqslant 1,&amp;y_i=-1 \\
+\end{cases}
+\]</div>
+<p><img alt="" src="../image/svm5.png" /></p>
+<p>将方程合并，简写为：  <br />
+$$
+y_i(w^Tx_i+b)\geqslant 1,i=1,2,\cdots,m
+$$</p>
+<p>用此条件约束分类超平面的权值尺度变化，这种超平面称作<strong>规范化的分类超平面</strong>。并且<span class="arithmatex">\(g(x) = 1\)</span> 和 <span class="arithmatex">\(g(x) = −1\)</span> 是过两类中各自离分类面最近的样本且与分类面平行的两个边界分类面。</p>
+<p>最优分类面，在线性可分的情况下，要求分类面不但能将两类无错误地分开，而且使两类的<strong>分类间隔最大</strong>。分类间隔表示为：
+$$
+d=\frac{2}{||w||}
+$$</p>
+<h2 id="_1">对偶问题</h2>
+<p>最大化<span class="arithmatex">\(d=\frac{2}{||w||}\)</span>等价于最小化<span class="arithmatex">\(\frac{1}{2}||w||^2\)</span>      </p>
+<p>求最优超平面就转化为：   </p>
+<div class="arithmatex">\[\begin{equation}
+\begin{split}
+&amp;\underset{w,b}{min} \quad \frac{1}{2}||w||^2 \\     
+&amp;s.t.  \quad y_i(w^Tx_i+b)-1\geqslant 0,i=1,2,\dots,N  \\
+\end{split}
+\end{equation}
+\]</div>
+<p>采用拉格朗日算法求解：
+对每个样本引入一个拉格朗日系数
+$$
+\alpha_i \geqslant0,\quad i=1,2,\dots,m
+$$</p>
+<p>则该问题的拉格朗日函数为： <br />
+$$
+L(w,b,\alpha)=\frac{1}{2}||w||^2-\sum_{i=1}^{m}\alpha_i[y_i(w^Tx_i+b)-1]
+$$
+其中<span class="arithmatex">\(\alpha={\alpha_1,\alpha_2,\cdots,\alpha_m}\)</span></p>
+<p>分别对<span class="arithmatex">\(w\)</span>和<span class="arithmatex">\(b\)</span>求偏微分并令它们等于0，可得：   </p>
+<div class="arithmatex">\[\begin{equation}
+\begin{split}
+&amp;w=\sum_{i=1}^{m}\alpha_iy_ix_i  \\
+&amp;且\quad \sum_{i=1}^{m}y_i\alpha_i=0 \\
+\end{split}
+\end{equation}
+\]</div>
+<p>代入上述拉格朗日函数<span class="arithmatex">\(L(w,b,\alpha)\)</span>得到最优超平面的对偶问题    </p>
+<div class="arithmatex">\[\begin{equation}
+\begin{split}
+&amp;\underset{\alpha}{max}\quad Q(\alpha)=\sum_{i=1}^{m}\alpha_i-\frac{1}{2}\sum_{i,j=1}^{m}
+\alpha_i\alpha_jy_iy_jx_i^Tx_j   \qquad (1)\\
+&amp;s.t.\quad \sum_{i=1}^{m}y_i\alpha_i=0 \\
+&amp;且\quad \alpha_i\geqslant 0,i=1,\dots,m
+\end{split}
+\end{equation}
+\]</div>
+<p>解出<span class="arithmatex">\(\alpha\)</span>后，求出<span class="arithmatex">\(w\)</span>与<span class="arithmatex">\(b\)</span>即可得到模型。 <br />
+通过对偶问题的解<span class="arithmatex">\(\alpha_i^*,i=1,\dots,m\)</span>,可得   </p>
+<div class="arithmatex">\[
+w^*=\sum_{i=1}^{m}\alpha_i^*y_ix_i       \qquad (2)
+\]</div>
+<p><strong>即最优超平面的权值向量等于训练样本以一定的系数加权后进行线性组合。</strong></p>
+<p><strong>求解b^*</strong>: <br />
+上述过程需要满足库恩-塔克（KKT）条件，即要求    </p>
+<div class="arithmatex">\[\begin{cases}
+\alpha_i \geqslant 0    \\
+y_i(w^Tx_i+b)-1 \geqslant 0 \\
+\alpha_i[y_i(w^Tx_i+b)-1]=0
+\end{cases}
+\]</div>
+<p><strong>注：</strong>  </p>
+<ul>
+<li>优化问题是凸优化的话，KKT 条件就是极小值点（而且是全局极小）存在的充要条件。</li>
+<li>不是凸优化的话，KKT 条件只是极小值点的必要条件，不是充分条件，KKT 点是驻点，是可能的极值点。也就是说，就算求得的满足KKT 条件的点，也不一定是极小值点，只是说极小值点一定满足KKT 条件。</li>
+</ul>
+<p>于是，对任意样本<span class="arithmatex">\((x_i,y_i)\)</span>,总有<span class="arithmatex">\(\alpha_i=0\)</span>或<span class="arithmatex">\(y_i(w^Tx_i+b)-1=0\)</span>    </p>
+<ul>
+<li>当<span class="arithmatex">\(y_i(w^Tx_i+b)-1 &gt; 0\)</span> 时，<span class="arithmatex">\(\alpha_i=0\)</span>,该样本不会在上式(2)的求和中出现，也就不会对w产生任何影响。</li>
+<li>当<span class="arithmatex">\(y_i(w^Tx_i+b)-1=0\)</span>时，&amp;\alpha_i&gt;0&amp;,距离分类面最近的样本，决定了最终的最优超平面的位置。<span class="arithmatex">\(w^*=\sum_{i=1}^{m}\alpha_i^*y_ix_i\)</span>中也只有这些<span class="arithmatex">\(\alpha_i&gt;0\)</span>的样本参与求和。</li>
+</ul>
+<p>只有很少一部分样本对应的<span class="arithmatex">\(\alpha_i\)</span>不为0，这些样本被称为<strong>支持向量(support vector)</strong>。</p>
+<p><strong>重要性质：</strong>模型训练完后，大部分的训练样本都不需要保留，最终模型仅与支持向量有关。  </p>
+<p>因此支持向量满足：   </p>
+<div class="arithmatex">\[
+y_i(w^{*T}x_i+b^*)-1=0
+\]</div>
+<p>将任意支持向量代入，即得到 <span class="arithmatex">\(b^{*}\)</span>。   </p>
+<p>为了更具鲁棒性，我们可以求得支持向量的均值代入求<span class="arithmatex">\(b\)</span>。</p>
+<h1 id="sequential-minimal-optimizationsmo">序列最小优化算法算法(Sequential Minimal Optimization,简称SMO)</h1>
+<p><strong>核心思想：</strong>每次只优化一个参数，其他参数先固定住，仅求当前这个优化参数的极值。  <br />
+SMO的基本思路是先固定<span class="arithmatex">\(\alpha_i\)</span>之外的所有参数，然后求<span class="arithmatex">\(\alpha_i\)</span>上的极限。由于存在约束<span class="arithmatex">\(\sum_{i=1}^m\alpha_iy_i=0\)</span>,若固定<span class="arithmatex">\(\alpha_i\)</span>之外的其它变量，则<span class="arithmatex">\(\alpha_i\)</span>可由其它变量导出。于是SMO每次选择两个变量<span class="arithmatex">\(\alpha_i\)</span>和<span class="arithmatex">\(\alpha_j\)</span>并固定其它参数，这样，在参数初始化后，SMO不断执行如下两个步骤直至收敛：   </p>
+<ul>
+<li>选取一对需更新的<span class="arithmatex">\(\alpha_i\)</span>和<span class="arithmatex">\(\alpha_j\)</span></li>
+<li>固定<span class="arithmatex">\(\alpha_i\)</span>和<span class="arithmatex">\(\alpha_j\)</span>以外的参数，求解式子(1)获得更新后的<span class="arithmatex">\(\alpha_i\)</span>和<span class="arithmatex">\(\alpha_j\)</span></li>
+</ul>
+<p>仅考虑<span class="arithmatex">\(\alpha_i\)</span>和<span class="arithmatex">\(\alpha_j\)</span>时，对偶问题的约束变为    </p>
+<div class="arithmatex">\[
+\alpha_iy_i+\alpha_jy_j = -\sum_{k\ne i,j}\alpha_ky_k, \quad \alpha_i \geqslant 0,\alpha_j \geqslant 0
+\]</div>
+<p>用一个变量表示另一个变量, 回代入对偶问题可得一个单变量的二次规划, 该问题具有闭式解。<br />
+偏移量b：通过支持向量来决定。</p>
+<p>SMO 变量选择原则     </p>
+<ul>
+<li>第一个变量是在KKT 条件不满足的变量中间选择，直观来看，KKT 条件违背的程度越大，则变量更新后可能会使得目标函数的增幅越大，从而选择违背KKT 条件程度越大的变量       </li>
+<li>第二个变量应选择使得目标函数增长最快的变量；常用启发式，也就是使选取的两变量所对应样本之间的间距最大   </li>
+</ul>
+<h1 id="svm_3">软间隔SVM</h1>
+<p>现实中, 很难确定合适的核函数使得训练样本在特征空间中线性可分; 同时一个线性可分的结果也很难断定是否是有过拟合造成的。线性不可分情况下，最优超平面不存在，不等式<span class="arithmatex">\(y_i(w^Tx_i + b) − 1 ≥ 0\)</span>不可能对所有样本同时满足。    </p>
+<p>因此，允许支持向量机在一些样本上出错，引入"软间隔"的概念。
+<img alt="" src="../image/svm6.png" /></p>
+<p>假定某个样本xi 不满足以上条件，即<span class="arithmatex">\(y_i(w^Tx_i + b) − 1 &lt; 0\)</span>，总可以在不等式的左侧加上一个正数 <span class="arithmatex">\(\xi_i\)</span> 使得新的不等式 <span class="arithmatex">\(y_i(w^Tx_i + b)−1+ \xi_i ≥ 0\)</span> 成立。  <br />
+线性不可分情况下，引入非负松弛变量 <span class="arithmatex">\(\xi_i,i=1,\dots,m\)</span> 使<span class="arithmatex">\(y_i(w^Tx_i + b) − 1 ≥ 0\)</span>变为  <br />
+$$
+y_i(w^Tx_i + b) − 1+\xi_i \geqslant 0,i=1,2,\dots,m
+$$
+样本<span class="arithmatex">\(x_i\)</span>满足<span class="arithmatex">\(y_i(w^Tx_i + b) − 1 ≥ 0\)</span>，则 <span class="arithmatex">\(\xi_i=0\)</span> ;样本 <span class="arithmatex">\(x_i\)</span> 不满足<span class="arithmatex">\(y_i(w^Tx_i + b) − 1 ≥ 0\)</span>，则<span class="arithmatex">\(\xi_i&gt;0\)</span>。    </p>
+<p><span class="arithmatex">\(\sum_{i=1}^m\xi_i\)</span>反映整个训练样本集上不满足<span class="arithmatex">\(y_i(w^Tx_i + b) − 1 ≥ 0\)</span> 约束的程度。   </p>
+<p><strong>目标函数：最大化间隔的同时, 让不满足约束的样本应尽可能少,如下式</strong>   </p>
+<div class="arithmatex">\[
+\underset{w,b}{min} \frac{1}{2}||w||^2+C(\sum_{i=1}^m\xi_i)
+\]</div>
+<ul>
+<li>对满足约束的样本，希望分类间隔尽可能大；   </li>
+<li>希望不满足约束的样本尽可能少且不满足约束的程度尽可能低；</li>
+</ul>
+<p><strong>C 是常数，反映在二者之间的折中，需要人为选择：</strong>   </p>
+<ul>
+<li>选择较小的C，表示对不满足的程度比较容忍而更强调样本的分类间隔；</li>
+<li>选择较大的C，更强调对不满足约束的样本的惩罚；</li>
+</ul>
+<p>给定训练样本集<span class="arithmatex">\(D={(x_i,y_i),(x_2,y_2),\dots,(x_m,y_m)}\)</span>,<span class="arithmatex">\(x_i\in{R^d},y_i\in {\{+1,-1\}}\)</span><br />
+求解,得到常用的<strong>软间隔支持向量机</strong>：       </p>
+<div class="arithmatex">\[\begin{equation}
+\begin{split}
+&amp;\underset{w,b,\xi_i}{min}\quad \frac{1}{2}||w||^2+C(\sum_{i=1}{m}\xi_i)\\
+&amp;s.t.\quad y_i(w^Tx_i+b)-1+\xi_i \geqslant 0,i=1,2,\dots,m \\
+&amp;且\quad \xi_i\geqslant 0,i=1,\dots,m
+\end{split}
+\end{equation}
+\]</div>
+<h1 id="_2">非线性支持向量机</h1>
+<p>我们刚刚讨论的硬间隔和软间隔都是在说样本的完全线性可分或者大部分样本点的线性可分。 <br />
+但我们可能会碰到的一种情况是样本点不是线性可分的，比如：
+<img alt="" src="../image/svm7.png" />
+这种情况的解决方法就是：将二维线性不可分样本映射到高维空间中，让样本点在高维空间线性可分，比如：<br />
+<img alt="" src="../image/svm8.png" /></p>
+<p>对于在有限维度向量空间中线性不可分的样本，我们将其映射到更高维度的向量空间里，再通过间隔最大化的方式，学习得到支持向量机，就是非线性 SVM。</p>
+<p>我们用 x 表示原来的样本点，用 <span class="arithmatex">\(\phi(x)\)</span> 表示 x 映射到特征新的特征空间后到新向量。那么分割超平面可以表示为:<span class="arithmatex">\(f(x)=w\phi(x)+b\)</span>  。</p>
+<p>对于非线性 SVM 的对偶问题就变成了：   </p>
+<div class="arithmatex">\[\begin{equation}
+\begin{split}
+&amp;\underset{\lambda}{min}\quad [\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_jy_iy_j\phi(x_i)^T\phi(x_j)-\sum_{j=1}^n\lambda_i]\\
+&amp;s.t.\quad \sum_{i=1}^n\lambda_iy_i=0,\quad\lambda_i\geqslant 0,\quad C-\lambda_i-u_i=0\\
+\end{split}
+\end{equation}
+\]</div>
+<p>与线性 SVM 唯一的不同就是：之前的<span class="arithmatex">\(x_i^Tx_j\)</span>变成了 <span class="arithmatex">\(\phi(x_i)^T\phi(x_j)\)</span>。</p>
+<h2 id="_3">核函数</h2>
+<p>在特征空间类并不总是线性可分的。解决办法就是构建一个不是线性的但能是多项式的函数做代替。这要使用 核技巧(kernel trick)，它可以被看作通过设置 kernels 在观察样例上创建决策力量。    </p>
+<p>SVM常用的核函数：   </p>
+<ul>
+<li>linear：线性核函数，只能解决线性问题</li>
+<li>ploy：多项式核函数，解决非线性问题和线性问题，但是偏线性</li>
+<li>rbf：高斯径向基核函数，解决线性和非线性问题，偏非线性</li>
+</ul>
+<p><strong>1、线性核</strong>  <br />
+<img alt="" src="../image/svm1.png" /></p>
+<pre><code class="language-python">svc = svm.SVC(kerner='linear')
+</code></pre>
+<p><strong>2、多项式核</strong> <br />
+<img alt="" src="../image/svm2.png" /></p>
+<pre><code class="language-python">svc = svm.SVC(kerner='poly',degree=3)
+</code></pre>
+<p><strong>3、RBF内核(径向基函数，高斯核函数)</strong> <br />
+<img alt="" src="../image/svm3.png" /></p>
+<pre><code class="language-python">svc = svm.SVC(kerner='rbf')
+</code></pre>
+<p><a href="https://blog.csdn.net/Beyond_2016/article/details/81668414">核函数详解及具体公式</a>  <br />
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html">sklearn.svm.SVC参数详情</a>   </p>
+<p><strong>支持向量机的优点:</strong>   </p>
+<ul>
+<li>在高维空间中非常高效</li>
+<li>即使在数据维度比样本数量大的情况下仍然有效</li>
+<li>在决策函数（称为支持向量）中使用训练集的子集,因此它也是高效利用内存的</li>
+<li>通用性: 不同的核函数与特定的决策函数一一对应.常见的 kernel 已经提供,也可以指定定制的内核</li>
+</ul>
+<p><strong>支持向量机的缺点:</strong>   </p>
+<ul>
+<li>如果特征数量比样本数量大得多,在选择核函数时要避免过拟合, 而且正则化项是非常重要的</li>
+<li>支持向量机不直接提供概率估计,这些都是使用昂贵的五次交叉验算计算的</li>
+</ul>
+<blockquote>
+<p><strong>注：上述主要写了支持向量分类(SVC),而支持向量回归(SVR)也可以在该基础上进行修改使用。</strong></p>
+</blockquote>
+<h1 id="svm3">鸢尾花SVM分类(多分类，3种)</h1>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+from sklearn import svm
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.multiclass import OneVsRestClassifier  #多分类器
+from sklearn.decomposition import PCA
+import numpy as np
+import mpl_toolkits.mplot3d  
+#SVMs可以用于回归：SVR(支持向量回归)，或者分类SVC(支出向量分类)
+
+def plot_hyperplane(clf,min_x,max_x,linestyle,label):
+    w = clf.coef_[0]
+    a = -w[0]/w[1]
+    xx = np.linspace(min_x - 5, max_x + 5)  # make sure the line is long enough
+    yy = a * xx - (clf.intercept_[0]) / w[1]
+    plt.plot(xx, yy, linestyle, label=label)
+
+iris = datasets.load_iris()
+X = iris.data[:,:2]
+y = iris.target
+min_x = np.min(X[:, 0])
+max_x = np.max(X[:, 0])
+min_y = np.min(X[:, 1])
+max_y = np.max(X[:, 1])   
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.1)
+classif = OneVsRestClassifier(svm.SVC(kernel=&quot;linear&quot;))
+classif.fit(X_train,y_train)
+p = classif.predict(X_test)
+print(classif.score(X_test,y_test))
+
+plt.scatter(X[:,0],X[:,1],c=y,cmap=plt.cm.Set1,edgecolors='k')  #cmp颜色映射集，edgcolors边框色彩
+plt.xlabel('sepal length')
+plt.ylabel('sepal width')
+plot_hyperplane(classif.estimators_[0], min_x, max_x, &quot;k--&quot;, &quot;Boundary\nfor class 1&quot;)
+plot_hyperplane(classif.estimators_[1], min_x, max_x, &quot;k-.&quot;, &quot;Boundary\nfor class 2&quot;)
+plt.xticks()
+plt.yticks()
+plt.show()
+</code></pre>
+<p>输出：</p>
+<pre><code>0.9333333333333333
+</code></pre>
+<p><img alt="" src="../image/svm9.png" /></p>
+<p><a href="https://zhuanlan.zhihu.com/p/77750026">参考链接:https://zhuanlan.zhihu.com/p/77750026</a> <br />
+<a href="https://www.sklearncn.cn/5/">https://www.sklearncn.cn/5/</a></p>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../KNN/" class="md-footer__link md-footer__link--prev" aria-label="Previous: KNN" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              KNN
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../CART/" class="md-footer__link md-footer__link--next" aria-label="Next: CART" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              CART
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
