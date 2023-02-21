@@ -45,6 +45,7 @@ nav:
       - 前言: ml/分类算法/classifyalg.md
       - KNN: ml/分类算法/KNN.md
       - SVM: ml/分类算法/SVM.md
+      - 决策树: ml/分类算法/DT.md
       - CART: ml/分类算法/CART.md
       - CBDT: ml/分类算法/CBDT.md
       - 随机森林: ml/分类算法/RFC.md
