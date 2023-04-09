@@ -68,11 +68,11 @@ nav:
     - RNN(循环神经网络): dl/RNN.md
     - GAN(生成式对抗网络): dl/GAN.md
 
-    - 数据处理及可视化: 
-      - matplotlib中文编码: datapv/mydatapv.md
+  - 数据处理及可视化: 
+    - matplotlib中文编码: datapv/mydatapv.md
 
-    - HTML和XML: 
-      - 简介与解析: html_xml/简介与解析.md
+  - HTML和XML: 
+    - 简介与解析: html_xml/简介与解析.md
 
   - CV: 
     - 读取图片: cvlearning/读取图片.md
