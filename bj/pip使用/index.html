@@ -1914,30 +1914,30 @@
 因为pip是一个命令行程序，所以一般在命令行中执行相应操作。  <br />
 <strong>Win+R,输入cmd，即打开命令行</strong>。   </p>
 <h1 id="pip">二、pip命令及参数</h1>
-<p>1、在命令行窗口输入 <strong>pip --help</strong> ，可以查看pip命令的参数和用法 <br />
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/05c10a6f21c549e88dea79d6b3c52249.png" />
-2、输入 <strong>pip --version</strong>查看pip版本  <br />
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/72782cbae0cb4fbab938bdc59f1be8dc.png" />
-3、输入 <strong>pip install</strong>  package_name 下载指定的python包  <br />
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/d1c89afc0e3a487b9687a57d2d8a3db4.png" /></p>
+<p>1、在命令行窗口输入 <strong>pip --help</strong> ，可以查看pip命令的参数和用法   <br />
+<img alt="在这里插入图片描述" src="../image/pip1.png" />    </p>
+<p>2、输入 <strong>pip --version</strong>查看pip版本  <br />
+<img alt="在这里插入图片描述" src="../image/pip2.png" />     </p>
+<p>3、输入 <strong>pip install</strong>  package_name 下载指定的python包  <br />
+<img alt="在这里插入图片描述" src="../image/pip3.png" /></p>
 <blockquote>
 <p>pip install package_name==1.2.1 下载指定版本的包   </p>
 </blockquote>
 <p>4、输入 <strong>pip uninstall</strong> package_name 卸载指定的包 <br />
 <span class="arithmatex">\(\qquad\)</span>用法和pip install一致 <br />
 5、输入<strong>pip freeze</strong>查看当前已安装的包和版本 <br />
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/fb52dea2772e42abb82188ee5f880c14.png" />
-6、使用 <strong>pip list</strong> 可以也查看已安装的库：   </p>
-<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/c84862d55bc744be88aec2ba1102c354.png" />
-7、输入 <strong>pip list -o</strong> ，查看当前可升级的包 <br />
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/6bbe7d935e994c4e834d46b0fc0a24ce.png" />
-8、输入 <strong>pip install -U</strong> package_name 升级指定的包 <br />
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/581d447e8c304b81950d7068b3bbf032.png" />
-9、输入<strong>python -m pip install --upgrade pip</strong> 升级pip   </p>
+<img alt="在这里插入图片描述" src="../image/pip4.png" />   </p>
+<p>6、使用 <strong>pip list</strong> 可以也查看已安装的库：   </p>
+<p><img alt="在这里插入图片描述" src="../image/pip5.png" />   </p>
+<p>7、输入 <strong>pip list -o</strong> ，查看当前可升级的包 <br />
+<img alt="在这里插入图片描述" src="../image/pip6.png" />   </p>
+<p>8、输入 <strong>pip install -U</strong> package_name 升级指定的包 <br />
+<img alt="在这里插入图片描述" src="../image/pip7.png" />   </p>
+<p>9、输入<strong>python -m pip install --upgrade pip</strong> 升级pip   </p>
 <p>10、输入 <strong>pip show</strong> package__name，显示指定包信息  <br />
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/f8ff524ab79c4ea4a64faf71d7a9cdb8.png" />
-11、输入 pip check package_name,验证已安装的库是否有兼容依赖问题  <br />
-<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/1410117dc5624845a12b3829d1f38b31.png" /></p>
+<img alt="在这里插入图片描述" src="../image/pip8.png" />    </p>
+<p>11、输入 pip check package_name,验证已安装的库是否有兼容依赖问题  <br />
+<img alt="在这里插入图片描述" src="../image/pip9.png" /></p>
 <p>12、当下载模块较大时，会超时，可以用<strong>pip install 模块 --default-timeout=100</strong>      </p>
 <h1 id="_2">三、出现的问题</h1>
 <p>1、pip安装库时出现的错误，如下：   </p>
@@ -1945,8 +1945,8 @@
 You should consider upgrading via the 'D:\python\python.exe -m pip install --upgrade pip' command.
 </code></pre>
 <p>解决方法，只需要在命令行输入：<strong>python -m pip install --upgrade pip</strong>     </p>
-<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/4c7a8bb0b7164752a887cf16516bc73e.png" />
-2、 安装<strong>fitz</strong>模块时，不能直接 pip install fitz。而是同时安装 PyMuPDF(并且是先安装 fitz 后 PyMuPDF，<strong>顺序很重要</strong>)  </p>
+<p><img alt="在这里插入图片描述" src="../image/pip10.png" />   </p>
+<p>2、 安装<strong>fitz</strong>模块时，不能直接 pip install fitz。而是同时安装 PyMuPDF(并且是先安装 fitz 后 PyMuPDF，<strong>顺序很重要</strong>)  </p>
 <p>另外注意：不能只安装PyMuPDF，当只安装PyMuPDF时，虽然可以用import fitz，但是运行fitz.open()等会出错。</p>
 
 
