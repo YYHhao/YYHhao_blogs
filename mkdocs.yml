@@ -98,6 +98,7 @@ nav:
     - pip的使用: bj/pip使用.md
     - Anaconda虚拟环境: bj/虚拟环境.md
     - vim编辑器: bj/myvim.md
+    - Mysql学习: bj/mysql.md
       
 theme:
   name: 'material'
