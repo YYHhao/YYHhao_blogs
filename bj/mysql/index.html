@@ -13,7 +13,7 @@
     
     
       
-        <title>Anaconda虚拟环境 - YYHhao的个人博客</title>
+        <title>Mysql学习 - YYHhao的个人博客</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#anaconda" class="md-skip">
+        <a href="#mysql" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Anaconda虚拟环境
+              Mysql学习
             
           </span>
         </div>
@@ -1837,21 +1837,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="md-nav__link">
         Anaconda虚拟环境
       </a>
-      
     </li>
   
 
@@ -1875,11 +1865,76 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../mysql/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Mysql学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Mysql学习
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    Mysql数据库常用术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_1" class="md-nav__link">
+    命令行操作Mysql
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql-workbench" class="md-nav__link">
+    Mysql Workbench中创建字段字符含义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_2" class="md-nav__link">
+    Mysql删除数据行
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pymysqlexecutemany" class="md-nav__link">
+    pymysql中executemany批量插入数据
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1908,8 +1963,49 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    Mysql数据库常用术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_1" class="md-nav__link">
+    命令行操作Mysql
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql-workbench" class="md-nav__link">
+    Mysql Workbench中创建字段字符含义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_2" class="md-nav__link">
+    Mysql删除数据行
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pymysqlexecutemany" class="md-nav__link">
+    pymysql中executemany批量插入数据
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1923,54 +2019,114 @@
                 
 
 
-<h1 id="anaconda">Anaconda</h1>
-<p>Anaconda指的是一个开源的Python发行版本，其包含了Conda、Python等180多个科学包及其依赖项。支持 Linux, Mac, Windows系统，提供了<strong>包管理与环境管理</strong>的功能，可以很<strong>方便地解决多版本python并存、切换以及各种第三方包安装问题。</strong>     <br />
-Anaconda利用工具/命令Conda来进行package和environment的管理，并且已经包含了Python和相关的配套工具。   </p>
+  <h1>Mysql学习</h1>
+
+<h2 id="mysql">Mysql数据库常用术语</h2>
+<p><strong>数据库:</strong> 数据库是一些关联表的集合。 <br />
+<strong>数据表:</strong> 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。 <br />
+<strong>列:</strong> 一列(数据元素) 包含了相同类型的数据, 例如邮政编码的数据。 <br />
+<strong>行:</strong> 一行（元组，或记录）是一组相关的数据，例如一条用户订阅的数据。<br />
+<strong>冗余:</strong> 存储两倍数据，冗余降低了性能，但提高了数据的安全性。 <br />
+<strong>主键:</strong> 主键是唯一的。一个数据表中只能包含一个主键。你可以使用主键来查询数据。  <br />
+<strong>外键:</strong> 外键用于关联两个表。<br />
+<strong>复合键:</strong> 复合键（组合键）将多个列作为一个索引键，一般用于复合索引。<br />
+<strong>索引:</strong> 使用索引可快速访问数据库表中的特定信息。索引是对数据库表中一列或多列的值进行排序的一种结构。类似于书籍的目录。 <br />
+<strong>参照完整性:</strong> 参照的完整性要求关系中不允许引用不存在的实体。与实体完整性是关系模型必须满足的完整性约束条件，目的是保证数据的一致性。 <br />
+<strong>表头(header):</strong> 每一列的名称。     <br />
+<strong>列(col):</strong> 具有相同数据类型的数据的集合。 <br />
+<strong>行(row):</strong> 每一行用来描述某条记录的具体信息。 <br />
+<strong>值(value):</strong> 行的具体信息, 每个值必须与该列的数据类型相同。 <br />
+<strong>键(key):</strong> 键的值在当前列中具有唯一性。   </p>
+<h2 id="mysql_1">命令行操作Mysql</h2>
+<p><strong>1、登陆Mysql</strong></p>
+<pre><code>mysql -h localhost -u root -P 3306 -p 
+#输入密码 Enter password:******
+</code></pre>
+<p>-h mysql连接地址</p>
+<p>-u mysql登录用户名</p>
+<p>-P mysql连接端口(默认为 3306)</p>
+<p>-p mysql登录密码</p>
+<p><strong>2、查看数据库</strong></p>
+<pre><code>show databases;
+</code></pre>
+<p><strong>3、创建数据库</strong></p>
+<pre><code>CREATE DATABASE [IF NOT EXISTS] database_name
+  [CHARACTER SET charset_name]
+  [COLLATE collation_name];
+</code></pre>
+<p><strong>4、删除数据库</strong></p>
+<pre><code>DROP DATABASE db_name;　　#删除
+</code></pre>
+<p><strong>5、查询数据</strong></p>
+<pre><code>SELECT * FROM tb1 WHERE name='李四';
+</code></pre>
+<h2 id="mysql-workbench">Mysql Workbench中创建字段字符含义</h2>
 <ul>
-<li>
-<p>Conda可以理解为一个工具，也是一个可执行命令，其核心功能是包管理与环境管理。包管理与pip的使用类似，环境管理则允许用户方便地安装不同版本的python并可以快速切换。 <br />
-Conda的设计理念——Conda将几乎所有的工具、第三方包都当做package对待，甚至包括python和conda自身！因此，conda打破了包管理与环境管理的约束，能非常方便地安装各种版本python、各种package并方便地切换。     </p>
-</li>
-<li>
-<p>Anaconda则是一个打包的集合，里面预装好了conda、某个版本的python、众多packages、科学计算工具等等，所以也称为Python的一种发行版。其实还有Miniconda，顾名思义，它只包含最基本的内容——python与conda，以及相关的必须依赖项，对于空间要求严格的用户，可以选择文件较小的Miniconda（仅包Conda和Python）。</p>
-</li>
+<li><strong>PK(primary key):</strong> 主键    </li>
+<li><strong>NN(not null):</strong> 非空    </li>
+<li><strong>UQ(unique):</strong> 唯一索引   </li>
+<li><strong>BIN(binary):</strong> 二进制数据(比text更大)   </li>
+<li><strong>UN(unsigned):</strong> 无符号（非负数）   </li>
+<li><strong>ZF(zero fill):</strong> 填充0 例如字段内容是1 int(4), 则内容显示为0001   </li>
+<li><strong>AI(auto increment):</strong> 自增     </li>
+<li><strong>G(generated column):</strong> 生成列</li>
 </ul>
-<h1 id="anacondapython">为什么用Anaconda中的python</h1>
-<p>Python易用，但用好却不易，其中比较头疼的就是包管理和Python不同版本的问题，特别是当我们使用Windows的时候，别的系统笔者还没用过，经常为了安装几个模块包折腾一上午甚至几天，比较麻烦。  <br />
-<strong>Anaconda可以帮我们省去很多不必要的麻烦，Anaconda不是语言，它只是python的一个集成管理工具或系统，它把python做相关数据计算与分析所需要的包都集成在了一起，我们只需要安装Anaconda软件就行了，其它什么都不用装，包括python软件。</strong>     </p>
-<h1 id="_1">虚拟环境</h1>
-<p>它是一个虚拟化的概念，从电脑独立开辟出来的环境。通俗的来讲，虚拟环境就是借助虚拟机来把一部分内容独立出来，我们把这部分独立出来的东西称作“容器”，在这个容器中，我们可以只安装我们需要的依赖包，各个容器之间互相隔离，互不影响。    </p>
-<h1 id="_2">虚拟环境的作用</h1>
-<p>在一些项目开发中，我们需要一些项目的框架，但是可能每个项目使用的框架并不一样，或使用框架的版本不一样，这样需要我们根据需求不断的更新或卸载相应的库。这样显然会非常麻烦，大大降低工作的效率，而虚拟环境则很好的解决了这个问题，我们可以<strong>将不同框架分别安装在不同的环境中，当需要时只需要我们切换环境</strong>就可以了。   </p>
-<h1 id="_3">虚拟环境下的基础指令</h1>
-<p>1、进入Anaconda命令行  <br />
-<img alt="" src="../image/an1.png" /></p>
-<p>2、查看该环境下的包   <br />
-<img alt="" src="../image/an3.png" /></p>
-<p>3、查看conda版本 <br />
-<img alt="" src="../image/an2.png" /></p>
-<p>4、查看CUDA版本，显示GPU状态   <br />
-<img alt="" src="../image/an5.png" /></p>
-<p>5、查看所有环境 <br />
-<img alt="" src="../image/an4.png" /></p>
-<p>这里显示了两种环境，第一个base是默认下的，第二个pytorch是我自己创建的一个环境     </p>
-<p>6、创建新虚拟环境      </p>
-<pre><code class="language-python">conda create -n env python==3.6(版本号)
+<h2 id="mysql_2">Mysql删除数据行</h2>
+<p><strong>1.DELETE语句</strong></p>
+<p>MySQL中的DELETE语句用于删除一个或多个数据行。语法如下：</p>
+<p>DELETE FROM table_name</p>
+<p>WHERE condition;</p>
+<p>其中，table_name是要删除数据行的表名，condition是删除数据行的条件。例如，如果要删除名为“students”的表中姓氏为“张”的学生记录，可以使用以下命令：</p>
+<p>DELETE FROM students WHERE last_name = ‘张’;</p>
+<p>这条命令将删除表中所有姓氏为“张”的学生记录。</p>
+<p><strong>2. TRUNCATE TABLE语句</strong></p>
+<p>TRUNCATE TABLE语句可以删除一个表中的所有数据行，并且重置自增长的主键值。语法如下：</p>
+<p>TRUNCATE TABLE table_name;</p>
+<p>例如，如果要删除名为“students”的表中的所有数据行，可以使用以下命令：</p>
+<p>TRUNCATE TABLE students;</p>
+<p>这条命令将删除表中所有数据行。</p>
+<p><strong>3. DROP TABLE语句</strong></p>
+<p>DROP TABLE语句用于删除一个表及其所有数据行。语法如下：</p>
+<p>DROP TABLE table_name;</p>
+<p>例如，如果要删除名为“students”的表及其所有数据行，可以使用以下命令：</p>
+<p>DROP TABLE students;</p>
+<p>这条命令将删除表及其所有数据行。</p>
+<p>需要注意的是，DROP TABLE语句将永久删除表及其所有数据，因此在使用前需要谨慎考虑。</p>
+<p>总结：在MySQL中，通过DELETE语句可以删除单个或多个数据行，TRUNCATE TABLE语句可以删除一个表中的所有数据行，并重置自增长的主键值，而DROP TABLE语句可以删除表及其所有数据行。在使用这些语句时，需要谨慎考虑，避免不必要的数据丢失。</p>
+<h2 id="pymysqlexecutemany">pymysql中executemany批量插入数据</h2>
+<p>1、在写sql语句时，不管字段为什么类型，占位符统一使用%s,且不能加上引号。例如</p>
+<pre><code>sql=&quot;insert into tablename (id,name) values (%s,%s)
 </code></pre>
-<p>其中env是虚拟环境名字，3.6是python版本号</p>
-<p>7、切换到其它环境   </p>
-<pre><code class="language-python">conda activate env
+<p>2、添加的数据的格式必须为 <strong>list[tuple(),tuple(),tuple()]</strong> 或者<strong>tuple(tuple(),tuple(),tuple())</strong> 例如</p>
+<pre><code>values=[(1,&quot;zhangsan&quot;),(2,&quot;lisi&quot;)]
+values=((1,&quot;zhangsan&quot;),(2,&quot;lisi&quot;))
 </code></pre>
-<p>其中env是目标虚拟环境名字</p>
-<p>8、退出当前虚拟环境   </p>
-<pre><code class="language-python">conda deactivate
+<p>3、豆瓣Top250将电影名称、评分、评价人数保存到mysql </p>
+<pre><code>#保存到mysql
+mysql_local = {
+    'host':'localhost',
+    'port':3306,
+    'user':'root',
+    'password':'082008271005yyh',
+    'db':'movietop250',
+}
+#建立数据库连接
+conn = pymysql.connect(**mysql_local)
+cursor = conn.cursor()
+
+def save_mysql(datalist):
+    film_names = []
+    scores = []
+    numbers = []
+    for i in range(250):
+        film_names.append(datalist[i][2])
+        scores.append(datalist[i][4])
+        numbers.append(datalist[i][5])
+    datalists = list(zip(film_names,scores,numbers))
+    sql = &quot;insert into movietop250(film_name,score,number) values(%s,%s,%s)&quot;
+    cursor.executemany(sql,datalists)   #执行数据库命令
+    conn.commit()  #提交    
 </code></pre>
-<p>9、删除环境   </p>
-<pre><code>conda remove -n env --all
-</code></pre>
-<p>其中env是要删除的虚拟环境名字</p>
-<p><a href="https://zhuanlan.zhihu.com/p/423809879">anaconda下载与虚拟环境创建</a>   <br />
-<a href="https://zhuanlan.zhihu.com/p/32925500">anaconda介绍、安装与使用</a></p>
 
 
 
@@ -1989,7 +2145,7 @@ Conda的设计理念——Conda将几乎所有的工具、第三方包都当做p
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../pip%E4%BD%BF%E7%94%A8/" class="md-footer__link md-footer__link--prev" aria-label="Previous: pip的使用" rel="prev">
+        <a href="../myvim/" class="md-footer__link md-footer__link--prev" aria-label="Previous: vim编辑器" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1998,26 +2154,11 @@ Conda的设计理念——Conda将几乎所有的工具、第三方包都当做p
               <span class="md-footer__direction">
                 Previous
               </span>
-              pip的使用
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../myvim/" class="md-footer__link md-footer__link--next" aria-label="Next: vim编辑器" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
               vim编辑器
             </div>
           </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
         </a>
+      
       
     </nav>
   
