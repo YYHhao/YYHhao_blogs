@@ -53,5 +53,13 @@ You should consider upgrading via the 'D:\python\python.exe -m pip install --upg
 
 2、 安装**fitz**模块时，不能直接 pip install fitz。而是同时安装 PyMuPDF(并且是先安装 fitz 后 PyMuPDF，**顺序很重要**)  
 
-另外注意：不能只安装PyMuPDF，当只安装PyMuPDF时，虽然可以用import fitz，但是运行fitz.open()等会出错。
+另外注意：不能只安装PyMuPDF，当只安装PyMuPDF时，虽然可以用import fitz，但是运行fitz.open()等会出错。      
 
+3、Original error was: No module named 'numpy.core._multiarray_umath',且多次出现cannot import name。       
+若不能用**pip install --urgrade numpy***直接更新,就先卸载，再下载，但下载经常超时，就需要设置下载的镜像源。  
+```
+pip uninstall numpy  #卸载
+#安装
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy 
+```
+解决后可能会多次出现cannot import，重复上述操作。
