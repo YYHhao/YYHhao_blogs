@@ -66,6 +66,10 @@ D:\python\Myblog\YYHhao_blogs>git push -u origin main
 ssh: connect to host github.com port 22: Connection timed out
 fatal: Could not read from remote repository.
 ```
+git push时报错:[解决方法](https://blog.csdn.net/Skybububu/article/details/132379910)
+```
+fatal: unable to access 'https://github.com/YYHhao/YYHhao_blogs.git/': Failed to connect to github.com port 443 after 21159 ms: Could not connect to server
+```
 
 
 [mkdocs参考：https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions](https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions)
