@@ -65,8 +65,6 @@ nav:
       - 显著性检测: dl/图像分割/显著性检测.md
       - 物体分割: dl/图像分割/物体分割.md
       - 语义分割: dl/图像分割/语义分割.md
-    - RNN(循环神经网络): dl/RNN.md
-    - GAN(生成式对抗网络): dl/GAN.md
 
   - 数据处理及可视化: 
     - matplotlib中文编码: datapv/mydatapv.md

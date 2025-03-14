@@ -12,7 +12,7 @@
         <link rel="prev" href="../CART/">
       
       
-        <link rel="next" href="../RFC/">
+        <link rel="next" href="../GBDT/">
       
       
       <link rel="icon" href="../../../img/火箭.svg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>CBDT - YYHhao的个人博客</title>
+        <title>随机森林 - YYHhao的个人博客</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cbdt" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CBDT
+              随机森林
             
           </span>
         </div>
@@ -874,27 +874,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    高斯混合模型
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
     
@@ -903,10 +882,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           
-          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -917,8 +896,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             降维算法
           </label>
@@ -1030,10 +1009,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1044,8 +1023,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             聚类算法
           </label>
@@ -1180,10 +1159,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1194,8 +1173,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             分类算法
           </label>
@@ -1326,7 +1305,7 @@
         
   
   <span class="md-ellipsis">
-    CBDT
+    随机森林
   </span>
   
 
@@ -1344,11 +1323,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../RFC/" class="md-nav__link">
+      <a href="../GBDT/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    随机森林
+    GBDT
   </span>
   
 
@@ -2610,8 +2589,97 @@
                   
 
 
-<h1 id="cbdt">梯度提升决策树(CBDT)</h1>
-<p><a href="https://blog.csdn.net/weixin_39910711/article/details/80100100"></a></p>
+<h1 id="_1">随机森林</h1>
+<p>Random Forest(随机森林)是一种基于树模型的优化版本，一棵树的生成肯定还是不如多棵树，因此就有了随机森林，解决决策树泛化能力弱的特点。其实就是利用集成学习方法生成多个决策树分类器，让所有决策树进行预测，选出结果中出现最多的预测结果。</p>
+<h1 id="_2">常用的随机过程</h1>
+<h2 id="bootstrapping">Bootstrapping</h2>
+<p>Bootstrapping算法，指的就是利用有限的样本资料经由多次有放回的重复抽样。如：在原样本中有放回的抽样，抽取n次。每抽一次形成一个新的样本，重复操作，形成很多新样本。</p>
+<p>1、有放回采样</p>
+<p>2、强调偏差</p>
+<p>3、串行执行，速度较慢</p>
+<p>4、可以提升泛化性能</p>
+<h2 id="bagging">Bagging</h2>
+<p>Bagging就是bootstrap aggregation：从样本集（假设样本集N个数据点）中随机重采样选出N个样本（有放回的采样，样本数据点个数仍然不变为N），在所有样本上，对这n个样本建立分类器（ID3\C4.5\CART\SVM\LOGIST
+IC），重复以上两步m次，获得m个分类器，最后根据这m个分类器的投票结果，对于分类任务，通常采用多数投票或平均概率决定最终类别；对于回归任务，采用平均值作为集成模型的预测结果。</p>
+<p>1、均匀采样</p>
+<p>2、强调方差</p>
+<p>3、并行生成，速度快</p>
+<p>4、可以提升泛化性能</p>
+<p>bagging举个例子：</p>
+<p>假设有1000个样本，如果按照以前的思维，是直接把这1000个样本拿来训练，但现在不一样，先抽取800个样本来进行训练，假如噪声点是这800个样本以外的样本点，就很有效的避开了。重复以上操作，提高模型输出的平均值。</p>
+<h1 id="_3">随机森林影响因素</h1>
+<p><strong>1、随机森林分类效果的影响因素</strong> <br />
+<em> 森林中任意两棵树的相关性：相关性越大，错误率越大；   <br />
+</em> 森林中每棵树的分类能力：每棵树的分类能力越强，整个森林的错误率越低。   </p>
+<p>减小特征选择个数m，树的相关性和分类能力也会相应的降低；增大m，两者也会随之增大。所以关键问题是如何选择最优的m（或者是范围），这也是随机森林唯一的一个参数。</p>
+<h1 id="_4">随机森林优缺点</h1>
+<p><strong>1、优点：</strong>
+RF简单，容易实现，计算开销小，性能强大。它的扰动不仅来自于样本扰动，还来自于属性扰动，这使得它的泛化性能进一步上升。</p>
+<p><strong>2、缺点：</strong>
+它在训练和预测时都比较慢，而且如果需要区分的类别很多时，随机森林的表现并不会很好。</p>
+<h1 id="_5">算法实现</h1>
+<p>sklearn.ensemble.RandomForestClassifier(n_estimators = 10,criterion = 'gini',max_depth = None,bootstrap = True,random_state = None,min_samples_split = 2)</p>
+<ul>
+<li>随机森林分类器</li>
+<li>n_estimators：整数类型，指森林里的树木数量，默认为10。通常为120,200,300,500,800,1200。</li>
+<li>criterion：字符串类型，默认基尼系数'gini'，你也可以换成熵。</li>
+<li>max_depth：整数类型，默认None，用于指定树的最大深度。通常为5,8,15,25,30。</li>
+<li>max_features ：字符串类型，每个决策树的最大特征数量，有'auto','sqrt','log2','None'四种选择。</li>
+<li>bootstrap：布尔类型，默认开启，指是否在构建森林时使用返回抽样</li>
+<li>min_samples_split：结点划分最少样本数</li>
+<li>min_samples_leaf：叶子结点的最小样本数。</li>
+<li>其中n_estimator,max_depth,min_samples_split,min_samples_leaf可以使用超参数网格搜索进行调参。</li>
+</ul>
+<pre><code>from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+
+
+def decision_iris():
+    &quot;&quot;&quot;随机森林算法&quot;&quot;&quot;
+    # 1 获取数据集
+    iris = load_iris()
+    x_train, x_test, y_train, y_test = train_test_split(iris.data, iris.target, random_state=4)
+
+    # 2 预估器实例化
+    estimator = RandomForestClassifier(criterion=&quot;entropy&quot;)
+
+    # 3 指定超参数集合
+    param_dict = {&quot;n_estimators&quot;: [120, 200, 300, 500, 800, 1200], &quot;max_depth&quot;: [5, 8, 15, 25, 30]}
+
+    # 4 加入超参数网格搜索和交叉验证
+    estimator = GridSearchCV(estimator, param_grid=param_dict, cv=10)
+
+    # 5 训练数据集
+    estimator.fit(x_train, y_train)
+
+    # 6 模型评估
+    y_predict = estimator.predict(x_test)
+    print(&quot;y_predict:\n&quot;, y_predict)
+    print(&quot;直接对比真实值和预测值：\n&quot;, y_test == y_predict)
+
+    score = estimator.score(x_test, y_test)
+    print(&quot;准确率为：\n&quot;, score)
+
+
+decision_iris()
+</code></pre>
+<p>输出：</p>
+<pre><code>y_predict:
+ [2 0 2 2 2 1 2 0 0 2 0 0 0 1 2 0 1 0 0 2 0 2 1 0 0 0 0 0 0 2 1 0 2 0 1 2 2
+ 1]
+直接对比真实值和预测值：
+ [ True  True  True  True  True  True False  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True]
+准确率为：
+ 0.9736842105263158
+
+</code></pre>
+<p><a href="https://developer.aliyun.com/article/1051613">浅显易懂的机器学习（八）—— 随机森林分类</a> <br />
+<a href="https://blog.csdn.net/weixin_41988628/article/details/83098130">网格搜索调超参数</a></p>
 
 
 
