@@ -55,17 +55,16 @@ nav:
     - 神经网络权重初始化0问题: dl/初始化.md
     - super(X,self).__init__(): dl/super.md
     - LeNet-5卷积神经网络: dl/lenet5.md
-    - Image Classification:
+    - 图像分割:
+      - 显著性检测: dl/图像分割/显著性检测.md
+      - 语义分割: dl/图像分割/语义分割.md
+    - 图像分类:
       - AlexNet: dl/图像分类/alexnet.md
       - VGG: dl/图像分类/vgg.md
-    - Image Detection:
+    - 图像检测:
       - R-CNN: dl/图像检测/rcnn.md
       - R-FCN: dl/图像检测/rfcn.md
-    - Image Segmentation:
-      - 显著性检测: dl/图像分割/显著性检测.md
-      - 物体分割: dl/图像分割/物体分割.md
-      - 语义分割: dl/图像分割/语义分割.md
-
+      
   - 数据处理及可视化: 
     - matplotlib中文编码: datapv/mydatapv.md
 
