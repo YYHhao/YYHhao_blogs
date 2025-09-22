@@ -2,6 +2,9 @@ site_name: YYHhao的个人博客
 nav:
   - 主页: index.md
   - python:
+    - 基础:
+      - 字典: 基础/字典.md
+
     - numpy模块: 
       - 基本操作: numpy模块/mynumpy.md
       - 随机生成: numpy模块/随机生成.md
@@ -74,6 +77,11 @@ nav:
   - CV: 
     - 读取图片: cvlearning/读取图片.md
     - opencv中文路径问题: cvlearning/中文报错问题.md
+  
+  - IQA:
+    - 前言: IQA/前言.md
+    - 通过信噪比距离在深度特征空间中的动态感知: IQA/snr.md
+
 
   - 数学建模: 
     - 前言: 数学建模/前言.md
@@ -96,6 +104,7 @@ nav:
     - Anaconda虚拟环境: bj/虚拟环境.md
     - vim编辑器: bj/myvim.md
     - Mysql学习: bj/mysql.md
+    - 双系统问题: bj/双系统问题.md
       
 theme:
   name: 'material'
