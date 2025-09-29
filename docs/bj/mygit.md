@@ -58,7 +58,7 @@
 git add .
 git commit -m 'message'
 git push -u origin main
-mkdocs gh-deploy --force
+python -m mkdocs gh-deploy --force
 ```
 git push时出现的.ssh问题:[解决方法](https://blog.csdn.net/nightwishh/article/details/99647545)    
 ```
